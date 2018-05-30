@@ -22,6 +22,7 @@ import { AuthorizationComponent } from './components/authorization.component';
 
 //endpoint services
 import { LoginServiceEndpoint } from './services/login-service/login-service.endpoint';
+import {AdminHomeComponent} from './components/admin/home/admin-home.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { LoginServiceEndpoint } from './services/login-service/login-service.end
     FooterComponent,
     HomeComponent,
     AboutUsComponent,
-    LoginComponent
+    LoginComponent,
+    AdminHomeComponent
   ],
   imports: [
     FormsModule,
