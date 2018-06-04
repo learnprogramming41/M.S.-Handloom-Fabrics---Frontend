@@ -9,7 +9,7 @@ import { Observable } from "rxjs/Observable";
 export class LoginServiceEndpoint {
     
     //defining url
-    private readonly loginUrl = "/authorization/login";
+    private readonly loginUrl = "/authorization/admin/login";
 
     constructor(private http: HttpClient, private auth: AuthorizationComponent) {  }
     

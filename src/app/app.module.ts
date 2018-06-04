@@ -24,6 +24,9 @@ import { AuthorizationComponent } from './components/authorization.component';
 import { LoginServiceEndpoint } from './services/login-service/login-service.endpoint';
 import {AdminHomeComponent} from './components/admin/home/admin-home.component';
 
+//font-awesome
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import {AdminHomeComponent} from './components/admin/home/admin-home.component';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    LoadingBarRouterModule
+    LoadingBarRouterModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     AuthorizationComponent,
