@@ -12,7 +12,7 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoginComponent } from './components/admin/login/login.component';
-
+import { ForgotPasswordComponent } from './components/admin/forgot-password/forgot-password.component';
 
 //services
 import {NavbarService} from './services/navbar/navbar.service';
@@ -27,6 +27,12 @@ import {AdminHomeComponent} from './components/admin/home/admin-home.component';
 //font-awesome
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
+//sweet alert
+import swal from 'sweetalert2';
+
+//spinner
+import { SpinnerModule } from 'angular2-spinner';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +42,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     HomeComponent,
     AboutUsComponent,
     LoginComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     FormsModule,
@@ -44,7 +51,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     BrowserModule,
     AppRoutingModule,
     LoadingBarRouterModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    SpinnerModule
   ],
   providers: [
     AuthorizationComponent,
