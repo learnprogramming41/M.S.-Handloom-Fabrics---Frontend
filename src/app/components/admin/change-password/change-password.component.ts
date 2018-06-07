@@ -5,6 +5,7 @@ import {NavbarService} from '../../../services/navbar/navbar.service';
 import {LoginService} from '../../../services/login-service/login-service';
 import {Observable} from 'rxjs/Observable';
 import swal from 'sweetalert2';
+import {UpdatePasswordModel} from '../../../model/update-password.model';
 
 @Component({
   selector: 'app-change-password',
@@ -19,6 +20,7 @@ export class ChangePasswordComponent implements OnInit {
     public conPassword: string;
     public showInfo: boolean = false;
     public working: boolean = false;
+    public updatePasswordModel: UpdatePasswordModel = new UpdatePasswordModel();
 
   constructor(
     private route: ActivatedRoute,
@@ -45,6 +47,7 @@ export class ChangePasswordComponent implements OnInit {
         } else {
             this.info = "Password mismatch";
             this.showInfo = true;
+            this.working = false;
         }
         
     }
@@ -54,7 +57,9 @@ export class ChangePasswordComponent implements OnInit {
     }
     
     private updatePassword() {
-        this.loginService.changePassword(this.password, this.username).subscribe(
+        this.updatePasswordModel.username = this.username;
+        this.updatePasswordModel.password = this.password;
+        this.loginService.changePassword(this.updatePasswordModel).subscribe(
             result => {
                 this.working = false;
                 swal(
@@ -62,6 +67,9 @@ export class ChangePasswordComponent implements OnInit {
                     'Password Updated',
                     'success'
                 )
+                
+                this.router.navigate(['/admin/login']);
+                
             }, error => {
                 this.working = false;
                 console.log(new Observable(error));

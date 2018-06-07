@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { LoginServiceEndpoint } from "./login-service.endpoint";
 import {ForgotPasswordModel} from "../../model/forgot-password.model";
+import {UpdatePasswordModel} from "../../model/update-password.model";
 
 @Injectable()
 export class LoginService {
@@ -18,7 +19,7 @@ export class LoginService {
         return this.loginServiceEndpoint.sendEmail(email);
     }
     
-    public changePassword<T>(username: string, password: string) {
-        return this.loginServiceEndpoint.changePassword(username, password);
+    public changePassword<T>(updatePasswordModel: UpdatePasswordModel) {
+        return this.loginServiceEndpoint.changePassword(updatePasswordModel);
     }
 }

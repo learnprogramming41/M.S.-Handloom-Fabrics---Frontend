@@ -4,6 +4,7 @@ import { AuthorizationComponent } from "./../../components/authorization.compone
 import 'rxjs/add/operator/catch';
 import { Observable } from "rxjs/Observable";
 import {ForgotPasswordModel} from "../../model/forgot-password.model";
+import {UpdatePasswordModel} from "../../model/update-password.model";
 
 @Injectable()
 
@@ -54,11 +55,9 @@ export class LoginServiceEndpoint {
     }
     
     //change password
-    public changePassword<T>(username: string, password: string) {
-        return this.http.put<T>(this.getChangePasswordUrl, {params: {
-            username: username,
-            password: password
-        }}).catch(error => {
+    public changePassword<T>(updatePasswordModel: UpdatePasswordModel) {
+        return this.http.put<T>(this.getChangePasswordUrl, updatePasswordModel)
+            .catch(error => {
             throw new Observable(error)
         })
     }
