@@ -32,6 +32,8 @@ import swal from 'sweetalert2';
 
 //spinner
 import { SpinnerModule } from 'angular2-spinner';
+import { ChangePasswordComponent } from './components/admin/change-password/change-password.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { SpinnerModule } from 'angular2-spinner';
     AboutUsComponent,
     LoginComponent,
     AdminHomeComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ChangePasswordComponent,
+    PageNotFoundComponent
   ],
   imports: [
     FormsModule,

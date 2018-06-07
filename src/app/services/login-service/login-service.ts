@@ -17,4 +17,8 @@ export class LoginService {
     public sendEmail<T>(email: String) {
         return this.loginServiceEndpoint.sendEmail(email);
     }
+    
+    public changePassword<T>(username: string, password: string) {
+        return this.loginServiceEndpoint.changePassword(username, password);
+    }
 }

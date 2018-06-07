@@ -13,6 +13,7 @@ export class LoginServiceEndpoint {
     private readonly loginUrl = "/authorization/admin/login";
     private readonly forgetPasswordUrl = '/user/check-email';
     private readonly emailUrl = "/mail/send-mail";
+    private readonly changePasswordUrl = "/user/change-password";
 
     constructor(private http: HttpClient, private auth: AuthorizationComponent) {  }
     
@@ -20,6 +21,7 @@ export class LoginServiceEndpoint {
     private get getLoginUrl() { return this.auth.getBaseUrl+this.loginUrl }
     private get getForgetPasswordUrl() {return this.auth.getBaseUrl + this.forgetPasswordUrl }
     private get getEmailUrl() {return this.auth.getBaseUrl + this.emailUrl }
+    private get getChangePasswordUrl() {return this.auth.getBaseUrl + this.changePasswordUrl }
 
     //methods
     public login<T>(username: string, password: string) {
@@ -49,5 +51,15 @@ export class LoginServiceEndpoint {
             .catch(error => {
                 throw new Observable(error)
             })
+    }
+    
+    //change password
+    public changePassword<T>(username: string, password: string) {
+        return this.http.put<T>(this.getChangePasswordUrl, {params: {
+            username: username,
+            password: password
+        }}).catch(error => {
+            throw new Observable(error)
+        })
     }
 }
