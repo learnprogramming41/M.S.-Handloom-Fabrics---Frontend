@@ -7,6 +7,7 @@ import {AdminHomeComponent} from './components/admin/home/admin-home.component';
 import {ForgotPasswordComponent} from './components/admin/forgot-password/forgot-password.component';
 import {ChangePasswordComponent} from './components/admin/change-password/change-password.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {PashminaComponent} from './components/admin/pashmina/pashmina.component';
 
 const routes: Routes = [
     {path: '', redirectTo:'home', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path: 'admin/home', component: AdminHomeComponent},
     {path: 'admin/forgotpassword', component: ForgotPasswordComponent},
     {path: 'admin/change-password', component: ChangePasswordComponent},
+    {path: 'admin/add-pashmina', component: PashminaComponent},
     {path: '**', component: PageNotFoundComponent}
 ];
 

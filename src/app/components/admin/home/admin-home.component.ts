@@ -16,6 +16,9 @@ import {Router} from "@angular/router";
 })
 export class AdminHomeComponent implements OnInit {
     
+    public dashboard: boolean = true;
+    public pashmina: boolean = false;
+    
     constructor(
         private nav: NavbarService,
         private footer: FooterService,
@@ -25,11 +28,26 @@ export class AdminHomeComponent implements OnInit {
     ngOnInit() {
         this.nav.hide();
         this.footer.hide();
+        
+        if (!localStorage.getItem("adminDetails")) {
+            this.router.navigate(['/admin/login']);
+        }
+        
     }
     
     private logout() {
         localStorage.clear();
         this.router.navigate(['admin/login']);
+    }
+    
+    private goToPashmina() {
+        this.dashboard = false;
+        this.pashmina = true;
+    }
+    
+    goToDashboard() {
+        this.dashboard = true;
+        this.pashmina = false;
     }
     
 }

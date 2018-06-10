@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import {FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 //components
 import { AppComponent } from './app.component';
@@ -34,6 +35,8 @@ import swal from 'sweetalert2';
 import { SpinnerModule } from 'angular2-spinner';
 import { ChangePasswordComponent } from './components/admin/change-password/change-password.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PashminaComponent } from './components/admin/pashmina/pashmina.component';
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -47,10 +50,13 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     AdminHomeComponent,
     ForgotPasswordComponent,
     ChangePasswordComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PashminaComponent,
+    DashboardComponent
   ],
   imports: [
     FormsModule,
+    CommonModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

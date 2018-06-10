@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
     public loginModel: LoginModel = new LoginModel();
     public wrongCredential: boolean = false;
+    public working: boolean = false;
 
     constructor(
         private nav: NavbarService,
@@ -32,13 +33,16 @@ export class LoginComponent implements OnInit {
     }
 
     userLogin() {
+        this.working = true;
         this.loginService.login(this.loginModel.username, this.loginModel.password).subscribe(
             result => {
                 this.auth.getAccessToken(this.loginModel.username, this.loginModel.password).subscribe(
                     result => {
                         localStorage.setItem("token", JSON.stringify(result));
+                        this.working = false;
                         this.router.navigate(['admin/home']);
                     }, error => {
+                        this.working = false;
                         this.wrongCredential = true;
                     }
                 )
@@ -47,6 +51,7 @@ export class LoginComponent implements OnInit {
                 
             }, error => {
                 this.wrongCredential = true;
+                this.working = false;
             }
         )
     }

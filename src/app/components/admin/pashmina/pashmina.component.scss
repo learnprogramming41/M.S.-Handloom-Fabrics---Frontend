@@ -1,0 +1,96 @@
+@media only screen and (min-width: 770px) {
+    .row .col-md-4 {
+        text-align: right;
+    }
+}
+
+.picture {
+    width: 200px;
+    height: 150px;
+    background: #dddddd;
+    cursor: pointer;
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border: 1px solid black;
+}
+
+.col-md-8 i {
+    cursor: pointer;
+    margin-right: 3px;
+    color: red;
+    position: absolute;
+    background: white;
+    size: 20px;
+}
+
+.col-md-4 {
+    margin-bottom: 20px;
+}
+
+.col-md-6 {
+    margin-bottom: 20px;
+}
+
+.image-input {
+    width: 100%; 
+    height: 100%; 
+    opacity: 0.0;
+    z-index: 1;
+}
+
+.imgPlaceholder {
+    z-index: 1;
+}
+
+.picture1 {
+    background-image: url("../../../../assets/background/image-up-icon.png");
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 150px;
+    cursor: pointer;
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.button .form-control {
+    /* Tell the input to use all the available space */
+    flex-grow:2;
+    /* And hide the input's outline, so the form looks like the outline */
+    border:none;
+}
+
+.button button {
+    /* Just a little styling to make it pretty */
+    border:1px solid blue;
+    background:blue;
+    color:white;
+    cursor: pointer;
+}
+
+.button {
+    display:flex;
+    flex-direction:row;
+
+    /* This bit draws the box around it */
+    border:1px solid grey;
+    padding:2px;
+}
+
+.description {
+    margin-top: 5px;
+}
+
+.cross {
+    float: right;
+    cursor: pointer;
+    margin-right: -10px;
+}
+
+.color-alert {
+    color: white;
+    min-width: 100px; 
+    float: left;
+    margin-right: 5px;
+}

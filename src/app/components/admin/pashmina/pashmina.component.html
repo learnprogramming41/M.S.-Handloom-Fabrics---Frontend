@@ -1,0 +1,92 @@
+<div class="row">
+
+    <!-- Pashmina -->
+
+    <div class="col-md-4">
+        <span class="label label-info">Pashmina Name</span>
+    </div>
+
+    <div class="col-md-6">
+        <input class="form-control" type="text"/>
+    </div>
+
+    <!-- Category -->
+
+    <div class="col-md-4">
+        <span class="label label-info">Category</span>
+    </div>
+
+    <div class="col-md-6">
+        <select class="form-control" id="sel1">
+            <option *ngFor="let a of category">{{a}}</option>
+        </select>
+    </div>
+
+    <!-- Price -->
+
+    <div class="col-md-4">
+        <span class="label label-info">Price</span>
+    </div>
+
+    <div class="col-md-6">
+        <input class="form-control" type="text"/>
+    </div>
+
+    <!-- Photo -->
+
+    <div class="col-md-4">
+        <span class="label label-info">Choose Photo</span>
+    </div>
+
+    <div class="col-md-8">
+        <div class="picture" *ngFor="let a of localUrl; let num = index;">
+             <i class="fa fa-times" aria-hidden="true" title="remove" (click)="removeImage(num)"></i>
+            <img [src]="a" style="width: 100%; height: 100%" *ngIf="localUrl" class="imgPlaceholder">
+        </div>
+
+        <div class="picture1">
+            <input type="file" class="image-input" ([ngModel])="image" (change)="showPreviewImage($event)"/>
+        </div>
+    </div>
+
+    <!-- Description -->
+    <div class="col-md-4">
+        <span class="label label-info">Description</span>
+    </div>
+
+    <div class="col-md-6">
+        <form>
+            <div class="button">
+                <input class="form-control" type="text" [(ngModel)]="description" name="description"/><button (click)="addDescription()">ADD</button>
+            </div>
+
+            <div class="description">
+                <div class="alert alert-info" *ngFor="let desc of descriptionArray; let num = index;">
+                     {{desc}}
+                     <b class='cross' (click)="closeDesc(num)">X</b>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Color -->
+    <div class="col-md-4">
+        <span class="label label-info">Available color</span>
+    </div>
+
+    <div class="col-md-6">
+        <select class="form-control" style="margin-bottom: 5px;" [(ngModel)]="color" (ngModelChange)="addColor()">
+            <option *ngFor="let a of colors">{{a}}</option>
+        </select>
+
+        <div class="alert alert-info color-alert" [style.background-color]="color" *ngFor="let color of colorArray; let num = index;">
+             {{color}}
+             <b class='cross' (click)="closeColor(num)">X</b>
+        </div>
+    </div>
+    
+    <div class="col-md-10">
+        <button class="btn btn-primary" type='submit' style="float: right;  ">Save</button>
+    </div>
+
+</div>
