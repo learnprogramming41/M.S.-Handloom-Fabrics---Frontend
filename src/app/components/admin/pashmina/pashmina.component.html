@@ -7,7 +7,7 @@
     </div>
 
     <div class="col-md-6">
-        <input class="form-control" type="text"/>
+        <input class="form-control" type="text" [(ngModel)]="pashmina.pashminaName"/>
     </div>
 
     <!-- Category -->
@@ -17,7 +17,7 @@
     </div>
 
     <div class="col-md-6">
-        <select class="form-control" id="sel1">
+        <select class="form-control" id="sel1" [(ngModel)]="pashmina.category">
             <option *ngFor="let a of category">{{a}}</option>
         </select>
     </div>
@@ -29,7 +29,7 @@
     </div>
 
     <div class="col-md-6">
-        <input class="form-control" type="text"/>
+        <input class="form-control" type="text" [(ngModel)]="pashmina.price"/>
     </div>
 
     <!-- Photo -->
@@ -57,12 +57,12 @@
     <div class="col-md-6">
         <form>
             <div class="button">
-                <input class="form-control" type="text" [(ngModel)]="description" name="description"/><button (click)="addDescription()">ADD</button>
+                <input class="form-control" type="text"  [(ngModel)]="description" name="description"/><button (click)="addDescription()">ADD</button>
             </div>
 
             <div class="description">
-                <div class="alert alert-info" *ngFor="let desc of descriptionArray; let num = index;">
-                     {{desc}}
+                <div class="alert alert-info" *ngFor="let desc of pashmina.descriptions; let num = index;">
+                     {{desc.pashminaDescription}}
                      <b class='cross' (click)="closeDesc(num)">X</b>
                 </div>
             </div>
@@ -86,7 +86,7 @@
     </div>
     
     <div class="col-md-10">
-        <button class="btn btn-primary" type='submit' style="float: right;  ">Save</button>
+        <button class="btn btn-primary" type='submit' style="float: right;" (click)="savePashmina()">Save</button>
     </div>
 
 </div>

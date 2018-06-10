@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {NavbarService} from '../../../services/navbar/navbar.service';
 import {FooterService} from '../../../services/footer/footer.service';
 import {Category, Color} from '../../../enum/Enum';
+import {PashminaModel} from '../../../model/pashmina.model';
+import {DescriptionModel} from '../../../model/description.model';
+import {PashminaColourModel} from '../../../model/color.model';
+import {ImageModel} from '../../../model/image.model';
 
 @Component({
     selector: 'app-pashmina',
@@ -18,6 +22,15 @@ export class PashminaComponent implements OnInit {
     public descriptionArray: string[] = [];
     public color: string;
     public colorArray: string[] = [];
+    public pashmina: PashminaModel = new PashminaModel();
+    public pashminaArray: PashminaModel[] = [];
+    public descriptionModel: DescriptionModel = new DescriptionModel();
+    
+    public colorModel: PashminaColourModel = new PashminaColourModel();
+    public colorModelArray: PashminaColourModel[] = [];
+    
+    public imageModel: ImageModel = new ImageModel();
+    public imageModelArray: ImageModel[] = [];
 
     constructor(
         private nav: NavbarService,
@@ -43,13 +56,19 @@ export class PashminaComponent implements OnInit {
 
     showPreviewImage(event: any) {
         this.imageName.push(event.target.files[0].name);
+        
         if (event.target.files && event.target.files[0]) {
+            this.imageModel.imageName = event.target.files[0].name;
+            this.pashmina.images.push(this.imageModel);
+            
             var reader = new FileReader();
             reader.onload = (event: any) => {
                 this.localUrl.push(event.target.result);
             }
             reader.readAsDataURL(event.target.files[0]);
         }
+        
+        this.imageModel = new ImageModel();
         
     }
     
@@ -60,19 +79,31 @@ export class PashminaComponent implements OnInit {
 
     addDescription() {
         if (this.description) {
-            this.descriptionArray.push(this.description);
+            this.descriptionModel.pashminaDescription = this.description;
+            this.pashmina.descriptions.push(this.descriptionModel);
         }
+        this.description = null;
+        this.descriptionModel = new DescriptionModel();
     }
     
     closeDesc(num: number) {
-        this.descriptionArray.splice(num, 1);
+        this.pashmina.descriptions.splice(num, 1);
     }
     
     addColor() {
+        if(this.color) {
+            this.colorModel.color = this.color;
+            this.pashmina.pashminaColor.push(this.colorModel);
+        }
         this.colorArray.push(this.color);
+        this.colorModel = new PashminaColourModel();
     }
 
     closeColor(num: number) {
         this.colorArray.splice(num, 1);
+    }
+    
+    savePashmina() {
+        console.log(this.pashmina);
     }
 }
