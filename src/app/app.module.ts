@@ -20,10 +20,12 @@ import {NavbarService} from './services/navbar/navbar.service';
 import {FooterService} from './services/footer/footer.service';
 import { LoginService } from './services/login-service/login-service';
 import { AuthorizationComponent } from './components/authorization.component';
+import {PashminaService} from './services/pashmina-service/pashmina-service';
 
 //endpoint services
 import { LoginServiceEndpoint } from './services/login-service/login-service.endpoint';
 import {AdminHomeComponent} from './components/admin/home/admin-home.component';
+import {PashminaServiceEndpoint} from './services/pashmina-service/pashmina-service.endpoint';
 
 //font-awesome
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -69,7 +71,9 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
     NavbarService,
     FooterService,
     LoginServiceEndpoint,
-    LoginService
+    LoginService,
+    PashminaServiceEndpoint,
+    PashminaService
   ],
   bootstrap: [AppComponent]
 })

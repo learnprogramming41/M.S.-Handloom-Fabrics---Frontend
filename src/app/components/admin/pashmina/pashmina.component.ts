@@ -6,6 +6,7 @@ import {PashminaModel} from '../../../model/pashmina.model';
 import {DescriptionModel} from '../../../model/description.model';
 import {PashminaColourModel} from '../../../model/color.model';
 import {ImageModel} from '../../../model/image.model';
+import {PashminaService} from '../../../services/pashmina-service/pashmina-service';
 
 @Component({
     selector: 'app-pashmina',
@@ -35,6 +36,7 @@ export class PashminaComponent implements OnInit {
     constructor(
         private nav: NavbarService,
         private foot: FooterService,
+        private pashminaService: PashminaService
     ) {}
 
     ngOnInit() {
@@ -105,5 +107,12 @@ export class PashminaComponent implements OnInit {
     
     savePashmina() {
         console.log(this.pashmina);
+        this.pashminaService.addPashmina(this.pashmina).subscribe(
+            result => {
+                console.log(result);
+            }, error => {
+                console.log(error);
+            }
+        )
     }
 }
