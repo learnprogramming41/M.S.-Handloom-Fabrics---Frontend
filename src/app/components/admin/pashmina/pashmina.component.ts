@@ -109,7 +109,7 @@ export class PashminaComponent implements OnInit {
         console.log(this.pashmina);
         this.pashminaService.addPashmina(this.pashmina).subscribe(
             result => {
-                console.log(result);
+                console.log("success");
             }, error => {
                 console.log(error);
             }
