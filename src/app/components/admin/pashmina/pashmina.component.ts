@@ -58,11 +58,10 @@ export class PashminaComponent implements OnInit {
 
     showPreviewImage(event: any) {
         this.imageName.push(event.target.files[0].name);
-        
         if (event.target.files && event.target.files[0]) {
-            this.imageModel.imageName = event.target.files[0].name;
+            //this.imageModel.imageName = event.target.files[0].name;
+            this.imageModel.imageName = event.target.value;
             this.pashmina.images.push(this.imageModel);
-            
             var reader = new FileReader();
             reader.onload = (event: any) => {
                 this.localUrl.push(event.target.result);

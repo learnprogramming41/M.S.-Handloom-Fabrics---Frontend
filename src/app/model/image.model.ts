@@ -9,7 +9,7 @@ export class ImageModel {
     constructor(
         public imageId?: number,
         public imageName?: string,
-        public pashminaId?: PashminaModel    
+        public pashminaId?: number   
     ) {
         this.imageId = imageId;
         this.imageName = imageName;
