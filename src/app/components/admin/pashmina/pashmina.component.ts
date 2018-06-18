@@ -7,6 +7,7 @@ import {DescriptionModel} from '../../../model/description.model';
 import {PashminaColourModel} from '../../../model/color.model';
 import {ImageModel} from '../../../model/image.model';
 import {PashminaService} from '../../../services/pashmina-service/pashmina-service';
+import {ImageService} from '../../../services/image-service/image-service';
 
 @Component({
     selector: 'app-pashmina',
@@ -33,10 +34,13 @@ export class PashminaComponent implements OnInit {
     public imageModel: ImageModel = new ImageModel();
     public imageModelArray: ImageModel[] = [];
 
+    private images: string[] = [];
+
     constructor(
         private nav: NavbarService,
         private foot: FooterService,
-        private pashminaService: PashminaService
+        private pashminaService: PashminaService,
+        private imageService: ImageService
     ) {}
 
     ngOnInit() {
@@ -60,8 +64,9 @@ export class PashminaComponent implements OnInit {
         this.imageName.push(event.target.files[0].name);
         if (event.target.files && event.target.files[0]) {
             //this.imageModel.imageName = event.target.files[0].name;
-            this.imageModel.imageName = event.target.value;
-            this.pashmina.images.push(this.imageModel);
+            //this.imageModel.imageName = event.target.value;
+            //this.pashmina.images.push(this.imageModel);
+            this.images.push(event.target.files[0]);
             var reader = new FileReader();
             reader.onload = (event: any) => {
                 this.localUrl.push(event.target.result);
@@ -105,8 +110,23 @@ export class PashminaComponent implements OnInit {
     }
     
     savePashmina() {
-        console.log(this.pashmina);
         this.pashminaService.addPashmina(this.pashmina).subscribe(
+            result => {
+                console.log("Success");
+                this.uploadImages();
+            }, error => {
+                console.log(error);
+            }
+        )
+    }
+    
+    uploadImages() {
+        let formData = new FormData();
+        this.images.forEach(res => {
+            formData.append('file', res);
+        })
+        
+        this.imageService.uploadImage(formData).subscribe (
             result => {
                 console.log("success");
             }, error => {
