@@ -84,9 +84,12 @@
              <b class='cross' (click)="closeColor(num)">X</b>
         </div>
     </div>
-    
+
     <div class="col-md-10">
-        <button class="btn btn-primary" type='submit' style="float: right;" (click)="savePashmina()">Save</button>
+        <button [disabled]="working" (click)="savePashmina()" style="float: right;" name="recover-submit" class="btn btn-primary" type="submit">
+            <a *ngIf="!working">Save</a>
+            <i class="fa fa-spinner fa-spin" *ngIf="working"></i>
+        </button>
     </div>
 
 </div>

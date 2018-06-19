@@ -8,6 +8,7 @@ import {PashminaColourModel} from '../../../model/color.model';
 import {ImageModel} from '../../../model/image.model';
 import {PashminaService} from '../../../services/pashmina-service/pashmina-service';
 import {ImageService} from '../../../services/image-service/image-service';
+import swal from 'sweetalert2';
 
 @Component({
     selector: 'app-pashmina',
@@ -27,12 +28,14 @@ export class PashminaComponent implements OnInit {
     public pashmina: PashminaModel = new PashminaModel();
     public pashminaArray: PashminaModel[] = [];
     public descriptionModel: DescriptionModel = new DescriptionModel();
-    
+
     public colorModel: PashminaColourModel = new PashminaColourModel();
     public colorModelArray: PashminaColourModel[] = [];
-    
+
     public imageModel: ImageModel = new ImageModel();
     public imageModelArray: ImageModel[] = [];
+
+    public working: boolean = false;
 
     private images: string[] = [];
 
@@ -52,7 +55,7 @@ export class PashminaComponent implements OnInit {
                 this.category.push(i);
             }
         }
-        
+
         for (var i in Color) {
             if (!parseInt(i, 10)) {
                 this.colors.push(i);
@@ -63,9 +66,6 @@ export class PashminaComponent implements OnInit {
     showPreviewImage(event: any) {
         this.imageName.push(event.target.files[0].name);
         if (event.target.files && event.target.files[0]) {
-            //this.imageModel.imageName = event.target.files[0].name;
-            //this.imageModel.imageName = event.target.value;
-            //this.pashmina.images.push(this.imageModel);
             this.images.push(event.target.files[0]);
             var reader = new FileReader();
             reader.onload = (event: any) => {
@@ -73,11 +73,9 @@ export class PashminaComponent implements OnInit {
             }
             reader.readAsDataURL(event.target.files[0]);
         }
-        
         this.imageModel = new ImageModel();
-        
     }
-    
+
     removeImage(num: number) {
         this.localUrl.splice(num, 1);
         this.imageName.splice(num, 1);
@@ -91,13 +89,13 @@ export class PashminaComponent implements OnInit {
         this.description = null;
         this.descriptionModel = new DescriptionModel();
     }
-    
+
     closeDesc(num: number) {
         this.pashmina.descriptions.splice(num, 1);
     }
-    
+
     addColor() {
-        if(this.color) {
+        if (this.color) {
             this.colorModel.color = this.color;
             this.pashmina.pashminaColor.push(this.colorModel);
         }
@@ -108,27 +106,32 @@ export class PashminaComponent implements OnInit {
     closeColor(num: number) {
         this.colorArray.splice(num, 1);
     }
-    
+
     savePashmina() {
+        this.working = true;
         this.pashminaService.addPashmina(this.pashmina).subscribe(
             result => {
-                console.log("Success");
                 this.uploadImages();
             }, error => {
                 console.log(error);
             }
         )
     }
-    
+
     uploadImages() {
         let formData = new FormData();
         this.images.forEach(res => {
             formData.append('file', res);
         })
-        
-        this.imageService.uploadImage(formData).subscribe (
+
+        this.imageService.uploadImage(formData).subscribe(
             result => {
-                console.log("success");
+                this.working = false;
+                swal(
+                    'Success!',
+                    'Pashmina Details Added Successfully',
+                    'success'
+                )
             }, error => {
                 console.log(error);
             }
