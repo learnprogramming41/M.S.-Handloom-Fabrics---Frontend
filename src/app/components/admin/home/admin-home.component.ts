@@ -16,8 +16,9 @@ import {Router} from "@angular/router";
 })
 export class AdminHomeComponent implements OnInit {
     
-    public dashboard: boolean = true;
-    public pashmina: boolean = false;
+    private dashboard: boolean = true;
+    private pashmina: boolean = false;
+    private pashminaDetails: boolean = false;
     
     constructor(
         private nav: NavbarService,
@@ -40,14 +41,22 @@ export class AdminHomeComponent implements OnInit {
         this.router.navigate(['admin/login']);
     }
     
-    private goToPashmina() {
+    goToPashmina() {
         this.dashboard = false;
         this.pashmina = true;
+        this.pashminaDetails = false;
     }
     
     goToDashboard() {
         this.dashboard = true;
         this.pashmina = false;
+        this.pashminaDetails = false;
+    }
+    
+    gotToViewPashmina() {
+        this.dashboard = false;
+        this.pashmina = false;
+        this.pashminaDetails = true;
     }
     
 }

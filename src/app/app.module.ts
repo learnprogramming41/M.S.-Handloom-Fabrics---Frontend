@@ -45,6 +45,7 @@ import {DashboardComponent} from './components/admin/dashboard/dashboard.compone
 //cloudinary
 import {CloudinaryModule} from '@cloudinary/angular-5.x';
 import * as  Cloudinary from 'cloudinary-core';
+import { ViewPashminaDetailsComponent } from './components/admin/view-pashmina-details/view-pashmina-details.component';
 
 @NgModule({
     declarations: [
@@ -59,7 +60,8 @@ import * as  Cloudinary from 'cloudinary-core';
         ChangePasswordComponent,
         PageNotFoundComponent,
         PashminaComponent,
-        DashboardComponent
+        DashboardComponent,
+        ViewPashminaDetailsComponent
     ],
     imports: [
         FormsModule,

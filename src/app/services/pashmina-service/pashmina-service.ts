@@ -12,4 +12,7 @@ export class PashminaService {
         return this.pashminaServiceEndpoint.addPashmina(pashmina);
     }
     
+    public getAllPashmina<T>() {
+        return this.pashminaServiceEndpoint.getAllPashmin();
+    }
 }

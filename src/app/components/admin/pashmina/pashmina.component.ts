@@ -79,6 +79,7 @@ export class PashminaComponent implements OnInit {
     removeImage(num: number) {
         this.localUrl.splice(num, 1);
         this.imageName.splice(num, 1);
+        this.images.splice(num, 1);
     }
 
     addDescription() {
@@ -132,6 +133,12 @@ export class PashminaComponent implements OnInit {
                     'Pashmina Details Added Successfully',
                     'success'
                 )
+                
+                this.pashmina.pashminaName = "";
+                this.images = [];
+                this.colorArray = [];
+                this.pashmina.descriptions = [];
+                
             }, error => {
                 console.log(error);
             }
