@@ -47,6 +47,9 @@ import {CloudinaryModule} from '@cloudinary/angular-5.x';
 import * as  Cloudinary from 'cloudinary-core';
 import { ViewPashminaDetailsComponent } from './components/admin/view-pashmina-details/view-pashmina-details.component';
 
+//angular pagination
+import { PaginationModule } from "ng2-bootstrap";
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -71,7 +74,8 @@ import { ViewPashminaDetailsComponent } from './components/admin/view-pashmina-d
         AppRoutingModule,
         LoadingBarRouterModule,
         AngularFontAwesomeModule,
-        SpinnerModule
+        SpinnerModule,
+        PaginationModule
     ],
     providers: [
         AuthorizationComponent,

@@ -12,7 +12,11 @@ export class PashminaService {
         return this.pashminaServiceEndpoint.addPashmina(pashmina);
     }
     
-    public getAllPashmina<T>() {
-        return this.pashminaServiceEndpoint.getAllPashmin();
+    public getAllPashmina<T>(pageSize: number, pageNumber: number) {
+        return this.pashminaServiceEndpoint.getAllPashmin(pageSize, pageNumber);
+    }
+    
+    public getAllPashminaCount<T>() {
+        return this.pashminaServiceEndpoint.getAllPashminaCount();
     }
 }
