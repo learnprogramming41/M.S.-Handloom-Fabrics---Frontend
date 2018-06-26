@@ -19,4 +19,8 @@ export class PashminaService {
     public getAllPashminaCount<T>() {
         return this.pashminaServiceEndpoint.getAllPashminaCount();
     }
+    
+    public deletePashmina<T>(pashminaId: number) {
+        return this.pashminaServiceEndpoint.deletePashmina(pashminaId);
+    }
 }

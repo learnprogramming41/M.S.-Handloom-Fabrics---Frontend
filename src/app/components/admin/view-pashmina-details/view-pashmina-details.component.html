@@ -5,10 +5,16 @@
     </select>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="loading">
+    <i class="fa fa-spinner fa-spin" style="font-size:100px; margin: auto; margin-top: 85px;"></i>
+</div>
+
+<div class="row" *ngIf="!loading">
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let pash of pashmina">
          <div class="card h-100">
-            <a href="#"><img class="image card-img-top" src="{{pash.images[0].imageName}}" alt=""></a>
+            <div class="card-image">
+                <img class="image card-img-top" src="{{pash.images[0].imageName}}" alt="">
+            </div>
             <div class="card-body">
                 <h4 class="card-title">
                     <a href="#">{{pash.pashminaName}}</a>
@@ -18,19 +24,20 @@
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
             </div>
             <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <button class="btn btn-danger card-button" (click)="deletePashmina(pash.pashminaId)">Delete</button>
+                <button class="btn btn-success pull-right card-button">View/Edit</button>
             </div>
         </div>
     </div>
 </div>
 <div class="row">
-    <ul class="pagination">
-        <li class="page-item disabled">
+    <ul class="pagination" *ngIf="!loading">
+<!--        <li class="page-item disabled" (click)="getPreviousPashmina()">
             <span class="page-link">Previous</span>
-        </li>
-        <li class="page-item" *ngFor="let i of arr(pageNo).fill(1); let a = index;" (click)="getNextPashmina(a)"><span class="page-link" href="#">{{a+1}}</span></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
+        </li>-->
+        <li class="page-item" *ngFor="let i of arr(pageNo).fill(1); let a = index;" (click)="getNextPashmina(a)"><span class="page-link" href="#">{{a + 1}}</span></li>
+<!--        <li class="page-item" (click)="getNextPashmina()">
+            <span class="page-link">Next</span>
+        </li>-->
     </ul>
 </div>
