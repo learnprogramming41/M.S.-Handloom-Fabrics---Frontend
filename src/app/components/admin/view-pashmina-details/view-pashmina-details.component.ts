@@ -36,6 +36,7 @@ export class ViewPashminaDetailsComponent implements OnInit {
         this.pashminaService.getAllPashmina(pageSize, pageNumber).subscribe(
             (result: any) => {
                 this.pashmina = result;
+                console.log(result);
                 this.loading = false;
             }, error => {
                 console.log(error);

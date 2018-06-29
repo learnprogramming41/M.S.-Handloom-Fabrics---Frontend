@@ -23,6 +23,7 @@ export class PashminaServiceEndpoint {
     private get getDeletePashminaUrl() {return this.auth.getBaseUrl + this.deletePashminaUrl}
 
     public addPashmina<T>(pashmina: PashminaModel) {
+        console.log(pashmina);
         return this.http.post<T>(this.getAddPashminaUrl, pashmina, {
             params: {
                 access_token: JSON.parse(localStorage.getItem("token"))["value"]
