@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FooterService} from '../../../services/footer/footer.service';
 import {NavbarService} from '../../../services/navbar/navbar.service';
 import {ActivatedRoute} from '@angular/router';
+import {PashminaService} from '../../../services/pashmina-service/pashmina-service';
+import {PashminaModel} from '../../../model/pashmina.model';
 
 @Component({
     selector: 'app-pashmina-details',
@@ -10,10 +12,14 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class PashminaDetailsComponent implements OnInit {
 
+    private pashminaId: number;
+    public pashmina: PashminaModel[] = [];
+
     constructor(
         private nav: NavbarService,
         private footer: FooterService,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private pashminaService: PashminaService
     ) {}
 
     ngOnInit() {
@@ -22,11 +28,21 @@ export class PashminaDetailsComponent implements OnInit {
 
 
         this.activatedRoute.queryParams.subscribe(params => {
-            let date = params['id'];
-            console.log(date); // Print the parameter to the console. 
+            this.pashminaId = params['id'];
         });
 
-
+        this.getPashminaById(this.pashminaId);
+    }
+    
+    public getPashminaById(pashminaId: number) {
+        this.pashminaService.getPashminaById(pashminaId).subscribe(
+            (result: any) => {
+                this.pashmina = result;
+                console.log(this.pashmina);
+            }, error => {
+                console.log(error);
+            }
+        )
     }
 
 }
