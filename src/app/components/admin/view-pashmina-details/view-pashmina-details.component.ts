@@ -16,9 +16,10 @@ export class ViewPashminaDetailsComponent implements OnInit {
     public pageNo: number = 0;
     public arr = Array;
     public loading: boolean = true;
+    public top: boolean = false;
 
     constructor(
-        private pashminaService: PashminaService
+        private pashminaService: PashminaService,
     ) {}
 
     ngOnInit() {
@@ -36,7 +37,6 @@ export class ViewPashminaDetailsComponent implements OnInit {
         this.pashminaService.getAllPashmina(pageSize, pageNumber).subscribe(
             (result: any) => {
                 this.pashmina = result;
-                console.log(result);
                 this.loading = false;
             }, error => {
                 console.log(error);
@@ -61,7 +61,7 @@ export class ViewPashminaDetailsComponent implements OnInit {
             this.getAllPashmina(3, pageNo);
         } else {
             pageNo = + 3;
-            this.getAllPashmina(3, pageNo);
+            this.getAllPashmina(3, 0);
         }
     }
 
@@ -93,5 +93,9 @@ export class ViewPashminaDetailsComponent implements OnInit {
                 )
             }
         })
+    }
+
+    pashminaDetails() {
+
     }
 }

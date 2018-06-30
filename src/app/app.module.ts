@@ -35,20 +35,16 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
 //sweet alert
 import swal from 'sweetalert2';
 
-//spinner
-import {SpinnerModule} from 'angular2-spinner';
 import {ChangePasswordComponent} from './components/admin/change-password/change-password.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {PashminaComponent} from './components/admin/pashmina/pashmina.component';
 import {DashboardComponent} from './components/admin/dashboard/dashboard.component';
-
-//cloudinary
-import {CloudinaryModule} from '@cloudinary/angular-5.x';
-import * as  Cloudinary from 'cloudinary-core';
-import { ViewPashminaDetailsComponent } from './components/admin/view-pashmina-details/view-pashmina-details.component';
+import {ViewPashminaDetailsComponent} from './components/admin/view-pashmina-details/view-pashmina-details.component';
 
 //angular pagination
-import { PaginationModule } from "ng2-bootstrap";
+import {PaginationModule} from "ng2-bootstrap";
+import { PashminaDetailsComponent } from './components/admin/pashmina-details/pashmina-details.component';
+
 
 @NgModule({
     declarations: [
@@ -64,7 +60,8 @@ import { PaginationModule } from "ng2-bootstrap";
         PageNotFoundComponent,
         PashminaComponent,
         DashboardComponent,
-        ViewPashminaDetailsComponent
+        ViewPashminaDetailsComponent,
+        PashminaDetailsComponent,
     ],
     imports: [
         FormsModule,
@@ -74,8 +71,7 @@ import { PaginationModule } from "ng2-bootstrap";
         AppRoutingModule,
         LoadingBarRouterModule,
         AngularFontAwesomeModule,
-        SpinnerModule,
-        PaginationModule
+        PaginationModule,
     ],
     providers: [
         AuthorizationComponent,

@@ -19,12 +19,14 @@ export class AdminHomeComponent implements OnInit {
     private dashboard: boolean = true;
     private pashmina: boolean = false;
     private pashminaDetails: boolean = false;
+    private pashDetails: boolean = false;
     
     constructor(
         private nav: NavbarService,
         private footer: FooterService,
         private router: Router
     ) {  }
+    
     
     ngOnInit() {
         this.nav.hide();
@@ -41,22 +43,32 @@ export class AdminHomeComponent implements OnInit {
         this.router.navigate(['admin/login']);
     }
     
-    goToPashmina() {
+    public goToPashmina() {
         this.dashboard = false;
         this.pashmina = true;
         this.pashminaDetails = false;
+        this.pashDetails = false;
     }
     
-    goToDashboard() {
+    public goToDashboard() {
         this.dashboard = true;
         this.pashmina = false;
         this.pashminaDetails = false;
+        this.pashDetails = false;
     }
     
-    gotToViewPashmina() {
+    public gotToViewPashmina() {
         this.dashboard = false;
         this.pashmina = false;
         this.pashminaDetails = true;
+        this.pashDetails = false;
+    }
+    
+    public goToPashminaDetails() {   
+        this.dashboard = false;
+        this.pashmina = false;
+        this.pashminaDetails = false;
+        this.pashDetails = true;
     }
     
 }
