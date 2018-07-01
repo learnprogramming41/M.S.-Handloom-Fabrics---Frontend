@@ -69,6 +69,7 @@ export class PashminaServiceEndpoint {
     }
     
     public getPashminaById<T>(pashminaId: number) {
+        console.log(this.getPashminaByIdUrl+"/"+pashminaId+"?access_token="+JSON.parse(localStorage.getItem("token"))["value"]);
         return this.http.get<T>(this.getPashminaByIdUrl+"/"+pashminaId, {
             params: {
                 access_token: JSON.parse(localStorage.getItem("token"))["value"]

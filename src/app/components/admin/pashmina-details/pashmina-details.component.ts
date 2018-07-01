@@ -14,6 +14,7 @@ export class PashminaDetailsComponent implements OnInit {
 
     private pashminaId: number;
     public pashmina: PashminaModel[] = [];
+    public pashminaName: string;
 
     constructor(
         private nav: NavbarService,
@@ -38,7 +39,7 @@ export class PashminaDetailsComponent implements OnInit {
         this.pashminaService.getPashminaById(pashminaId).subscribe(
             (result: any) => {
                 this.pashmina = result;
-                console.log(this.pashmina);
+                this.pashminaName = result.images[0].imageName;
             }, error => {
                 console.log(error);
             }
