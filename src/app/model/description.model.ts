@@ -10,10 +10,10 @@ export class DescriptionModel {
     constructor(
         public descriptionId?: number,
         public pashminaDescription?: string,
-        public pashminaId?: PashminaModel
+        public pashmina?: PashminaModel
     ) {
         this.descriptionId = descriptionId;
         this.pashminaDescription = pashminaDescription;
-        this.pashminaId = pashminaId;
+        this.pashmina = pashmina;
     }
 }

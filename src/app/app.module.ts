@@ -22,12 +22,16 @@ import {LoginService} from './services/login-service/login-service';
 import {AuthorizationComponent} from './components/authorization.component';
 import {PashminaService} from './services/pashmina-service/pashmina-service';
 import {ImageService} from './services/image-service/image-service';
+import {DescriptionService} from './services/description-service/description-service';
+import {ColorService} from './services/color-service/color-service';
 
 //endpoint services
 import {LoginServiceEndpoint} from './services/login-service/login-service.endpoint';
 import {AdminHomeComponent} from './components/admin/home/admin-home.component';
 import {PashminaServiceEndpoint} from './services/pashmina-service/pashmina-service.endpoint';
 import {ImageServiceEndpoint} from './services/image-service/image-service.endpoint';
+import {DescriptionServiceEndpoint} from './services/description-service/description-service.endpoint';
+import {ColorServiceEndpoint} from './services/color-service/color-service.endpoint';
 
 //font-awesome
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
@@ -82,7 +86,11 @@ import { PashminaDetailsComponent } from './components/admin/pashmina-details/pa
         PashminaServiceEndpoint,
         PashminaService,
         ImageServiceEndpoint,
-        ImageService
+        ImageService,
+        DescriptionServiceEndpoint,
+        DescriptionService,
+        ColorServiceEndpoint,
+        ColorService
     ],
     bootstrap: [AppComponent]
 })

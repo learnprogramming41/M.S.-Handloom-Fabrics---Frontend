@@ -24,20 +24,77 @@
                         </div>
                         <span class="review-no">41 reviews</span>
                     </div>
-                    <p class="product-description" *ngFor="let desc of pashmina.descriptions">{{desc.pashminaDescription}}</p>
-                    <h4 class="price">current price: <span>Rs. {{pashmina.price}}</span></h4>
-                    
-                    <h5 class="colors">colors:
-                        <span *ngFor="let color of pashmina.pashminaColor;" [style.background-color]="color.color" class="color green">
 
+                    <div class="add-new">
+                        <i class="fa fa-plus pull-right" title="add new" style="cursor: pointer;" 
+                           data-toggle="modal" data-target="#modelPopup"
+                           (click)="addDescription()"></i>
+                    </div>
+
+                    <div class="alert alert-info" *ngFor="let desc of pashmina.descriptions">
+                         <i class="fa fa-close close" title="delete" (click)="deleteDescription(desc.descriptionId)"></i>
+                        <i class="fa fa-pencil edit" title="edit" data-toggle="modal" data-target="#modelPopup" (click)="editDescription(desc.descriptionId)"></i>
+
+                        <p class="product-description">{{desc.pashminaDescription}}</p>
+                    </div>
+
+
+                    <div class="">
+                        <h4 class="price">current price: 
+                            <span>Rs. {{pashmina.price}}</span>
+                            <i class="fa fa-pencil" data-toggle="modal" data-target="#modelPopup"
+                               title="edit" style="cursor: pointer;" (click)="editPrice()"></i>
+                        </h4>
+                    </div>
+
+                    <h5 class="colors">
+                        colors:
+                        <span *ngFor="let color of pashmina.pashminaColor;" [style.background-color]="color.color" class="color green">
+                            <i class="fa fa-close" title="delete" style="cursor: pointer;" (click)="deleteColor(color.colourId)"></i>
                         </span>
+                        <i class="fa fa-plus" title="add new" style="cursor: pointer;" data-toggle="modal" data-target="#modelPopup" (click)="addNewColor()"></i>
                     </h5>
-<!--                <div class="action">
-                    <button class="add-to-cart btn btn-default" type="button">add to cart</button>
-                    <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
-                </div>-->
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+<div id="modelPopup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{title}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group" *ngIf="!isColorBox">
+                    <input [(ngModel)]="descriptionModel.pashminaDescription" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" (click)="addOrEditDescription()">{{button}}</button>
+                    </span>
+                </div>
+
+                <div class="input-group" *ngIf="isColorBox">
+                    <select class="form-control" style="margin-bottom: 5px;"
+                            [(ngModel)]="colorModel.color">
+                        <option *ngFor="let a of colors">{{a}}</option>
+                    </select>        
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" tabindex="-1" (click)="addColor()">
+                            ADD
+                        </button>
+                    </span>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
