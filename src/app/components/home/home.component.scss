@@ -1,9 +1,359 @@
-body {
-  padding-top: 54px;
+#slider {
+    padding-bottom: 45px;
 }
 
-@media (min-width: 992px) {
-  body {
-    padding-top: 56px;
-  }
+.carousel-indicators li {
+    background: #C4C4BE;
 }
+
+.carousel-indicators li.active {
+    background: #3A5C83;
+}
+
+.item {
+    padding-left: 100px;
+}
+
+
+.pricing {
+    position: absolute;
+    right: 40%;
+    top: 52%;
+}
+
+.girl {
+    margin-left: 0;
+}
+
+.item h1 {
+    color: #ADBAC8;
+    font-family: abel;
+    font-size: 48px;
+    margin-top: 115px;
+}
+
+.category-products {
+    border: 1px solid #F7F7F0;
+    margin-bottom: 35px;
+    padding-bottom: 20px;
+    padding-top: 15px;
+}
+
+.category-products .panel {
+    background-color: #FFFFFF;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow:none;
+    margin-bottom: 0px;
+}
+
+.category-products .panel-default .panel-heading {
+    background-color: #FFFFFF;
+    border: 0 none;
+    color: #FFFFFF;
+    padding: 5px 20px;
+}
+
+.category-products .panel-default .panel-heading .panel-title a {
+    color: #696763;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.panel-group .panel-heading + .panel-collapse .panel-body {
+    border-top: 0 none;
+}
+
+.category-products .badge {
+    background:none;
+    border-radius: 10px;
+    color: #696763;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    min-width: 10px;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+.left-sidebar h2, .features_items h2 {
+    color: #3A5C83;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 auto 30px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    z-index:3;
+}
+
+.left-sidebar h2:after, h2.title:after, .features_items h2:after, h2.title:after{
+    content: " ";
+    position: absolute;
+    border: 1px solid #f5f5f5;
+    bottom:8px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: -2;
+}
+
+.left-sidebar h2:before, h2.title:after, h2:before{
+    content: " ";
+    position: absolute;
+    background: #fff;
+    bottom: -6px;
+    width: 130px;
+    height: 30px;
+    z-index: -1;
+    left: 50%;
+    margin-left: -65px;
+}
+
+.padding-right {
+    padding-right: 0;
+}
+
+.features_items{
+    overflow:hidden;
+}
+
+.product-image-wrapper{
+    border:1px solid #F7F7F5;
+    overflow: hidden;
+    margin-bottom:30px;
+}
+
+.single-products:hover .product-overlay {
+    display:block;
+    height:100%;
+}
+
+.single-products {
+    position: relative;
+}
+
+.productinfo h2{
+    color: #3A5C83;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+.productinfo p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #696763;
+}
+
+.productinfo img{
+    width: 100%;
+}
+
+.productinfo{
+    position:relative;
+}
+
+.add-to-cart {
+    background:#F5F5ED;
+    border: 0 none;
+    border-radius: 0;
+    color: #696763;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.add-to-cart:hover {
+    background: #3A5C83;
+    border: 0 none;
+    border-radius: 0;
+    color: #FFFFFF;
+}
+.add-to-cart i{
+    margin-right:5px;
+}
+
+.product-overlay {
+    background: rgba(58,92,131,0.9);
+    top: 0;
+    display: none;
+    height: 0;
+    position: absolute;
+    transition: height 500ms ease 0s;
+    width: 100%;
+    display: block;
+}
+
+.single-products:hover .product-overlay {
+    display:block;
+    height:100%;
+}
+
+
+.product-overlay .overlay-content {
+    bottom: 0;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.product-overlay .add-to-cart {
+    background:#fff;
+    border: 0 none;
+    border-radius: 0;
+    color: #3A5C83;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.product-overlay .add-to-cart:hover {
+    background:#fff;
+    color: #3A5C83;
+}
+
+
+.product-overlay p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.choose {
+    border-top: 1px solid #F7F7F0;
+}
+
+.choose ul li a {
+    color: #B3AFA8;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    padding-left: 0;
+    padding-right: 0;
+
+}
+
+.choose ul li a i{
+    margin-right:5px;
+}
+
+.choose ul li a:hover{
+    color:hotpink;
+}
+
+
+// Pagination 
+// Import icon font, I've used Entypo (http://entypo.com/)
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+// Import Roboto font
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.pagination {
+    display: block;
+}
+
+.pagination-container {
+    margin-top: 1em;
+    padding-top: 2em;
+    border-top: 1px solid #d7dadb;
+    text-align: center;
+}
+
+.pagination-item {
+    list-style-type: none;
+    display: inline-block;
+    border-right: 1px solid #d7dadb;
+
+    transform: scale(1) rotate(19deg) translateX(0px) translateY(0px) skewX(-10deg) skewY(-20deg);
+}
+
+.pagination-item:hover,
+.pagination-item.is-active {
+    background-color: #fa4248;
+    border-right: 1px solid #fff;
+
+    .pagination-link {
+        color: #fff;
+    }
+
+}
+
+.pagination-item.first-number {
+    border-left: 1px solid #d7dadb;
+}
+
+.pagination-link {
+    padding: 1.1em 1.6em;
+    display: inline-block;
+    text-decoration: none;
+    color: #8b969c;
+
+    transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(20deg) skewY(0deg);
+}
+
+.pagination-item--wide {
+    //@extend .pagination-item;
+    list-style-type: none;
+    display: inline-block;
+}
+
+.pagination-item--wide.first {
+    margin: 0 1em 0 0;
+}
+
+.pagination-item--wide.last {
+    margin: 0 0 0 1em;
+}
+
+.pagination-link--wide {
+    text-decoration: none;
+    color: #8b969c;
+    padding: 1.1em 1.6em;
+}
+
+.pagination-link--wide:hover {
+    color: #fa4248;
+}
+
+.pagination-link--wide.first:before,
+.pagination-link--wide.last:after {
+    font-family: 'entypo';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    // Better Font Rendering
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.pagination-link--wide.first::before {
+    content: "\E765";
+    margin-right: 0.5em;
+}
+
+.pagination-link--wide.last::after {
+    content: "\E766";
+    margin-left: 0.5em;
+}
+
