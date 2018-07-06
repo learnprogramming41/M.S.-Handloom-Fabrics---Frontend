@@ -24,6 +24,7 @@ import {PashminaService} from './services/pashmina-service/pashmina-service';
 import {ImageService} from './services/image-service/image-service';
 import {DescriptionService} from './services/description-service/description-service';
 import {ColorService} from './services/color-service/color-service';
+import {HomeService} from './services/home-service/home-service';
 
 //endpoint services
 import {LoginServiceEndpoint} from './services/login-service/login-service.endpoint';
@@ -32,6 +33,7 @@ import {PashminaServiceEndpoint} from './services/pashmina-service/pashmina-serv
 import {ImageServiceEndpoint} from './services/image-service/image-service.endpoint';
 import {DescriptionServiceEndpoint} from './services/description-service/description-service.endpoint';
 import {ColorServiceEndpoint} from './services/color-service/color-service.endpoint';
+import {HomeServiceEndpoint} from './services/home-service/home-service.endpoint';
 
 //font-awesome
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
@@ -48,6 +50,7 @@ import {ViewPashminaDetailsComponent} from './components/admin/view-pashmina-det
 //angular pagination
 import {PaginationModule} from "ng2-bootstrap";
 import { PashminaDetailsComponent } from './components/admin/pashmina-details/pashmina-details.component';
+import { UserPashminaDetailsComponent } from './components/user-pashmina-details/user-pashmina-details.component';
 
 
 @NgModule({
@@ -66,6 +69,7 @@ import { PashminaDetailsComponent } from './components/admin/pashmina-details/pa
         DashboardComponent,
         ViewPashminaDetailsComponent,
         PashminaDetailsComponent,
+        UserPashminaDetailsComponent,
     ],
     imports: [
         FormsModule,
@@ -90,7 +94,9 @@ import { PashminaDetailsComponent } from './components/admin/pashmina-details/pa
         DescriptionServiceEndpoint,
         DescriptionService,
         ColorServiceEndpoint,
-        ColorService
+        ColorService,
+        HomeService,
+        HomeServiceEndpoint
     ],
     bootstrap: [AppComponent]
 })

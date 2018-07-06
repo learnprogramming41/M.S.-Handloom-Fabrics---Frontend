@@ -9,6 +9,7 @@ import {ChangePasswordComponent} from './components/admin/change-password/change
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {PashminaComponent} from './components/admin/pashmina/pashmina.component';
 import {PashminaDetailsComponent} from './components/admin/pashmina-details/pashmina-details.component';
+import {UserPashminaDetailsComponent} from './components/user-pashmina-details/user-pashmina-details.component';
 
 const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
     {path: 'admin/change-password', component: ChangePasswordComponent},
     {path: 'admin/add-pashmina', component: PashminaComponent},
     {path: 'admin/pashmina-details', component: PashminaDetailsComponent},
+    {path: 'pashmina-details', component: UserPashminaDetailsComponent},
     {path: '**', component: PageNotFoundComponent},
 ];
 

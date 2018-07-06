@@ -25,7 +25,6 @@ export class PashminaServiceEndpoint {
     private get getPashminaByIdUrl() {return this.auth.getBaseUrl + this.pashminaByIdUrl}
 
     public addPashmina<T>(pashmina: PashminaModel) {
-        console.log(pashmina);
         return this.http.post<T>(this.getAddPashminaUrl, pashmina, {
             params: {
                 access_token: JSON.parse(localStorage.getItem("token"))["value"]
