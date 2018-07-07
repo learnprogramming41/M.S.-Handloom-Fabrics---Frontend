@@ -25,6 +25,7 @@ import {ImageService} from './services/image-service/image-service';
 import {DescriptionService} from './services/description-service/description-service';
 import {ColorService} from './services/color-service/color-service';
 import {HomeService} from './services/home-service/home-service';
+import { AccountService } from './services/account-service/account-service';
 
 //endpoint services
 import {LoginServiceEndpoint} from './services/login-service/login-service.endpoint';
@@ -34,6 +35,7 @@ import {ImageServiceEndpoint} from './services/image-service/image-service.endpo
 import {DescriptionServiceEndpoint} from './services/description-service/description-service.endpoint';
 import {ColorServiceEndpoint} from './services/color-service/color-service.endpoint';
 import {HomeServiceEndpoint} from './services/home-service/home-service.endpoint';
+import { AccountServiceEndpoint } from './services/account-service/account-service.endpoint';
 
 //font-awesome
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
@@ -51,6 +53,7 @@ import {ViewPashminaDetailsComponent} from './components/admin/view-pashmina-det
 import {PaginationModule} from "ng2-bootstrap";
 import { PashminaDetailsComponent } from './components/admin/pashmina-details/pashmina-details.component';
 import { UserPashminaDetailsComponent } from './components/user-pashmina-details/user-pashmina-details.component';
+import { AccountComponent } from './components/account/account.component';
 
 
 @NgModule({
@@ -70,6 +73,7 @@ import { UserPashminaDetailsComponent } from './components/user-pashmina-details
         ViewPashminaDetailsComponent,
         PashminaDetailsComponent,
         UserPashminaDetailsComponent,
+        AccountComponent,
     ],
     imports: [
         FormsModule,
@@ -96,7 +100,9 @@ import { UserPashminaDetailsComponent } from './components/user-pashmina-details
         ColorServiceEndpoint,
         ColorService,
         HomeService,
-        HomeServiceEndpoint
+        HomeServiceEndpoint,
+        AccountService,
+        AccountServiceEndpoint
     ],
     bootstrap: [AppComponent]
 })

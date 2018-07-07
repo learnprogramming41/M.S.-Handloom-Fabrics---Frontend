@@ -10,6 +10,7 @@ import {PageNotFoundComponent} from './components/page-not-found/page-not-found.
 import {PashminaComponent} from './components/admin/pashmina/pashmina.component';
 import {PashminaDetailsComponent} from './components/admin/pashmina-details/pashmina-details.component';
 import {UserPashminaDetailsComponent} from './components/user-pashmina-details/user-pashmina-details.component';
+import {AccountComponent} from './components/account/account.component';
 
 const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -22,6 +23,7 @@ const routes: Routes = [
     {path: 'admin/add-pashmina', component: PashminaComponent},
     {path: 'admin/pashmina-details', component: PashminaDetailsComponent},
     {path: 'pashmina-details', component: UserPashminaDetailsComponent},
+    {path: 'account', component: AccountComponent},
     {path: '**', component: PageNotFoundComponent},
 ];
 
