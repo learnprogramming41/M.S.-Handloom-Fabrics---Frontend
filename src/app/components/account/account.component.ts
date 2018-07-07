@@ -4,6 +4,7 @@ import {AccountService} from '../../services/account-service/account-service';
 import swal from 'sweetalert2';
 import {LoginModel} from '../../model/login.model';
 import {Router} from '@angular/router';
+import {AuthorizationComponent} from '../authorization.component';
 
 @Component({
     selector: 'app-account',
@@ -18,6 +19,7 @@ export class AccountComponent implements OnInit {
     constructor(
         private accountService: AccountService,
         private router: Router,
+        private auth: AuthorizationComponent
     ) {}
 
     ngOnInit() {
@@ -39,13 +41,22 @@ export class AccountComponent implements OnInit {
     
     public login() {
         this.accountService.login(this.loginModel).subscribe(
-            result => {
+            (result: UserModel) => {
                 swal(
                     'Success!',
                     'Login Successfull',
                     'success'
                 )
-                this.router.navigate(['/home']);
+                this.auth.getAccessToken(result.username, result.password).subscribe(
+                    results => {
+                        console.log(result);
+                        localStorage.setItem("userToken", JSON.stringify(results));
+                        localStorage.setItem("userDetails", JSON.stringify(result));
+                        this.router.navigate(['/home']);
+                    }, error => {
+                        console.log(error);
+                    }
+                )
             }, error => {
                 console.log(error);
             }

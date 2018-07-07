@@ -13,6 +13,8 @@ export class UserPashminaDetailsComponent implements OnInit {
     public pashmina: PashminaModel = new PashminaModel();
     private pashminaId = 0;
     public pashminaName: string;
+    public pashminaPrice: number;
+    public price: number;
 
     constructor(
         private homeService: HomeService,
@@ -32,10 +34,17 @@ export class UserPashminaDetailsComponent implements OnInit {
             result => {
                 this.pashmina = result;
                 this.pashminaName = this.pashmina.images[0].imageName;
+                this.price = this.pashmina.price;
+                this.pashminaPrice = this.pashmina.price;
             }, error => {
                 console.log(error);
             }
         )
+    }
+    
+    public calculatePrice(quantity: number) {
+        
+        this.pashminaPrice = this.price * quantity;
     }
 
 }
