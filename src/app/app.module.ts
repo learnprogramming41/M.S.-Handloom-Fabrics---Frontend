@@ -54,6 +54,7 @@ import {PaginationModule} from "ng2-bootstrap";
 import { PashminaDetailsComponent } from './components/admin/pashmina-details/pashmina-details.component';
 import { UserPashminaDetailsComponent } from './components/user-pashmina-details/user-pashmina-details.component';
 import { AccountComponent } from './components/account/account.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { AccountComponent } from './components/account/account.component';
         PashminaDetailsComponent,
         UserPashminaDetailsComponent,
         AccountComponent,
+        ContactUsComponent,
     ],
     imports: [
         FormsModule,

@@ -155,7 +155,7 @@
                                 <span><i class="fa fa-inr"></i> {{pashminaPrice}}</span>
                                 <label>Quantity:</label>
                                 <input type="text" value="1" (change)="calculatePrice($event.target.value)"/>
-                                <button type="button" class="btn btn-fefault cart">
+                                <button type="button" class="btn btn-fefault cart" (click) = "addToCart()">
                                     <i class="fa fa-shopping-cart"></i>
                                     Add to cart
                                 </button>
