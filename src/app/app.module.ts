@@ -58,6 +58,7 @@ import { UserPashminaDetailsComponent } from './components/user-pashmina-details
 import { AccountComponent } from './components/account/account.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { CartComponent } from './components/cart/cart.component';
+import { OrderDetailsComponent } from './components/admin/order-details/order-details.component';
 
 
 @NgModule({
@@ -80,6 +81,7 @@ import { CartComponent } from './components/cart/cart.component';
         AccountComponent,
         ContactUsComponent,
         CartComponent,
+        OrderDetailsComponent,
     ],
     imports: [
         FormsModule,

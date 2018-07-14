@@ -6,27 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                    <a class="nav-link" (click)="goToDashboard()">
-                        <i class="fa fa-fw fa-dashboard"></i>
-                        <span class="nav-link-text">Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add pashmina">
-                    <a class="nav-link" (click)="goToPashmina()">
-                        <i class="fa fa-shopping-bag"></i>
-                        <span class="nav-link-text">Add Pashmina</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" (click)="gotToViewPashmina()">
-                        <i class="fa fa-fw fa-table"></i>
-                        <span class="nav-link-text">View Pashmina</span>
-                    </a>
-                </li>
-            </ul>
-
+            
             <!--        Top navigation bar-->
 
 
@@ -141,11 +121,7 @@
 
     <div class="content-wrapper">
         <div class="container-fluid">
-            
-            <!-- Icon Cards-->
-            <app-dashboard *ngIf="dashboard"></app-dashboard>
-            <app-pashmina *ngIf="pashmina"></app-pashmina>
-            <app-view-pashmina-details *ngIf="pashminaDetails"></app-view-pashmina-details>
+            <p>Order details works</p>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {NavbarService} from "../../../services/navbar/navbar.service";
 import {FooterService} from "../../../services/footer/footer.service";
 import {Router} from "@angular/router";
+import {OrderService} from "../../../services/order-service/order-service";
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
@@ -35,6 +36,8 @@ export class AdminHomeComponent implements OnInit {
         if (!localStorage.getItem("adminDetails")) {
             this.router.navigate(['/admin/login']);
         }
+        
+        
         
     }
     
@@ -70,5 +73,7 @@ export class AdminHomeComponent implements OnInit {
         this.pashminaDetails = false;
         this.pashDetails = true;
     }
+    
+    
     
 }
