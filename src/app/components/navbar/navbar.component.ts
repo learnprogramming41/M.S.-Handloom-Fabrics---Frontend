@@ -52,7 +52,8 @@ export class NavbarComponent implements OnInit {
                 }
             })
         } else {
-            this.router.navigate(['cart']);
+            let userId: number = JSON.parse(localStorage.getItem('userDetails'))['userId'];
+            this.router.navigate(['cart'], {queryParams: {userId: userId}});
         }
     }
 

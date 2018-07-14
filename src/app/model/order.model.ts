@@ -9,7 +9,7 @@ export class OrderModel {
         public shippedDate?: Date,
         public quantity?: number,
         public pashminaId?: PashminaModel,
-        public userId?: UserModel,
+        public userId?: UserModel[],
         public shippingAddress?: string,
         public contact?: string
     ) {
@@ -19,7 +19,12 @@ export class OrderModel {
         this.shippedDate = shippedDate;
         this.quantity = quantity;
         this.pashminaId = pashminaId;
-        this.userId = userId;
+        if (userId) {
+            this.userId = userId;
+        } else {
+            this.userId = new Array<UserModel>();
+        }
+
         this.shippingAddress = shippingAddress;
         this.contact = contact;
     }

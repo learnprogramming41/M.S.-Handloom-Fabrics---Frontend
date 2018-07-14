@@ -13,10 +13,14 @@ export class OrderService{
     }
     
     public cancelOrder<T>(orderId: number) {
-        this.orderServiceEndpoint.cancelOrder(orderId);
+        return this.orderServiceEndpoint.cancelOrder(orderId);
     }
     
     public updateOrder<T>(order: OrderModel) {
-        this.orderServiceEndpoint.updateOrder(order);
+        return this.orderServiceEndpoint.updateOrder(order);
+    }
+    
+    public getOrderByUserId<T>(userId: number) {
+        return this.orderServiceEndpoint.getOrderByUserId(userId);
     }
 }
