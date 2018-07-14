@@ -32,7 +32,7 @@ export class ForgotPasswordComponent implements OnInit {
         this.foot.hide();
     }
 
-    private checkEmail() {
+    public checkEmail() {
         this.working = true;
         this.login.checkEmail(this.email).subscribe(
             result => {

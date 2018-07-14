@@ -39,7 +39,7 @@ export class ChangePasswordComponent implements OnInit {
       this.foot.hide();
   }
 
-    private changePassword() {
+    public changePassword() {
         this.working = true;
         if (this.password === this.conPassword) {
             this.showInfo = false;

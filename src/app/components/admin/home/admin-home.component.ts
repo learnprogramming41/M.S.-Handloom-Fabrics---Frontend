@@ -16,10 +16,10 @@ import {Router} from "@angular/router";
 })
 export class AdminHomeComponent implements OnInit {
     
-    private dashboard: boolean = true;
-    private pashmina: boolean = false;
-    private pashminaDetails: boolean = false;
-    private pashDetails: boolean = false;
+    public dashboard: boolean = true;
+    public pashmina: boolean = false;
+    public pashminaDetails: boolean = false;
+    public pashDetails: boolean = false;
     
     constructor(
         private nav: NavbarService,
@@ -38,7 +38,7 @@ export class AdminHomeComponent implements OnInit {
         
     }
     
-    private logout() {
+    public logout() {
         localStorage.clear();
         this.router.navigate(['admin/login']);
     }

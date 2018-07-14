@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
     public fullName: string;
 
     constructor(
-        private navService: NavbarService,
+        public navService: NavbarService,
         private router: Router,
     ) {}
 
@@ -34,6 +34,26 @@ export class NavbarComponent implements OnInit {
             'You are logged out of your system',
             'success'
         )
+    }
+
+    public goToCart() {
+        if (!localStorage.getItem("userDetails")) {
+            swal({
+                title: 'Login Needed?',
+                text: "You are not logged in. Do you want to log in?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Log in!'
+            }).then((result) => {
+                if (result.value) {
+                    this.router.navigate(['account']);
+                }
+            })
+        } else {
+            this.router.navigate(['cart']);
+        }
     }
 
 }

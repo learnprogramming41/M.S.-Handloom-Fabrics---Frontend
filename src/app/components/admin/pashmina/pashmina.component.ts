@@ -19,7 +19,7 @@ export class PashminaComponent implements OnInit {
 
     public category: any[] = [];
     public colors: any[] = [];
-    private localUrl: any[] = [];
+    public localUrl: any[] = [];
     private imageName: string[] = [];
     public description: string;
     public descriptionArray: string[] = [];
