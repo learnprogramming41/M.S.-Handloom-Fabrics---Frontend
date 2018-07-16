@@ -35,4 +35,8 @@ export class OrderService{
     public getOrderByOrderId<T>(orderId: number) {
         return this.orderServiceEndpoint.getOrderByOrderId(orderId);
     }
+    
+    public confirmOrder<T>(orderId: number) {
+        return this.orderServiceEndpoint.confirmOrder(orderId);
+    }
 }

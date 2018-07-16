@@ -88,12 +88,7 @@ export class UserPashminaDetailsComponent implements OnInit {
                     this.orderModel.shippingAddress = result.value[0];
                     this.orderModel.contact = result.value[1];
                     this.orderModel.pashminaId = new PashminaModel(this.pashminaId);
-                    //this.orderModel.userId = new UserModel(JSON.parse(localStorage.getItem("userDetails"))["userId"]);
-
-                    console.log(this.orderModel.shippingAddress);
-                    console.log(this.orderModel.contact);
-                    
-                    console.log(this.orderModel);
+                    this.orderModel.userId = new UserModel(JSON.parse(localStorage.getItem("userDetails"))["userId"]);
 
                     this.orderService.orderPashmina(this.orderModel).subscribe(
                         result => {

@@ -14,6 +14,7 @@ export class OrderServiceEndpoint{
     private readonly orderCountUrl: string = "/admin-api/get-order-count";
     private readonly allOrderUrl: string = "/admin-api/get-all-order";
     private readonly orderByOrderIdUrl: string = "/admin-api/get-order-by-order-id/";
+    private readonly confirmOrderUrl: string = "/admin-api/confirm-order/";
     
     constructor(private http: HttpClient, private auth: AuthorizationComponent) {
         
@@ -26,6 +27,7 @@ export class OrderServiceEndpoint{
     private get getOrderCountUrl() {return this.auth.getBaseUrl + this.orderCountUrl}
     private get getAllOrderUrl() {return this.auth.getBaseUrl + this.allOrderUrl}
     private get getOrderByOrderIdUrl() {return this.auth.getBaseUrl + this.orderByOrderIdUrl}
+    private get getOrderConfirmUrl() {return this.auth.getBaseUrl + this.confirmOrderUrl}
     
     public orderPashmina<T>(order: OrderModel) {
         return this.http.post<T>(this.getOrderPashminaUrl, order, {
@@ -89,6 +91,16 @@ export class OrderServiceEndpoint{
     
     public getOrderByOrderId<T>(orderId: number) {
         return this.http.get<T>(this.getOrderByOrderIdUrl + "" + orderId, {
+            params: {
+                access_token: JSON.parse(localStorage.getItem("token"))["value"]
+            }
+        }).catch(error => {
+            throw new Observable(error);
+        })
+    }
+    
+    public confirmOrder<T>(orderId: number) {
+        return this.http.get<T>(this.getOrderConfirmUrl + "" + orderId, {
             params: {
                 access_token: JSON.parse(localStorage.getItem("token"))["value"]
             }

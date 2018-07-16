@@ -485,3 +485,17 @@ footer.sticky-footer {
     width: calc(100% - 55px);
   }
 }
+.picture {
+    width: 200px;
+    height: 150px;
+    background: #dddddd;
+    cursor: pointer;
+    border: 1px solid black;
+    margin: auto;
+    margin-top: 25px;
+    clear: both;
+}
+
+.clear {
+    margin: auto;
+}

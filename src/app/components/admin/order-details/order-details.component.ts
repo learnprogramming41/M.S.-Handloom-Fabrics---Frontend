@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {OrderModel} from '../../../model/order.model';
 import {FooterService} from '../../../services/footer/footer.service';
 import {NavbarService} from '../../../services/navbar/navbar.service';
+import swal from 'sweetalert2';
 
 @Component({
     selector: 'app-order-details',
@@ -26,14 +27,14 @@ export class OrderDetailsComponent implements OnInit {
     ngOnInit() {
         this.foot.hide();
         this.nav.hide();
-        
+
         this.activatedRoute.queryParams.subscribe(params => {
             this.orderId = params['id'];
         });
-        
+
         this.getOrderByOrderId();
     }
-    
+
     private getOrderByOrderId() {
         this.orderService.getOrderByOrderId(this.orderId).subscribe(
             result => {
@@ -43,10 +44,32 @@ export class OrderDetailsComponent implements OnInit {
             }
         )
     }
-    
+
     public logout() {
         localStorage.clear();
         this.router.navigate(['admin/login']);
+    }
+
+    public confirmOrder() {
+        swal('Sendig confirmation email');
+        swal.showLoading();
+        this.orderService.confirmOrder(this.orderId).subscribe(
+            result => {
+                swal({
+                    position: 'top-end',
+                    type: 'success',
+                    title: 'Confirmation email has been sent to respective user',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }, error => {
+                swal({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+            })
     }
 
 }

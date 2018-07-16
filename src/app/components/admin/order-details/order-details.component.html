@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            
+
             <!--        Top navigation bar-->
 
 
@@ -116,12 +116,45 @@
     </nav>
 
 
-<!--    Main content-->
+    <!--    Main content-->
 
 
     <div class="content-wrapper">
-        <div class="container-fluid">
-            <p>Order details works</p>
+        <div class="container-fluid" style="padding: 30px;">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h3>Order By: {{orderModel.userId.fullName}}</h3>
+                </div>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-success pull-right" (click)="confirmOrder()">Confirm Order</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="picture">
+                    <img src="{{orderModel.pashminaId.images[0].imageName}}" style="width: 100%; height: 100%"/>
+                </div>
+            </div>
+            <div class="row">
+                <h6 class="clear">{{orderModel.pashminaId.pashminaName}}</h6><br>                    
+            </div>
+            <div class="row">
+                <h6 class="clear">Category: {{orderModel.pashminaId.category}}</h6><br>
+            </div>
+            <div class="row">
+                <h6 class="clear">Price: <i class="fa fa-inr"></i>{{orderModel.pashminaId.price}}</h6><br>
+            </div>
+            <div class="row" style="margin-top: 25px;">
+                <div class="col-sm-6">
+                    <div class="row">Full Name: {{orderModel.userId.fullName}}</div>
+                    <div class="row">Contact: {{orderModel.contact}}</div>
+                    <div class="row">Email: {{orderModel.userId.email}}</div>
+                    <div class="row">Shipping Address: {{orderModel.shippingAddress}}</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">Quantity: {{orderModel.quantity}}</div>
+                    <div class="row">Total Price: <i class="fa fa-inr"></i>{{orderModel.quantity * orderModel.pashminaId.price}}</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
