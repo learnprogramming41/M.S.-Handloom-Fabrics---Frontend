@@ -19,10 +19,22 @@
                         <span class="nav-link-text">Add Pashmina</span>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="View pashmina">
                     <a class="nav-link" (click)="gotToViewPashmina()">
                         <i class="fa fa-fw fa-table"></i>
                         <span class="nav-link-text">View Pashmina</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Confirmed order">
+                    <a class="nav-link" (click)="goToViewConfirmedOrder()">
+                        <i class="fa fa-fw fa-table"></i>
+                        <span class="nav-link-text">Confirmed Orders</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="history">
+                    <a class="nav-link" (click)="goToHistory()">
+                        <i class="fa fa-fw fa-table"></i>
+                        <span class="nav-link-text">History</span>
                     </a>
                 </li>
             </ul>
@@ -146,6 +158,8 @@
             <app-dashboard *ngIf="dashboard"></app-dashboard>
             <app-pashmina *ngIf="pashmina"></app-pashmina>
             <app-view-pashmina-details *ngIf="pashminaDetails"></app-view-pashmina-details>
+            <app-confirmed-order *ngIf="confirmedOrder"></app-confirmed-order>
+            <app-history *ngIf="history"></app-history>
         </div>
     </div>
 </div>

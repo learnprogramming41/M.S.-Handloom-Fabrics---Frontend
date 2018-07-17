@@ -1,0 +1,18 @@
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Order Date</th>
+        <th>Order By</th>
+        <th>Pashmina Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orderModel">
+        <td>{{order.orderDate | date}}</td>
+        <td>{{order.userId.fullName}}</td>
+        <td>{{order.pashminaId.pashminaName}}</td>
+        <td><button (click)="deleteHistory(order.orderId)" class="btn btn-danger"><i class="fa fa-remove"></i>Delete</button></td>
+      </tr>
+    </tbody>
+  </table>

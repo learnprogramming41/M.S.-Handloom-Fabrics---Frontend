@@ -39,4 +39,16 @@ export class OrderService{
     public confirmOrder<T>(orderId: number) {
         return this.orderServiceEndpoint.confirmOrder(orderId);
     }
+    
+    public confirmedOrders<T>() {
+        return this.orderServiceEndpoint.confirmedOrders();
+    }
+    
+    public history<T>() {
+        return this.orderServiceEndpoint.history();
+    }
+    
+    public orderShipped<T>(orderId: number) {
+        return this.orderServiceEndpoint.orderShipped(orderId);
+    }
 }

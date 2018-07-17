@@ -59,6 +59,8 @@ import { AccountComponent } from './components/account/account.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { CartComponent } from './components/cart/cart.component';
 import { OrderDetailsComponent } from './components/admin/order-details/order-details.component';
+import { ConfirmedOrderComponent } from './components/admin/confirmed-order/confirmed-order.component';
+import { HistoryComponent } from './components/admin/history/history.component';
 
 
 @NgModule({
@@ -82,6 +84,8 @@ import { OrderDetailsComponent } from './components/admin/order-details/order-de
         ContactUsComponent,
         CartComponent,
         OrderDetailsComponent,
+        ConfirmedOrderComponent,
+        HistoryComponent,
     ],
     imports: [
         FormsModule,

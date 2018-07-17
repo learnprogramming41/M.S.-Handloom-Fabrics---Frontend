@@ -2,7 +2,6 @@ import {Component, OnInit} from "@angular/core";
 import {NavbarService} from "../../../services/navbar/navbar.service";
 import {FooterService} from "../../../services/footer/footer.service";
 import {Router} from "@angular/router";
-import {OrderService} from "../../../services/order-service/order-service";
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
@@ -21,6 +20,8 @@ export class AdminHomeComponent implements OnInit {
     public pashmina: boolean = false;
     public pashminaDetails: boolean = false;
     public pashDetails: boolean = false;
+    public history: boolean = false;
+    public confirmedOrder: boolean = false;
     
     constructor(
         private nav: NavbarService,
@@ -51,6 +52,8 @@ export class AdminHomeComponent implements OnInit {
         this.pashmina = true;
         this.pashminaDetails = false;
         this.pashDetails = false;
+        this.history = false;
+        this.confirmedOrder = false;
     }
     
     public goToDashboard() {
@@ -58,6 +61,8 @@ export class AdminHomeComponent implements OnInit {
         this.pashmina = false;
         this.pashminaDetails = false;
         this.pashDetails = false;
+        this.history = false;
+        this.confirmedOrder = false;
     }
     
     public gotToViewPashmina() {
@@ -65,6 +70,8 @@ export class AdminHomeComponent implements OnInit {
         this.pashmina = false;
         this.pashminaDetails = true;
         this.pashDetails = false;
+        this.history = false;
+        this.confirmedOrder = false;
     }
     
     public goToPashminaDetails() {   
@@ -72,8 +79,26 @@ export class AdminHomeComponent implements OnInit {
         this.pashmina = false;
         this.pashminaDetails = false;
         this.pashDetails = true;
+        this.history = false;
+        this.confirmedOrder = false;
     }
     
+    public goToViewConfirmedOrder() {
+        this.dashboard = false;
+        this.pashmina = false;
+        this.pashminaDetails = false;
+        this.pashDetails = false;
+        this.history = false;
+        this.confirmedOrder = true;
+    }
     
+    public goToHistory() {
+        this.dashboard = false;
+        this.pashmina = false;
+        this.pashminaDetails = false;
+        this.pashDetails = false;
+        this.history = true;
+        this.confirmedOrder = false;
+    }
     
 }

@@ -15,6 +15,9 @@ export class OrderServiceEndpoint{
     private readonly allOrderUrl: string = "/admin-api/get-all-order";
     private readonly orderByOrderIdUrl: string = "/admin-api/get-order-by-order-id/";
     private readonly confirmOrderUrl: string = "/admin-api/confirm-order/";
+    private readonly confirmedOrdresUrl: string = "/admin-api/confirmed-order";
+    private readonly historyUrl: string = "/admin-api/history";
+    private readonly shippedOrdersUrl: string = "/admin-api/shipped-order/";
     
     constructor(private http: HttpClient, private auth: AuthorizationComponent) {
         
@@ -28,6 +31,9 @@ export class OrderServiceEndpoint{
     private get getAllOrderUrl() {return this.auth.getBaseUrl + this.allOrderUrl}
     private get getOrderByOrderIdUrl() {return this.auth.getBaseUrl + this.orderByOrderIdUrl}
     private get getOrderConfirmUrl() {return this.auth.getBaseUrl + this.confirmOrderUrl}
+    private get getConfirmedOrdersUrl() {return this.auth.getBaseUrl + this.confirmedOrdresUrl}
+    private get getHistoryUrl() {return this.auth.getBaseUrl + this.historyUrl}
+    private get getShippedOrdersUrl() {return this.auth.getBaseUrl + this.shippedOrdersUrl}
     
     public orderPashmina<T>(order: OrderModel) {
         return this.http.post<T>(this.getOrderPashminaUrl, order, {
@@ -108,4 +114,32 @@ export class OrderServiceEndpoint{
             throw new Observable(error);
         })
     }
+    
+    public confirmedOrders<T>() {
+        return this.http.get<T>(this.getConfirmedOrdersUrl, {
+            params: {
+                access_token: JSON.parse(localStorage.getItem("token"))["value"]
+            }
+        }).catch(error => {
+            throw new Observable(error);
+        })
+    }
+    
+    public history<T>() {
+        return this.http.get<T>(this.getHistoryUrl, {
+            params: {
+                access_token: JSON.parse(localStorage.getItem("token"))["value"]
+            }
+        }).catch(error => {
+            throw new Observable(error);
+        })
+    }
+    
+    public orderShipped<T>(orderId: number) {
+        return this.http.get<T>(this.getShippedOrdersUrl + "" + orderId + "?access_token=" + JSON.parse(localStorage.getItem("token"))["value"]
+        ).catch(error => {
+            throw new Observable(error);
+        })
+    }
+    
 }
