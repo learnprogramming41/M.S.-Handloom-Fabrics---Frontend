@@ -5,13 +5,14 @@ export class OrderModel {
     constructor(
         public orderId?: number,
         public orderDate?: Date,
-        public soldOutStatus?: boolean,
+        public soldOutStatus?: string,
         public shippedDate?: Date,
         public quantity?: number,
         public pashminaId?: PashminaModel,
         public userId?: UserModel,
         public shippingAddress?: string,
-        public contact?: string
+        public contact?: string,
+        public status?: string
     ) {
         this.orderId = orderId;
         this.orderDate = orderDate;
@@ -22,5 +23,6 @@ export class OrderModel {
         this.userId = userId;
         this.shippingAddress = shippingAddress;
         this.contact = contact;
+        this.status = status;
     }
 }

@@ -18,6 +18,7 @@ export class OrderServiceEndpoint{
     private readonly confirmedOrdresUrl: string = "/admin-api/confirmed-order";
     private readonly historyUrl: string = "/admin-api/history";
     private readonly shippedOrdersUrl: string = "/admin-api/shipped-order/";
+    private readonly deleteHistoryUrl: string = "/admin-api/delete-history/";
     
     constructor(private http: HttpClient, private auth: AuthorizationComponent) {
         
@@ -34,6 +35,7 @@ export class OrderServiceEndpoint{
     private get getConfirmedOrdersUrl() {return this.auth.getBaseUrl + this.confirmedOrdresUrl}
     private get getHistoryUrl() {return this.auth.getBaseUrl + this.historyUrl}
     private get getShippedOrdersUrl() {return this.auth.getBaseUrl + this.shippedOrdersUrl}
+    private get getDeleteHistoryUrl() {return this.auth.getBaseUrl + this.deleteHistoryUrl}
     
     public orderPashmina<T>(order: OrderModel) {
         return this.http.post<T>(this.getOrderPashminaUrl, order, {
@@ -138,6 +140,16 @@ export class OrderServiceEndpoint{
     public orderShipped<T>(orderId: number) {
         return this.http.get<T>(this.getShippedOrdersUrl + "" + orderId + "?access_token=" + JSON.parse(localStorage.getItem("token"))["value"]
         ).catch(error => {
+            throw new Observable(error);
+        })
+    }
+    
+    public deleteHistory<T>(orderId: number) {
+        return this.http.delete<T>(this.getDeleteHistoryUrl + orderId, {
+            params: {
+                access_token: JSON.parse(localStorage.getItem("token"))["value"]
+            }
+        }).catch(error => {
             throw new Observable(error);
         })
     }

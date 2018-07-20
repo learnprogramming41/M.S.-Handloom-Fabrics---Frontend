@@ -33,6 +33,7 @@ export class CartComponent implements OnInit {
         this.orderService.getOrderByUserId(this.userId).subscribe(
             (result: any) => {
                 this.orderModel = result;
+                console.log(result);
             }, error => {
                 console.log(error);
             }
