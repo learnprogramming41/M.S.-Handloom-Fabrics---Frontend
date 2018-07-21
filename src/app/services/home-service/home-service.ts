@@ -6,12 +6,16 @@ export class HomeService {
     constructor(
         private homeServiceEndpoint: HomeServiceEndpoint
     ) {  }
-    
+
     public getPashmina<T>(pageSize: number, pageNumber: number) {
         return this.homeServiceEndpoint.getPashmina(pageSize, pageNumber);
     }
-    
+
     public getPashminaById<T>(pashminaId: number) {
         return this.homeServiceEndpoint.getPashminaById(pashminaId);
     }
+
+  public getPashminaByCategory<T>(category: string, pageNumber: number, pageSize: number) {
+      return this.homeServiceEndpoint.getPashminaByCategory(category, pageNumber, pageSize);
+  }
 }

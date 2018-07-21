@@ -33,8 +33,8 @@
 }
 
 .image-input {
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     opacity: 0.0;
     z-index: 1;
 }
@@ -90,7 +90,12 @@
 
 .color-alert {
     color: white;
-    min-width: 100px; 
+    min-width: 100px;
     float: left;
     margin-right: 5px;
+}
+
+.title-hover a :hover {
+  background-color: red;
+  cursor: pointer;
 }

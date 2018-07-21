@@ -7,10 +7,12 @@ import {Observable} from "rxjs/Observable";
 export class HomeServiceEndpoint {
 
     private readonly pashminaUrl: string = "/pashmina/get-pashmina";
-    private readonly pashminaByIdUrl: string = "/pashmina/get-pashmina-by-id"
+    private readonly pashminaByIdUrl: string = "/pashmina/get-pashmina-by-id";
+    private readonly pashminaByCategoryUrl: string = "/pashmina/get-pashmina-by-category";
 
     private get getPashminaUrl() {return this.auth.getBaseUrl + this.pashminaUrl}
     private get getPashminaByIdUrl() {return this.auth.getBaseUrl + this.pashminaByIdUrl}
+    private get getPashminaByCategoryUrl() {return this.auth.getBaseUrl + this.pashminaByCategoryUrl}
 
     constructor(
         private http: HttpClient,
@@ -23,9 +25,16 @@ export class HomeServiceEndpoint {
                 throw new Observable(error);
             })
     }
-    
+
     public getPashminaById<T>(pashminaId: number) {
         return this.http.get<T>(this.getPashminaByIdUrl+"/"+pashminaId)
+            .catch(error => {
+                throw new Observable(error);
+            })
+    }
+
+    public getPashminaByCategory<T>(category: string, pageNumber: number, pageSize: number) {
+      return this.http.get<T>(this.getPashminaByCategoryUrl+"/"+pageSize+"/"+pageNumber+"/"+category)
             .catch(error => {
                 throw new Observable(error);
             })

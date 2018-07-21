@@ -4,7 +4,7 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class AuthorizationComponent {
-    private readonly baseUrl: string = 'http://localhost:8080/M.S.-Handloom-Fabrics';
+    private readonly baseUrl: string = 'http://localhost:8080/MS-Handloom-Frabrics-1.0-SNAPSHOT';
     private readonly accessTokenUrl = '/oauth/token';
 
     // /oauth/token?grant_type=password&client_id=restapp&client_secret=restapp&username=admin&password=admin
@@ -33,7 +33,7 @@ export class AuthorizationComponent {
 //    public getRequestParam(): {params: HttpParams | {params: string}} {
 //        const params = new HttpParams();
 //        params.append('access_token', JSON.parse(localStorage.getItem('token'))['value']);
-//        
+//
 //        return {params: params};
 //    }
 }
