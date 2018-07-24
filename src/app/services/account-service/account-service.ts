@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {AccountServiceEndpoint} from "./account-service.endpoint";
 import {UserModel} from "../../model/user.model";
 import {LoginModel} from "../../model/login.model";
+import {GetInTouch} from "../../model/get-in-touch";
 
 @Injectable()
 export class AccountService {
@@ -15,6 +16,10 @@ export class AccountService {
     
     public login<T>(login: LoginModel) {
         return this.accountServiceEndpoint.login(login);
+    }
+    
+    public getInTouch<T>(getInTouch: GetInTouch) {
+        return this.accountServiceEndpoint.getInTouch<GetInTouch>(getInTouch)
     }
 }
 

@@ -4,7 +4,9 @@
             <div class="col-sm-3">
                 <div class="left-sidebar">
                     <h2>Category</h2>
-                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                    
+                    
+<!--                    <div class="panel-group category-products" id="accordian">category-productsr
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
@@ -109,7 +111,7 @@
                                 <h4 class="panel-title"><a href="#">Shoes</a></h4>
                             </div>
                         </div>
-                    </div><!--/category-products-->
+                    </div>/category-products-->
 
 
                     <div class="shipping text-center"><!--shipping-->
@@ -307,12 +309,11 @@
 
                                 <form action="#">
                                     <span>
-                                        <input type="text" placeholder="Your Name"/>
-                                        <input type="email" placeholder="Email Address"/>
+                                        <input type="text" placeholder="Your Name" [(ngModel)] = "getInTouch.name"/>
+                                        <input type="email" placeholder="Email Address" [(ngModel)] = "getInTouch.email"/>
                                     </span>
-                                    <textarea name="" ></textarea>
-                                    <b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
-                                    <button type="button" class="btn btn-default pull-right">
+                                    <textarea name="body" [(ngModel)] = "getInTouch.body"></textarea>
+                                    <button type="button" class="btn btn-default pull-right" (click) = "sendEmail()">
                                         Submit
                                     </button>
                                 </form>
