@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
     public pashmina: PashminaModel[] = [];
     public category: any[] = [];
     public loading: boolean = false;
+    private page: number = 0;
+    public girlImage: string;
 
     constructor(
         private homeService: HomeService,
@@ -20,6 +22,8 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.girlImage = "../../../assets/images/girl1.jpg";
+
         this.getAllPashmina(12, 0);
 
         for (var i in Category) {
@@ -27,6 +31,21 @@ export class HomeComponent implements OnInit {
                 this.category.push(i);
             }
         }
+
+        let a: number = 1;
+        setInterval(() => {
+            a++;
+            if (a === 4) {
+                a = 1;
+            }
+            if (a === 1) {
+                this.girlImage = "../../../assets/images/girl1.jpg";
+            } else if (a === 2) {
+                this.girlImage = "../../../assets/images/girl2.jpg";
+            } else if (a === 3) {
+                this.girlImage = "../../../assets/images/girl3.jpg";
+            }
+        }, 7000);
     }
 
     private getAllPashmina(pageSize: number, pageNumber: number) {
@@ -53,5 +72,18 @@ export class HomeComponent implements OnInit {
             }
         )
     }
+
+    public next() {
+        this.page++;
+        this.getAllPashmina(12, this.page * 12);
+    }
+
+    public previous() {
+        if (this.page != 0 || this.page > 0) {
+            this.page--;
+            this.getAllPashmina(12, this.page * 12);
+        }
+    }
+
 
 }

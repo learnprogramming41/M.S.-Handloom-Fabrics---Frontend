@@ -7,8 +7,8 @@
             <button type="button" class="btn btn-default get">Get it now</button>
         </div>
         <div class="col-sm-6">
-            <img src="../../../assets/images/girl1.jpg" style="width: 100%; height: 100%;" alt="" class="img-responsive"/>
-            <img src="../../../assets/images/pricing.png"  class="pricing" alt="" />
+            <img src="{{girlImage}}" style="width: 100%; height: 100%;" alt="" class="img-responsive"/>
+            <!--<img src="../../../assets/images/pricing.png"  class="pricing" alt="" />-->
         </div>
     </div>
 
@@ -20,7 +20,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title title-hover" *ngFor="let cat of category">
-                                <a data-toggle="collapse" data-parent="#accordian" (click)="getPashminaByCategory(cat)">
+                                <a data-toggle="collapse" data-parent="#accordian" style="cursor: pointer;" (click)="getPashminaByCategory(cat)">
                                     {{cat}}
                                 </a>
                             </h4>
@@ -40,11 +40,11 @@
         <div class="col-sm-9 padding-right">
             <div class="features_items"><!--features_items-->
                 <h2>Features Items</h2>
-                
+
                 <i class="fa fa-spinner" style="font-size: 30px" *ngIf="loading"></i>
-                
+
                 <div class="col-sm-4" style="float: left" *ngFor="let p of pashmina">
-                    <div class="product-image-wrapper">
+                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
                                 <img src="{{p.images[0].imageName}}" alt=""/>
@@ -53,35 +53,31 @@
                                 <a [routerLink]="['/pashmina-details']" [queryParams]="{id: p.pashminaId}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div>
                             <!--<div class="product-overlay">-->
-                                <!--<div class="overlay-content">-->
-                                    <!--<h2>$56</h2>-->
-                                    <!--<p>Easy Polo Black Edition</p>-->
-                                    <!--<a [routerLink]="['/pashmina-details']" [queryParams]="{id: p.pashminaId}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>-->
-                                <!--</div>-->
+                            <!--<div class="overlay-content">-->
+                            <!--<h2>$56</h2>-->
+                            <!--<p>Easy Polo Black Edition</p>-->
+                            <!--<a [routerLink]="['/pashmina-details']" [queryParams]="{id: p.pashminaId}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>-->
+                            <!--</div>-->
                             <!--</div>-->
                         </div>
                         <!--<div class="choose">-->
-                            <!--<ul class="nav nav-pills nav-justified">-->
-                                <!--<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>-->
-                                <!--<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>-->
-                            <!--</ul>-->
+                        <!--<ul class="nav nav-pills nav-justified">-->
+                        <!--<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>-->
+                        <!--<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>-->
+                        <!--</ul>-->
                         <!--</div>-->
                     </div>
                 </div>
-            </div>
+            </div><hr>
 
-            <div class="pagination-container wow zoomIn mar-b-1x" data-wow-duration="0.5s" *ngIf="!loading">
+<!--            <ul class="pager" *ngIf="!loading">
+                <li class="previous"><a (click)="previous()">Previous</a></li>
+                <li class="next"><a (click)="next()">Next</a></li>
+            </ul>-->
 
-                <ul class="pagination">
-                    <li class="pagination-item--wide first"> <a class="pagination-link--wide first" href="">Previous</a> </li>
-                    <li class="pagination-item first-number"> <a class="pagination-link" href="">1</a> </li>
-                    <li class="pagination-item"> <a class="pagination-link" href="">2</a> </li>
-                    <li class="pagination-item is-active"> <a class="pagination-link" href="">3</a> </li>
-                    <li class="pagination-item"> <a class="pagination-link" href="">4</a> </li>
-                    <li class="pagination-item"> <a class="pagination-link" href="">5</a> </li>
-                    <li class="pagination-item--wide last"> <a class="pagination-link--wide last" href="">Next</a> </li>
-                </ul>
-
+            <div class="pagination-container" *ngIf="!loading">
+                <strong class="view-more" (click)="previous()">Previous..</strong>
+                <strong class="view-more" (click)="next()">Next..</strong>
             </div>
 
         </div>

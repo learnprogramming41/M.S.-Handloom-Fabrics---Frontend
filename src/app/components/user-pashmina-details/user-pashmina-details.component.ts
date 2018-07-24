@@ -26,6 +26,9 @@ export class UserPashminaDetailsComponent implements OnInit {
     public address: number;
     public orderModel: OrderModel = new OrderModel();
     public getInTouch: GetInTouch = new GetInTouch();
+    
+    public pashminaCategorys: string = "Hey";
+    
 
     constructor(
         private homeService: HomeService,
@@ -47,9 +50,13 @@ export class UserPashminaDetailsComponent implements OnInit {
         this.homeService.getPashminaById(this.pashminaId).subscribe(
             result => {
                 this.pashmina = result;
+                //console.log(this.pashmina);
                 this.pashminaName = this.pashmina.images[0].imageName;
                 this.price = this.pashmina.price;
                 this.pashminaPrice = this.pashmina.price;
+                
+                //this.pashminaCategory = this.pashmina.category;
+                
             }, error => {
                 console.log(error);
             }
