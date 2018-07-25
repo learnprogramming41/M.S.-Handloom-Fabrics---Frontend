@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NavbarService} from './../../services/navbar/navbar.service';
 import {Router} from '@angular/router';
 import swal from 'sweetalert2';
+import {AuthorizationComponent} from '../authorization.component';
 
 @Component({
     selector: 'app-navbar',
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit {
     constructor(
         public navService: NavbarService,
         private router: Router,
+        private auth: AuthorizationComponent
     ) {}
 
     ngOnInit() {
@@ -23,6 +25,25 @@ export class NavbarComponent implements OnInit {
             this.isLoggedIn = true;
             this.fullName = JSON.parse(localStorage.getItem("userDetails")).fullName;
         }
+
+//        setInterval(() => {
+//            let tokenExpirationTime = JSON.parse(localStorage.getItem("userToken")).expiration;
+//            let refreshToken = JSON.parse(localStorage.getItem("userToken")).refreshToken.value;
+//            
+//            if (new Date(tokenExpirationTime) <= new Date()) {
+//                this.auth.getAccessTokenUsingRefreshToken(refreshToken).subscribe(
+//                    (result: any) => {
+//                        localStorage.removeItem("userToken");
+//                        localStorage.setItem("userToken", result);
+//                    }, error => {
+//                        console.log(error);
+//                    }
+//                )
+//            } else {
+//                console.log("Not expired");
+//            }
+//        }, 3000)
+
     }
 
     public logout() {

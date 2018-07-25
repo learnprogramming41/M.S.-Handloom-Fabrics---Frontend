@@ -49,7 +49,6 @@ export class AccountComponent implements OnInit {
                 )
                 this.auth.getAccessToken(result.username, result.password).subscribe(
                     results => {
-                        console.log(result);
                         localStorage.setItem("userToken", JSON.stringify(results));
                         localStorage.setItem("userDetails", JSON.stringify(result));
                         this.router.navigate(['/home']);

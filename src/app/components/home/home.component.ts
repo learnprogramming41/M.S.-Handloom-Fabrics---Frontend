@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
                 this.girlImage = "../../../assets/images/girl3.jpg";
             }
         }, 7000);
+        
     }
 
     private getAllPashmina(pageSize: number, pageNumber: number) {

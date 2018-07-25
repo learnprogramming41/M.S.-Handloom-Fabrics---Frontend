@@ -4,7 +4,7 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class AuthorizationComponent {
-    private readonly baseUrl: string = 'http://localhost:8080/M.S.-Handloom-Fabrics';
+    private readonly baseUrl: string = 'http://localhost:8080/MS-Handloom-Frabrics-1.0-SNAPSHOT';
     private readonly accessTokenUrl = '/oauth/token';
 
     // /oauth/token?grant_type=password&client_id=restapp&client_secret=restapp&username=admin&password=admin
@@ -28,6 +28,21 @@ export class AuthorizationComponent {
                 password: pass
             }
         });
+    }
+
+    public getAccessTokenUsingRefreshToken(refreshToken: any) {
+        // oauth/token?grant_type=refresh_token&client_id=restapp&client_secret=restapp
+        // &refresh_token=7ac7940a-d29d-4a4c-9a47-25a2167c8c49
+
+        const url = this.baseUrl + this.accessTokenUrl;
+        return this.http.get(url, {
+            params: {
+                grant_type: 'refresh_token',
+                client_id: 'restapp',
+                client_secret: 'restapp',
+                refresh_token: refreshToken
+            }
+        })
     }
 
 //    public getRequestParam(): {params: HttpParams | {params: string}} {
