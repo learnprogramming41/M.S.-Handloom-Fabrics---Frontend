@@ -24,26 +24,23 @@ export class NavbarComponent implements OnInit {
         if (localStorage.getItem("userToken") && localStorage.getItem("userDetails")) {
             this.isLoggedIn = true;
             this.fullName = JSON.parse(localStorage.getItem("userDetails")).fullName;
+
+          setInterval(() => {
+            let tokenExpirationTime = JSON.parse(localStorage.getItem("userToken")).expiration;
+            let refreshToken = JSON.parse(localStorage.getItem("userToken")).refreshToken.value;
+
+            if (new Date(tokenExpirationTime) <= new Date()) {
+              this.auth.getAccessTokenUsingRefreshToken(refreshToken).subscribe(
+                result => {
+                  localStorage.removeItem("userToken");
+                  localStorage.setItem("userToken", JSON.stringify(result));
+                }, error => {
+                  console.log(error);
+                }
+              )
+            }
+          }, 3000)
         }
-
-//        setInterval(() => {
-//            let tokenExpirationTime = JSON.parse(localStorage.getItem("userToken")).expiration;
-//            let refreshToken = JSON.parse(localStorage.getItem("userToken")).refreshToken.value;
-//            
-//            if (new Date(tokenExpirationTime) <= new Date()) {
-//                this.auth.getAccessTokenUsingRefreshToken(refreshToken).subscribe(
-//                    (result: any) => {
-//                        localStorage.removeItem("userToken");
-//                        localStorage.setItem("userToken", result);
-//                    }, error => {
-//                        console.log(error);
-//                    }
-//                )
-//            } else {
-//                console.log("Not expired");
-//            }
-//        }, 3000)
-
     }
 
     public logout() {
