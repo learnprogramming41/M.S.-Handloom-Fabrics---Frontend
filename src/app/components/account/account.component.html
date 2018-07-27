@@ -1,4 +1,4 @@
-<section id="form"><!--form-->
+<section id="form" style="margin-top: 0px; margin-bottom: 15px;"><!--form-->
     <div class="container">
         <div class="row">
             <div class="col-sm-4 col-sm-offset-1">
@@ -8,7 +8,7 @@
                         <input type="text" placeholder="username" name="username" [(ngModel)]="loginModel.username" />
                         <input type="password" placeholder="password" name="password" [(ngModel)]="loginModel.password" />
 <!--                        <span>
-                            <input type="checkbox" class="checkbox"> 
+                            <input type="checkbox" class="checkbox">
                             Keep me signed in
                         </span>-->
                         <button type="submit" class="btn btn-default" (click)="login()">Login</button>
@@ -22,10 +22,10 @@
                 <div class="signup-form"><!--sign up form-->
                     <h2>New User Signup!</h2>
                     <form action="#">
-                        <input type="text" placeholder="Name" name="fullName" [(ngModel)]="usreModel.fullName"/>
-                        <input type="text" placeholder="Username" name="username" [(ngModel)]="usreModel.username"/>
-                        <input type="email" placeholder="Email Address" name="email" [(ngModel)]="usreModel.email"/>
-                        <input type="password" placeholder="Password" name="password" [(ngModel)]="usreModel.password"/>
+                        <input type="text" placeholder="Name" name="fullName" [(ngModel)]="userModel.fullName"/>
+                        <input type="text" placeholder="Username" name="username" [(ngModel)]="userModel.username"/>
+                        <input type="email" placeholder="Email Address" name="email" [(ngModel)]="userModel.email"/>
+                        <input type="password" placeholder="Password" name="password" [(ngModel)]="userModel.password"/>
                         <button type="submit" class="btn btn-default" (click)="createAccount()">Signup</button>
                     </form>
                 </div><!--/sign up form-->

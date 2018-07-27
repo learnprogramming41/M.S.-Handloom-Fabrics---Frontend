@@ -113,29 +113,38 @@ export class UserPashminaDetailsComponent implements OnInit {
             this.orderModel.pashminaId = new PashminaModel(this.pashminaId);
             this.orderModel.userId = new UserModel(JSON.parse(localStorage.getItem("userDetails"))["userId"]);
 
-            this.orderService.orderPashmina(this.orderModel).subscribe(
-              result => {
-                swal({
-                  title: 'Hurrey!',
-                  type: 'success',
-                  html: '<p>You have successfully added to a cart.</p><p>We will delivered a items with in 3 business day</p>',
-                  width: 600,
-                  background: '#fff',
-                  backdrop: `
+            if(!result.value[0] || !result.value[1]) {
+              swal({
+                title: 'All fields are required',
+                animation: true,
+                customClass: 'animated tada',
+                type: 'error'
+              })
+            } else {
+              this.orderService.orderPashmina(this.orderModel).subscribe(
+                result => {
+                  swal({
+                    title: 'Hurrey!',
+                    type: 'success',
+                    html: '<p>You have successfully added to a cart.</p><p>We will delivered a items with in 3 business day</p>',
+                    width: 600,
+                    background: '#fff',
+                    backdrop: `
                                         rgba(0,0,123,0.4)
                                         url("http://www.animatedimages.org/data/media/466/animated-thank-you-image-0023.gif")
                                         center left
                                         no-repeat
                                       `
-                }).then((result) => {
-                  if (result.value) {
-                    this.router.navigate(['/home']);
-                  }
-                })
-              }, error => {
-                console.log(error);
-              }
-            )
+                  }).then((result) => {
+                    if (result.value) {
+                      this.router.navigate(['/home']);
+                    }
+                  })
+                }, error => {
+                  console.log(error);
+                }
+              )
+            }
           }
         })
       }
