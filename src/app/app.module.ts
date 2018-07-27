@@ -52,7 +52,7 @@ import {DashboardComponent} from './components/admin/dashboard/dashboard.compone
 import {ViewPashminaDetailsComponent} from './components/admin/view-pashmina-details/view-pashmina-details.component';
 
 //angular pagination
-import {PaginationModule} from "ng2-bootstrap";
+//import {PaginationModule} from "ng2-bootstrap";
 import { PashminaDetailsComponent } from './components/admin/pashmina-details/pashmina-details.component';
 import { UserPashminaDetailsComponent } from './components/user-pashmina-details/user-pashmina-details.component';
 import { AccountComponent } from './components/account/account.component';
@@ -95,7 +95,7 @@ import { HistoryComponent } from './components/admin/history/history.component';
         AppRoutingModule,
         LoadingBarRouterModule,
         AngularFontAwesomeModule,
-        PaginationModule,
+        //PaginationModule,
     ],
     providers: [
         AuthorizationComponent,
