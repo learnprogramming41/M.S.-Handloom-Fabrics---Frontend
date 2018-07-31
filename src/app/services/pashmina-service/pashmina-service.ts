@@ -9,11 +9,11 @@ export class PashminaService {
     }
     
     public addPashmina<T>(pashmina: PashminaModel) {
-        return this.pashminaServiceEndpoint.addPashmina(pashmina);
+        return this.pashminaServiceEndpoint.addPashmina<PashminaModel>(pashmina);
     }
     
     public getAllPashmina<T>(pageSize: number, pageNumber: number) {
-        return this.pashminaServiceEndpoint.getAllPashmin(pageSize, pageNumber);
+        return this.pashminaServiceEndpoint.getAllPashmin<PashminaModel>(pageSize, pageNumber);
     }
     
     public getAllPashminaCount<T>() {
@@ -21,10 +21,14 @@ export class PashminaService {
     }
     
     public deletePashmina<T>(pashminaId: number) {
-        return this.pashminaServiceEndpoint.deletePashmina(pashminaId);
+        return this.pashminaServiceEndpoint.deletePashmina<PashminaModel>(pashminaId);
     }
     
     public getPashminaById<T>(pashminaId: number) {
-        return this.pashminaServiceEndpoint.getPashminaById(pashminaId);
+        return this.pashminaServiceEndpoint.getPashminaById<PashminaModel>(pashminaId);
+    }
+    
+    public searchPashmina<T>(searchText: string) {
+        return this.pashminaServiceEndpoint.searchPashmina<PashminaModel>(searchText);
     }
 }

@@ -19,8 +19,8 @@ import {DescriptionModel} from '../../../model/description.model';
 export class PashminaDetailsComponent implements OnInit {
 
     private pashminaId: number;
-    public pashmina: PashminaModel[] = [];
-    public pashminaName: string;
+    public pashmina: PashminaModel = new PashminaModel();
+    //public pashminaName: string;
     public title: string;
     public button: string;
     public colors: any[] = [];
@@ -41,7 +41,6 @@ export class PashminaDetailsComponent implements OnInit {
         this.nav.hide();
         this.footer.hide();
 
-
         this.activatedRoute.queryParams.subscribe(params => {
             this.pashminaId = params['id'];
         });
@@ -59,7 +58,7 @@ export class PashminaDetailsComponent implements OnInit {
         this.pashminaService.getPashminaById(pashminaId).subscribe(
             (result: any) => {
                 this.pashmina = result;
-                this.pashminaName = result.images[0].imageName;
+                //this.pashminaName = result.images[0].imageName;
             }, error => {
                 console.log(error);
             }

@@ -5,15 +5,15 @@
                 <div class="preview col-md-6">
 
                     <div class="preview-pic tab-content">
-                        <div class="tab-pane active" id="pic-1"><img src="{{pashminaName}}" /></div>
+                        <div class="tab-pane active" id="pic-1"><img src="{{pashmina.images.length >= 1 ? pashmina.images[0].imageName : pashmina.images.imageName}}" /></div>
                     </div>
                     <ul class="preview-thumbnail nav nav-tabs">
-                        <li class="active" *ngFor="let img of pashmina[0].images"><a data-target="#pic-1" data-toggle="tab"><img src="{{img.imageName}}" /></a></li>
+                        <li class="active" *ngFor="let img of pashmina.images"><a data-target="#pic-1" data-toggle="tab"><img src="{{img.imageName}}" /></a></li>
                     </ul>
 
                 </div>
                 <div class="details col-md-6">
-                    <h3 class="product-title">{{pashmina[0].pashminaName}}</h3>
+                    <h3 class="product-title">{{pashmina.pashminaName}}</h3>
                     <div class="rating">
                         <div class="stars">
                             <span class="fa fa-star checked"></span>
@@ -31,7 +31,7 @@
                            (click)="addDescription()"></i>
                     </div>
 
-                    <div class="alert alert-info" *ngFor="let desc of pashmina[0].descriptions">
+                    <div class="alert alert-info" *ngFor="let desc of pashmina.descriptions">
                          <i class="fa fa-close close" title="delete" (click)="deleteDescription(desc.descriptionId)"></i>
                         <i class="fa fa-pencil edit" title="edit" data-toggle="modal" data-target="#modelPopup" (click)="editDescription(desc.descriptionId)"></i>
 
@@ -41,7 +41,7 @@
 
                     <div class="">
                         <h4 class="price">current price:
-                            <span>Rs. {{pashmina[0].price}}</span>
+                            <span>Rs. {{pashmina.price}}</span>
                             <i class="fa fa-pencil" data-toggle="modal" data-target="#modelPopup"
                                title="edit" style="cursor: pointer;" (click)="editPrice()"></i>
                         </h4>
@@ -49,7 +49,7 @@
 
                     <h5 class="colors">
                         colors:
-                        <span *ngFor="let color of pashmina[0].pashminaColor;" [style.background-color]="color.color" class="color green">
+                        <span *ngFor="let color of pashmina.pashminaColor;" [style.background-color]="color.color" class="color green">
                             <i class="fa fa-close" title="delete" style="cursor: pointer;" (click)="deleteColor(color.colourId)"></i>
                         </span>
                         <i class="fa fa-plus" title="add new" style="cursor: pointer;" data-toggle="modal" data-target="#modelPopup" (click)="addNewColor()"></i>

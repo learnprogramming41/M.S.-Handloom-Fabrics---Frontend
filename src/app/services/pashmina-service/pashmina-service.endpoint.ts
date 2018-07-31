@@ -13,6 +13,7 @@ export class PashminaServiceEndpoint {
     private readonly pashminaCountUrl: string = "/admin-api/get-pashmina-count";
     private readonly deletePashminaUrl: string = "/admin-api/delete-pashmina";
     private readonly pashminaByIdUrl: string = "/admin-api/get-pashmina-by-id";
+    private readonly searchPashminaUrl: string = "/admin-api/search-pashmina";
 
     constructor(private http: HttpClient, private auth: AuthorizationComponent) {
 
@@ -23,6 +24,7 @@ export class PashminaServiceEndpoint {
     private get getPashminaCountUrl() {return this.auth.getBaseUrl + this.pashminaCountUrl}
     private get getDeletePashminaUrl() {return this.auth.getBaseUrl + this.deletePashminaUrl}
     private get getPashminaByIdUrl() {return this.auth.getBaseUrl + this.pashminaByIdUrl}
+    private get getSearchPashminaUrl() {return this.auth.getBaseUrl + this.searchPashminaUrl}
 
     public addPashmina<T>(pashmina: PashminaModel) {
         return this.http.post<T>(this.getAddPashminaUrl, pashmina, {
@@ -63,18 +65,28 @@ export class PashminaServiceEndpoint {
                 pashminaId: pashminaId.toString()
             }
         }).catch(error => {
-            throw new Observable(error)
+            throw new Observable(error);
         })
     }
     
     public getPashminaById<T>(pashminaId: number) {
-        console.log(this.getPashminaByIdUrl+"/"+pashminaId+"?access_token="+JSON.parse(localStorage.getItem("token"))["value"]);
         return this.http.get<T>(this.getPashminaByIdUrl+"/"+pashminaId, {
             params: {
                 access_token: JSON.parse(localStorage.getItem("token"))["value"]
             }
         }).catch(error => {
-            throw new Observable(error)
+            throw new Observable(error);
+        })
+    }
+    
+    public searchPashmina<T>(searchText: string) {
+        return this.http.get<T>(this.getSearchPashminaUrl, {
+            params: {
+                searchText: searchText,
+                access_token: JSON.parse(localStorage.getItem("token"))["value"]
+            }
+        }).catch(error => {
+            throw new Observable(error);
         })
     }
 

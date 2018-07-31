@@ -5,19 +5,20 @@
  */
 
 export enum Category {
-    "Kota Silk Saree" = 1,
-    "Linen Saree" = 2,
-    "Tusser Silk Saree" = 3,
-    "Summer Cashmere Stole" = 4,
-    "Women's Cashmere Stole" = 5,
-    "Check Cashmere Stole" = 6,
-    "Designer Cashmere Stole" = 7,
-    "Winter Cashmere Stole" = 8,
-    "Fancy Cashmere Stole" = 9,
-    "Natural Cashmere Stole" = 10,
-    "Silk Viscose Fabric" = 11,
-    "Dupion Silk Fabric" = 12,
-    "Plain Silk Fabric" = 13
+    "All" = 1,
+    "Kota Silk Saree" = 2,
+    "Linen Saree" = 3,
+    "Tusser Silk Saree" = 4,
+    "Summer Cashmere Stole" = 5,
+    "Women's Cashmere Stole" = 6,
+    "Check Cashmere Stole" = 7,
+    "Designer Cashmere Stole" = 8,
+    "Winter Cashmere Stole" = 9,
+    "Fancy Cashmere Stole" = 10,
+    "Natural Cashmere Stole" = 11,
+    "Silk Viscose Fabric" = 12,
+    "Dupion Silk Fabric" = 13,
+    "Plain Silk Fabric" = 14
 }
 
 export enum Color {

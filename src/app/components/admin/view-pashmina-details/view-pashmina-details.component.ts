@@ -3,6 +3,7 @@ import {Category} from '../../../enum/Enum';
 import {PashminaService} from '../../../services/pashmina-service/pashmina-service';
 import {PashminaModel} from '../../../model/pashmina.model';
 import swal from 'sweetalert2';
+import {HomeService} from '../../../services/home-service/home-service';
 
 @Component({
     selector: 'app-view-pashmina-details',
@@ -17,9 +18,13 @@ export class ViewPashminaDetailsComponent implements OnInit {
     public arr = Array;
     public loading: boolean = true;
     public top: boolean = false;
+    public searchText: string;
+    public searchButton: boolean;
+    public noResult: boolean = false;
 
     constructor(
         private pashminaService: PashminaService,
+        private homeService: HomeService
     ) {}
 
     ngOnInit() {
@@ -29,11 +34,12 @@ export class ViewPashminaDetailsComponent implements OnInit {
             }
         }
 
-        this.getAllPashmina(3, 0);
+        this.getAllPashmina(12, 0);
         this.getPashminaCount();
     }
 
     private getAllPashmina(pageSize: number, pageNumber: number) {
+        this.noResult = false;
         this.pashminaService.getAllPashmina(pageSize, pageNumber).subscribe(
             (result: any) => {
                 this.pashmina = result;
@@ -47,7 +53,7 @@ export class ViewPashminaDetailsComponent implements OnInit {
     private getPashminaCount() {
         this.pashminaService.getAllPashminaCount().subscribe(
             (result: number) => {
-                this.pageNo = Math.round(result / 3) + 1;
+                this.pageNo = Math.round(result / 12) + 1;
             }, error => {
                 console.log(error);
             }
@@ -56,12 +62,12 @@ export class ViewPashminaDetailsComponent implements OnInit {
 
     public getNextPashmina(num?: number) {
         this.loading = true;
-        let pageNo = num * 3;
+        let pageNo = num * 12;
         if (num) {
-            this.getAllPashmina(3, pageNo);
+            this.getAllPashmina(12, pageNo);
         } else {
-            pageNo = + 3;
-            this.getAllPashmina(3, 0);
+            pageNo = + 12;
+            this.getAllPashmina(12, 0);
         }
     }
 
@@ -75,8 +81,8 @@ export class ViewPashminaDetailsComponent implements OnInit {
             text: "You won't be able to revert this!",
             type: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#12085d6',
+            cancelButtonColor: '#d1212',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.value) {
@@ -95,7 +101,52 @@ export class ViewPashminaDetailsComponent implements OnInit {
         })
     }
 
-    pashminaDetails() {
-
+    onChange(category: string) {
+        this.loading = true;
+        this.noResult = false;
+        if(category === "All") {
+            this.getAllPashmina(12, 0);
+        } else {
+            this.homeService.getPashminaByCategory(category, 12, 0).subscribe(
+                (result: any) => {
+                    this.pashmina = result;
+                    this.loading = false;
+                }, error => {
+                    console.log(error);
+                }
+            )
+        }
+    }
+    
+    searchPashmina() {
+        this.searchButton = false;
+        this.loading = true;
+        this.noResult = false;
+        this.pashminaService.searchPashmina(this.searchText).subscribe(
+            (result: any) => {
+                this.pashmina = result;
+                if(!result.length) {
+                    this.noResult = true;
+                }
+                this.loading = false;
+            }, error => {
+                console.log(error);
+            }
+        )
+    }
+    
+    cancelSearch() {
+        this.searchButton = true;
+        this.loading = true;
+        this.searchText = "";
+        this.getAllPashmina(12, 0);
+    }
+    
+    searchTextChanged() {
+        this.searchButton = true;
+        if (!this.searchText) {
+            this.loading = true;
+            this.getAllPashmina(12, 0);
+        }
     }
 }

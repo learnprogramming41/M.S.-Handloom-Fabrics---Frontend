@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {PashminaModel} from '../../model/pashmina.model';
 import {HomeService} from '../../services/home-service/home-service';
 import {Category} from "../../enum/Enum";
+import {FooterService} from "../../services/footer/footer.service";
+import {NavbarService} from "../../services/navbar/navbar.service";
 
 @Component({
     selector: 'app-home',
@@ -18,10 +20,14 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private homeService: HomeService,
+        private navService: NavbarService,
+        private footerService: FooterService
     ) {
     }
 
     ngOnInit() {
+        this.navService.show();
+        this.footerService.show();
         this.girlImage = "../../../assets/images/girl1.jpg";
 
         this.getAllPashmina(12, 0);
@@ -46,7 +52,7 @@ export class HomeComponent implements OnInit {
                 this.girlImage = "../../../assets/images/girl3.jpg";
             }
         }, 7000);
-        
+
     }
 
     private getAllPashmina(pageSize: number, pageNumber: number) {
@@ -64,14 +70,18 @@ export class HomeComponent implements OnInit {
     public getPashminaByCategory(category: string) {
         this.pashmina = null;
         this.loading = true;
-        this.homeService.getPashminaByCategory(category, 12, 0).subscribe(
-            (result: any) => {
-                this.pashmina = result;
-                this.loading = false;
-            }, error => {
-                console.log(error);
-            }
-        )
+        if (category === "All") {
+            this.getAllPashmina(12, 0);
+        } else {
+            this.homeService.getPashminaByCategory(category, 12, 0).subscribe(
+                (result: any) => {
+                    this.pashmina = result;
+                    this.loading = false;
+                }, error => {
+                    console.log(error);
+                }
+            )
+        }
     }
 
     public next() {

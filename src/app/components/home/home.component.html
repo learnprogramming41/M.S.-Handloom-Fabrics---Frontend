@@ -19,7 +19,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title title-hover" *ngFor="let cat of category">
-                                <a data-toggle="collapse" data-parent="#accordian" style="cursor: pointer;" (click)="getPashminaByCategory(cat)">
+                                <a class="panel-title" data-toggle="collapse" data-parent="#accordian" style="cursor: pointer;" (click)="getPashminaByCategory(cat)">
                                     {{cat}}
                                 </a>
                             </h4>
@@ -32,9 +32,9 @@
 
         <div class="col-sm-9 padding-right">
             <div class="features_items"><!--features_items-->
-                <h2>Features Items</h2>
+                <h2 class="title text-center">Features Items</h2>
 
-                <i class="fa fa-spinner" style="font-size: 30px" *ngIf="loading"></i>
+                <i class="fa fa fa-spinner fa-spin text-center" style="font-size: 30px" *ngIf="loading"></i>
 
                 <div class="col-sm-4" style="float: left" *ngFor="let p of pashmina">
                      <div class="product-image-wrapper">

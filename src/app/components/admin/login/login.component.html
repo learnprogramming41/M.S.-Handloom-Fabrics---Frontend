@@ -1,32 +1,36 @@
 <div class="container">
-    <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Login<h2 *ngIf="wrongCredential" style="color: red">Wrong Credential</h2></div>
-        <div class="card-body">
-            <form>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 style">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="text-center">
+            <div class="card-header"><i class="fa fa-lock fa-5x"></i><h2 *ngIf="wrongCredential" style="color: red">Wrong Credential</h2></div>
+            <div class="card-body">
+              <form>
                 <div class="form-group">
-                    <label>Username</label>
-                    <input class="form-control" [(ngModel)]="loginModel.username" name="username" type="text" placeholder="Enter username"/>
+                  <label class="danger">Username</label>
+                  <input class="form-control" [(ngModel)]="loginModel.username" name="username" type="text"
+                         placeholder="Enter username"/>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input class="form-control" [(ngModel)]="loginModel.password" name="password" type="password" placeholder="Password"/>
+                  <label class="danger">Password</label>
+                  <input class="form-control" [(ngModel)]="loginModel.password" name="password" type="password"
+                         placeholder="Password"/>
                 </div>
-                <div class="form-group">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox"> Remember Password</label>
-                    </div>
-                </div>
-                
-                <button [disabled]="working" (click)="userLogin()" name="recover-submit" class="btn btn-lg btn-primary btn-block" type="submit">
-                    <a *ngIf="!working">Login</a>
-                    <i class="fa fa-spinner fa-spin" *ngIf="working"></i>
+
+                <button [disabled]="working" (click)="userLogin()" name="recover-submit"
+                        class="btn btn-lg btn-primary btn-block" type="submit">
+                  <a *ngIf="!working" style="color: white;">Login</a>
+                  <i class="fa fa-spinner fa-spin" *ngIf="working"></i>
                 </button>
 
-            </form>
-            <div class="text-center">
+              </form>
+              <div class="text-center">
                 <a class="d-block small" routerLink="/admin/forgotpassword">Forgot Password?</a>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
