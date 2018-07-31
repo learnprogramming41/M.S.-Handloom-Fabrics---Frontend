@@ -36,13 +36,13 @@
 
                 <i class="fa fa fa-spinner fa-spin text-center" style="font-size: 30px" *ngIf="loading"></i>
 
-                <div class="col-sm-4" style="float: left" *ngFor="let p of pashmina">
+                <div class="col-sm-4" style="float: left; height: 405px;" *ngFor="let p of pashmina">
                      <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="{{p.images[0].imageName}}" alt=""/>
+                                <img style="max-height: 270px;" src="{{p.images[0].imageName}}" alt=""/>
                                 <h2>Rs.  {{p.price}}</h2>
-                                <p>{{p.pashminaName}}</p>
+                                <p style="text-overflow: ellipsis;">{{p.pashminaName}}</p>
                                 <a [routerLink]="['/pashmina-details']" [queryParams]="{id: p.pashminaId}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div>
                         </div>

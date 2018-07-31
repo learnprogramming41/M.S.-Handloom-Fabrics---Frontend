@@ -39,6 +39,7 @@ export class OrderDetailsComponent implements OnInit {
         this.orderService.getOrderByOrderId(this.orderId).subscribe(
             result => {
                 this.orderModel = result;
+                console.log(this.orderModel);
             }, error => {
                 console.log(error);
             }

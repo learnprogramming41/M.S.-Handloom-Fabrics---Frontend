@@ -1,111 +1,118 @@
 <section>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="left-sidebar">
-          <h2>Info</h2>
-          <div class="panel-group category-products">
-            <ul style="list-style: none; font-weight: bold;">
-              <li><i style="font-size: 25px;" class="fa fa-money"></i>&nbsp; Pay cash on delivery</li>
-              <li><i style="font-size: 25px;" class="fa fa-cc-discover"></i>&nbsp; 7 day free return</li>
-              <li><i style="font-size: 25px;" class="fa fa-smile-o"></i>&nbsp; Genunine Product</li>
-            </ul>
-          </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Info</h2>
+                    <div class="panel-group category-products">
+                        <ul style="list-style: none; font-weight: bold;">
+                            <li><i style="font-size: 25px;" class="fa fa-money"></i>&nbsp; Pay cash on delivery</li>
+                            <li><i style="font-size: 25px;" class="fa fa-cc-discover"></i>&nbsp; 7 day free return</li>
+                            <li><i style="font-size: 25px;" class="fa fa-smile-o"></i>&nbsp; Genunine Product</li>
+                        </ul>
+                    </div>
 
-          <h2>Similar Product</h2>
-          <div *ngFor="let pash of similarPashmina" class="panel-group category-products similar-product" style="text-align: center;">
-            <img style="width: 100%;" src="{{pash.images[0].imageName}}" alt=""/>
-            <b [routerLink]="['/pashmina-details']" [queryParams]="{id: pash.pashminaId}">{{pash.pashminaName}}</b>
-          </div>
-        </div>
-
-
-      </div>
-      <div class="col-sm-9 padding-right">
-        <div class="product-details"><!--product-details-->
-          <div class="col-sm-7" style="float: right;">
-            <div class="product-information"><!--/product-information-->
-              <h1 ng-show="permission === true;">{{pashmina.pashminaName}}</h1>
-              <p>{{pashmina.addedAt | date}}</p>
-              <span>
-          <span><i class="fa fa-inr"></i> {{pashmina.price}}</span>
-          <label>Quantity:</label>
-          <input type="text" [(ngModel)]="orderModel.quantity"
-                 (change)="calculatePrice($event.target.value)"/>
-          <button type="button" class="btn btn-fefault cart" (click)="addToCart()">
-          <i class="fa fa-shopping-cart"></i>
-          Add to cart
-          </button>
-          </span>
-              <p><b>Availability:</b> In Stock</p>
-              <p><b>Condition:</b> New</p>
-              <p><b>Category:</b> {{pashmina.category}}</p>
-              <p><b class="colors">
-                Colors:
-                <span style="height: 25px;
-          width: 25px;
-          background-color: #bbb;
-          border-radius: 50%;
-          display: inline-block;
-          margin: 5px 5px;" *ngFor="let color of pashmina.pashminaColor" [style.background-color]="color.color"
-                      class="color green"></span>
-              </b>
-              </p>
-            </div><!--/product-information-->
-          </div>
-
-          <div class="col-sm-5" style="float: left;">
-            <div class="view-product">
-              <img src="{{pashminaName}}" alt=""/>
-              <h3 (click)="zoom()" style="cursor: pointer;">ZOOM</h3>
-            </div>
-            <div id="similar-product" class="carousel slide" data-ride="carousel">
-
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner">
-                <div class="item active">
-                  <a href="" *ngIf="image1"><img src="{{image1}}" alt=""></a>
-                  <a href="" *ngIf="image2"><img src="{{image2}}" alt=""></a>
+                    <h2>Similar Product</h2>
+                    <div *ngFor="let pash of similarPashmina" class="panel-group category-products similar-product" style="text-align: center;">
+                        <img style="width: 100%;" src="{{pash.images[0].imageName}}" alt=""/>
+                        <b (click)="goToSimilarPashmina(pash.pashminaId)">{{pash.pashminaName}}</b>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div><!--/product-details-->
 
-        <div class="category-tab shop-details-tab"><!--category-tab-->
-          <div class="col-sm-12">
-            <ul class="nav nav-tabs">
-              <li style="padding: 10px 10px;"><a href="#details" data-toggle="tab">Details</a></li>
-              <li style="padding: 10px 10px;"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
-            </ul>
-          </div>
-          <div class="tab-content">
-            <div class="tab-pane fade active" id="details">
-              <ul class="list-group">
-                <li style="border: none;" class="list-group-item" *ngFor="let desc of pashmina.descriptions">
-                  {{desc.pashminaDescription}}
-                </li>
-              </ul>
-            </div>
 
-            <div class="tab-pane fade" id="reviews">
-              <div class="col-sm-12">
-                <form action="#">
-                                    <span>
-                                        <input type="text" name="name" placeholder="Your Name" [(ngModel)]="getInTouch.name"/>
-                                        <input type="email" name="email" placeholder="Email Address" [(ngModel)]="getInTouch.email"/>
-                                    </span>
-                  <textarea name="body" [(ngModel)]="getInTouch.body"></textarea>
-                  <button type="button" class="btn btn-default pull-right" (click)="sendEmail()">
-                    Submit
-                  </button>
-                </form>
-              </div>
             </div>
+            <div class="col-sm-9 padding-right">
+                <div class="product-details"><!--product-details-->
+                    <div class="col-sm-7" style="float: right;">
+                        <div class="product-information"><!--/product-information-->
+                            <h1 ng-show="permission === true;">{{pashmina.pashminaName}}</h1>
+                            <p>{{pashmina.addedAt| date}}</p>
+                            <span>
+                                <span><i class="fa fa-inr"></i> {{pashmina.price}}</span>
+                                <label>Quantity:</label>
+                                <input type="text" [(ngModel)]="orderModel.quantity"
+                                       (change)="calculatePrice($event.target.value)"/>
+                                <button type="button" class="btn btn-fefault cart" (click)="addToCart()">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    Add to cart
+                                </button>
+                            </span>
+                            <p><b>Availability:</b> In Stock</p>
+                            <p><b>Condition:</b> New</p>
+                            <p><b>Category:</b> {{pashmina.category}}</p>
+                            <p><b class="colors">
+                                    Colors:
+                                    <span style="height: 25px;
+                                          width: 25px;
+                                          background-color: #bbb;
+                                          border-radius: 50%;
+                                          display: inline-block;
+                                          margin: 5px 5px;" *ngFor="let color of pashmina.pashminaColor" [style.background-color]="color.color"
+                                          class="color green"></span>
+                                </b>
+                            </p>
+                        </div><!--/product-information-->
+                    </div>
 
-          </div>
-        </div><!--/category-tab-->
-      </div>
+                    <div class="col-sm-5" style="float: left;">
+                        <div class="view-product">
+                            <img src="{{pashminaName}}" alt=""/>
+                            <h3 (click)="zoom()" style="cursor: pointer;">ZOOM</h3>
+                        </div>
+                        <div id="similar-product" class="carousel slide" data-ride="carousel">
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <a href="" *ngIf="image1"><img src="{{image1}}" alt=""></a>
+                                    <a href="" *ngIf="image2"><img src="{{image2}}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/product-details-->
+
+                <div class="shop-details-tab"><!--category-tab-->
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs" style="background: #172431;">
+                            <li style="cursor: pointer; color: white;"><a (click)="showDetails()">Details</a></li>
+                            <li style="cursor: pointer; color: white;"><a (click)="showReview()">Reviews</a></li>
+                        </ul>
+                    </div>
+                    <div style="background: white;">
+                        <div class="" *ngIf="details" style="background: white;">
+<!--                            <ul class="list-group">
+                                <li style="border: none;" class="list-group-item" *ngFor="let desc of pashmina.descriptions">
+                                    {{desc.pashminaDescription}}
+                            </li>-->
+                            <ul class="">
+                                <li style="font-size: 20px;" *ngFor="let desc of pashmina.descriptions">
+                                    <i style="margin-right: 10px;" class="fa fa-check-square"></i>
+                                    {{desc.pashminaDescription}}
+                                </li>
+                            </ul>
+
+                    </div>
+
+                    <div class="" *ngIf="reviews">
+                        <div class="col-sm-12 awesome">
+                            <p><b>Write Your Review</b></p>
+                            <form action="#">
+                                <span>
+                                    <input type="text" name="name" placeholder="Your Name" [(ngModel)]="getInTouch.name"/>
+                                    <input type="email" name="email" placeholder="Email Address" [(ngModel)]="getInTouch.email"/>
+                                </span>
+                                <textarea name="body" [(ngModel)]="getInTouch.body"></textarea>
+                                <button type="button" class="btn btn-default pull-right" (click)="sendEmail()">
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!--/category-tab-->
+        </div>
     </div>
-  </div>
+</div>
 </section>

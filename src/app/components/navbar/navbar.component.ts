@@ -25,21 +25,21 @@ export class NavbarComponent implements OnInit {
             this.isLoggedIn = true;
             this.fullName = JSON.parse(localStorage.getItem("userDetails")).fullName;
 
-          setInterval(() => {
-            let tokenExpirationTime = JSON.parse(localStorage.getItem("userToken")).expiration;
-            let refreshToken = JSON.parse(localStorage.getItem("userToken")).refreshToken.value;
+            setInterval(() => {
+                let tokenExpirationTime = JSON.parse(localStorage.getItem("userToken")).expiration;
+                let refreshToken = JSON.parse(localStorage.getItem("userToken")).refreshToken.value;
 
-            if (new Date(tokenExpirationTime) <= new Date()) {
-              this.auth.getAccessTokenUsingRefreshToken(refreshToken).subscribe(
-                result => {
-                  localStorage.removeItem("userToken");
-                  localStorage.setItem("userToken", JSON.stringify(result));
-                }, error => {
-                  console.log(error);
+                if (new Date(tokenExpirationTime) <= new Date()) {
+                    this.auth.getAccessTokenUsingRefreshToken(refreshToken).subscribe(
+                        result => {
+                            localStorage.removeItem("userToken");
+                            localStorage.setItem("userToken", JSON.stringify(result));
+                        }, error => {
+                            console.log(error);
+                        }
+                    )
                 }
-              )
-            }
-          }, 3000)
+            }, 3000)
         }
     }
 
