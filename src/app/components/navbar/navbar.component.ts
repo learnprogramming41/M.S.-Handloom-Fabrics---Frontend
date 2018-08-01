@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
         private auth: AuthorizationComponent,
         private data: DataService
     ) {
-        
+
     }
 
     ngOnInit() {
@@ -45,11 +45,11 @@ export class NavbarComponent implements OnInit {
                 }
             }, 3000)
         }
-        
+
         this.data.currentMessage.subscribe(
             message => {
                 if (message === "") {
-                    
+
                 } else {
                     this.fullName = message;
                     this.isLoggedIn = true;
@@ -62,11 +62,13 @@ export class NavbarComponent implements OnInit {
         localStorage.removeItem("userToken");
         localStorage.removeItem("userDetails");
         this.router.navigate(['/home']);
-        swal(
-            'Success!',
-            'You are logged out of your system',
-            'success'
-        )
+        swal({
+            position: 'top-end',
+            type: 'success',
+            title: 'You are logged out of our system',
+            showConfirmButton: false,
+            timer: 1500
+        })
         this.isLoggedIn = false;
     }
 

@@ -62,6 +62,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { OrderDetailsComponent } from './components/admin/order-details/order-details.component';
 import { ConfirmedOrderComponent } from './components/admin/confirmed-order/confirmed-order.component';
 import { HistoryComponent } from './components/admin/history/history.component';
+import { OutStoryComponent } from './components/out-story/out-story.component';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { HistoryComponent } from './components/admin/history/history.component';
         OrderDetailsComponent,
         ConfirmedOrderComponent,
         HistoryComponent,
+        OutStoryComponent,
     ],
     imports: [
         FormsModule,

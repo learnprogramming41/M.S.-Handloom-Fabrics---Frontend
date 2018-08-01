@@ -58,11 +58,13 @@ export class AccountComponent implements OnInit {
         if (this.loginModel.password || this.loginModel.password) {
             this.accountService.login(this.loginModel).subscribe(
                 (result: UserModel) => {
-                    swal(
-                        'Success!',
-                        'Login Successfull',
-                        'success'
-                    )
+                    swal({
+                        position: 'top-end',
+                        type: 'success',
+                        title: 'Login Successfull',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                     this.auth.getAccessToken(result.username, result.password).subscribe(
                         results => {
                             localStorage.setItem("userToken", JSON.stringify(results));
