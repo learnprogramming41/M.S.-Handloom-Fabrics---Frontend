@@ -38,6 +38,7 @@ import {ColorServiceEndpoint} from './services/color-service/color-service.endpo
 import {HomeServiceEndpoint} from './services/home-service/home-service.endpoint';
 import { AccountServiceEndpoint } from './services/account-service/account-service.endpoint';
 import {OrderServiceEndpoint} from './services/order-service/order-service.endpoint';
+import {DataService} from './services/data-service/data.service';
 
 //font-awesome
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
@@ -116,7 +117,8 @@ import { HistoryComponent } from './components/admin/history/history.component';
         AccountService,
         AccountServiceEndpoint,
         OrderServiceEndpoint,
-        OrderService
+        OrderService,
+        DataService
     ],
     bootstrap: [AppComponent]
 })

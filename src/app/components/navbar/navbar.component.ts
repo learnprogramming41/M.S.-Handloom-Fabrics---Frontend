@@ -3,6 +3,7 @@ import {NavbarService} from './../../services/navbar/navbar.service';
 import {Router} from '@angular/router';
 import swal from 'sweetalert2';
 import {AuthorizationComponent} from '../authorization.component';
+import {DataService} from '../../services/data-service/data.service';
 
 @Component({
     selector: 'app-navbar',
@@ -17,8 +18,11 @@ export class NavbarComponent implements OnInit {
     constructor(
         public navService: NavbarService,
         private router: Router,
-        private auth: AuthorizationComponent
-    ) {}
+        private auth: AuthorizationComponent,
+        private data: DataService
+    ) {
+        
+    }
 
     ngOnInit() {
         if (localStorage.getItem("userToken") && localStorage.getItem("userDetails")) {
@@ -41,6 +45,17 @@ export class NavbarComponent implements OnInit {
                 }
             }, 3000)
         }
+        
+        this.data.currentMessage.subscribe(
+            message => {
+                if (message === "") {
+                    
+                } else {
+                    this.fullName = message;
+                    this.isLoggedIn = true;
+                }
+            }
+        )
     }
 
     public logout() {
@@ -52,6 +67,7 @@ export class NavbarComponent implements OnInit {
             'You are logged out of your system',
             'success'
         )
+        this.isLoggedIn = false;
     }
 
     public goToCart() {

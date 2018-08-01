@@ -96,5 +96,7 @@ export class HomeComponent implements OnInit {
         }
     }
 
-
+    public scrollDown() {
+        window.scrollTo(0, 700);
+    }
 }

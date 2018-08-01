@@ -44,6 +44,7 @@ export class UserPashminaDetailsComponent implements OnInit {
     }
 
     ngOnInit() {
+        window.scrollTo(0, 0);
         this.activatedRoute.queryParams.subscribe(params => {
             this.pashminaId = params['id'];
         });
@@ -75,7 +76,7 @@ export class UserPashminaDetailsComponent implements OnInit {
 
 
     public addToCart() {
-        if (!this.orderModel.quantity) {
+        if (!this.orderModel.quantity || this.orderModel.quantity == 0) {
             swal({
                 title: 'Quantity is empty',
                 animation: true,
@@ -205,6 +206,7 @@ export class UserPashminaDetailsComponent implements OnInit {
     
     public goToSimilarPashmina(id: number) {
         this.getPashminaById(id);
+        window.scrollTo(0, 0);
     }
     
 }
