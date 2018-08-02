@@ -38,24 +38,23 @@ export class AdminHomeComponent implements OnInit {
 
         if (!localStorage.getItem("adminDetails")) {
             this.router.navigate(['/admin/login']);
+        } else {
+            setInterval(() => {
+                let tokenExpirationTime = JSON.parse(localStorage.getItem("token")).expiration;
+                let refreshToken = JSON.parse(localStorage.getItem("token")).refreshToken.value;
+
+                if (new Date(tokenExpirationTime) <= new Date()) {
+                    this.auth.getAccessTokenUsingRefreshToken(refreshToken).subscribe(
+                        result => {
+                            localStorage.removeItem("token");
+                            localStorage.setItem("token", JSON.stringify(result));
+                        }, error => {
+                            console.log(error);
+                        }
+                    )
+                }
+            }, 3000)
         }
-
-        setInterval(() => {
-            let tokenExpirationTime = JSON.parse(localStorage.getItem("token")).expiration;
-            let refreshToken = JSON.parse(localStorage.getItem("token")).refreshToken.value;
-
-            if (new Date(tokenExpirationTime) <= new Date()) {
-                this.auth.getAccessTokenUsingRefreshToken(refreshToken).subscribe(
-                    result => {
-                        localStorage.removeItem("token");
-                        localStorage.setItem("token", JSON.stringify(result));
-                    }, error => {
-                        console.log(error);
-                    }
-                )
-            }
-        }, 3000)
-
     }
 
     public logout() {
