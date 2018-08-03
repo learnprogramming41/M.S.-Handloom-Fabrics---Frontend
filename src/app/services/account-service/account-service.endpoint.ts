@@ -25,7 +25,7 @@ export class AccountServiceEndpoint {
     public createAccount<T>(user: UserModel) {
         return this.http.post<T>(this.getCreateAccountUrl, user).catch(
             error => {
-                throw new Observable(error);
+              return this.auth.handleError(error);
             }
         )
     }
