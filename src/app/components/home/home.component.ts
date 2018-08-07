@@ -17,12 +17,16 @@ export class HomeComponent implements OnInit {
     public loading: boolean = false;
     private page: number = 0;
     public girlImage: string;
+    public imageUrlArray: Array<string> = new Array();
 
     constructor(
         private homeService: HomeService,
         private navService: NavbarService,
         private footerService: FooterService
     ) {
+        this.imageUrlArray.push("../../../assets/images/girl1.jpg");
+        this.imageUrlArray.push("../../../assets/images/girl2.jpg");
+        this.imageUrlArray.push("../../../assets/images/girl3.jpg");
     }
 
     ngOnInit() {
@@ -99,4 +103,5 @@ export class HomeComponent implements OnInit {
     public scrollDown() {
         window.scrollTo(0, 700);
     }
+
 }

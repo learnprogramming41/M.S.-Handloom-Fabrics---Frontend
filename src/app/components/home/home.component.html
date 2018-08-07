@@ -1,14 +1,14 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">
-            <h1><span>E</span>-Shop</h1>
-            <h2>Free E-Commerce Template</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            <button (click)="scrollDown()" type="button" class="btn btn-default get">Shop now</button>
-        </div>
-        <div class="col-sm-6">
-            <img src="{{girlImage}}" style="width: 100%; height: 100%;" alt="" class="img-responsive"/>
-        </div>
+        <slideshow [height]="height"
+            [minHeight]="'425px'"
+            [autoPlay]="true"
+            [showArrows]="true"
+            [showDots]="true"
+            [imageUrls]="imageUrlArray"
+            [lazyLoad]="imageUrlArray?.length > 1"
+            [autoPlayWaitForLazyLoad]="true">
+        </slideshow>
     </div>
 
     <div class="row" style="margin-top: 20px;">

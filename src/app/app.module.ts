@@ -4,6 +4,9 @@ import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {SlideshowModule} from 'ng-simple-slideshow';
+import 'hammerjs';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 //components
 import {AppComponent} from './app.component';
@@ -42,9 +45,6 @@ import {DataService} from './services/data-service/data.service';
 
 //font-awesome
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
-
-//sweet alert
-import swal from 'sweetalert2';
 
 import {ChangePasswordComponent} from './components/admin/change-password/change-password.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
@@ -91,6 +91,8 @@ import { OutStoryComponent } from './components/out-story/out-story.component';
         OutStoryComponent,
     ],
     imports: [
+        NgxGalleryModule,
+        SlideshowModule,
         FormsModule,
         CommonModule,
         HttpClientModule,
@@ -98,7 +100,6 @@ import { OutStoryComponent } from './components/out-story/out-story.component';
         AppRoutingModule,
         LoadingBarRouterModule,
         AngularFontAwesomeModule,
-        //PaginationModule,
     ],
     providers: [
         AuthorizationComponent,

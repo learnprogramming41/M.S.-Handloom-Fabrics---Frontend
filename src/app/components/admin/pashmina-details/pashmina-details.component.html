@@ -1,16 +1,9 @@
- <div class="container">
+<div class="container">
     <div class="card">
         <div class="container-fliud">
             <div class="wrapper row">
-                <div class="preview col-md-6">
-
-                    <div class="preview-pic tab-content">
-                        <div class="tab-pane active" id="pic-1"><img src="{{pashmina.images.length >= 1 ? pashmina.images[0].imageName : pashmina.images.imageName}}" /></div>
-                    </div>
-                    <ul class="preview-thumbnail nav nav-tabs">
-                        <li class="active" *ngFor="let img of pashmina.images"><a data-target="#pic-1" data-toggle="tab"><img src="{{img.imageName}}" /></a></li>
-                    </ul>
-
+                <div style="max-height: 250px;" class="preview col-md-3 col-sm-6" *ngFor="let img of pashmina.images">
+                     <img style="height: 100%; width: 100%" src="{{img.imageName}}" />
                 </div>
                 <div class="details col-md-6">
                     <h3 class="product-title">{{pashmina.pashminaName}}</h3>

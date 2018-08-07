@@ -59,6 +59,7 @@ export class PashminaDetailsComponent implements OnInit {
             (result: any) => {
                 this.pashmina = result;
                 //this.pashminaName = result.images[0].imageName;
+                console.log(this.pashmina);
             }, error => {
                 console.log(error);
             }
