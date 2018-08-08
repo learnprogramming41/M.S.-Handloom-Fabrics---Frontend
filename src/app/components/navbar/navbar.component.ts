@@ -14,6 +14,10 @@ export class NavbarComponent implements OnInit {
 
     public isLoggedIn: boolean = false;
     public fullName: string;
+    public homeNav: boolean = true;
+    public aboutUsNav: boolean = false;
+    public contactUsNav: boolean = false;
+    public ourStoryNav: boolean = false;
 
     constructor(
         public navService: NavbarService,
@@ -59,6 +63,11 @@ export class NavbarComponent implements OnInit {
     }
 
     public logout() {
+        this.homeNav = false;
+        this.aboutUsNav = false;
+        this.contactUsNav = false;
+        this.ourStoryNav = false;
+        
         localStorage.removeItem("userToken");
         localStorage.removeItem("userDetails");
         this.router.navigate(['/home']);
@@ -73,6 +82,11 @@ export class NavbarComponent implements OnInit {
     }
 
     public goToCart() {
+        this.homeNav = false;
+        this.aboutUsNav = false;
+        this.contactUsNav = false;
+        this.ourStoryNav = false;
+        
         if (!localStorage.getItem("userDetails")) {
             swal({
                 title: 'Login Needed?',
@@ -93,4 +107,38 @@ export class NavbarComponent implements OnInit {
         }
     }
 
+    public home() {
+        this.homeNav = true;
+        this.aboutUsNav = false;
+        this.contactUsNav = false;
+        this.ourStoryNav = false;
+    }
+    
+    public aboutUs() {
+        this.homeNav = false;
+        this.aboutUsNav = true;
+        this.contactUsNav = false;
+        this.ourStoryNav = false;
+    }
+    
+    public contactUs() {
+        this.homeNav = false;
+        this.aboutUsNav = false;
+        this.contactUsNav = true;
+        this.ourStoryNav = false;
+    }
+    
+    public ourStory() {
+        this.homeNav = false;
+        this.aboutUsNav = false;
+        this.contactUsNav = false;
+        this.ourStoryNav = true;
+    }
+    
+    public login() {
+        this.homeNav = false;
+        this.aboutUsNav = false;
+        this.contactUsNav = false;
+        this.ourStoryNav = false;
+    }
 }

@@ -1,0 +1,16 @@
+.shop-menu ul li:hover {
+    background: #ae227a !important;
+}
+
+.shop-menu ul li a:hover {
+    background: none !important;
+}
+
+.shop-menu ul li, .shop-menu ul li a:hover {
+    cursor: pointer;
+}
+
+.shop-menu ul li:active {
+    outline:none !important;
+}
+
