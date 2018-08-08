@@ -37,6 +37,7 @@ export class AccountComponent implements OnInit {
                         'Account created',
                         'success'
                     )
+                    this.userModel = new UserModel();
                 }, error => {
                     swal({
                         type: 'error',

@@ -31,7 +31,7 @@ export class FooterComponent implements OnInit {
                     timer: 3000
                 })
                 
-                this.getInTouch = null;
+                this.getInTouch = new GetInTouch();
             }, error => {
                 swal({
                 title: error,
