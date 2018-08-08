@@ -27,6 +27,8 @@ export class HomeComponent implements OnInit {
         this.imageUrlArray.push("../../../assets/images/girl1.jpg");
         this.imageUrlArray.push("../../../assets/images/girl2.jpg");
         this.imageUrlArray.push("../../../assets/images/girl3.jpg");
+        this.imageUrlArray.push("../../../assets/images/girl4.jpg");
+        this.imageUrlArray.push("../../../assets/images/girl5.jpg");
     }
 
     ngOnInit() {

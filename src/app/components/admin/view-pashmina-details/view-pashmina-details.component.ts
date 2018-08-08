@@ -86,8 +86,11 @@ export class ViewPashminaDetailsComponent implements OnInit {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.value) {
+                swal("Please wait deleting pashmina");
+                swal.showLoading();
                 this.pashminaService.deletePashmina(pashminaId).subscribe(
                     result => {
+                        this.getAllPashmina(12, 0);
                         swal(
                             'Deleted!',
                             'Pashmina has been deleted.',

@@ -57,15 +57,23 @@
                     <div class="col-sm-5" style="float: left;">
                         <div class="view-product">
                             <img src="{{pashminaName}}" alt=""/>
-                            <h3 (click)="zoom()" style="cursor: pointer;">ZOOM</h3>
+                            <h3 (click)="zoom(pashminaName)" style="cursor: pointer;">ZOOM</h3>
                         </div>
                         <div id="similar-product" class="carousel slide" data-ride="carousel">
 
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <a href="" *ngIf="image1"><img src="{{image1}}" alt=""></a>
-                                    <a href="" *ngIf="image2"><img src="{{image2}}" alt=""></a>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <a *ngIf="image1">
+                                            <img (click)="zoom(image1)" style="height: 100px;width: 100px;" src="{{image1}}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <a *ngIf="image2">
+                                            <img (click)="zoom(image2)" style="height: 100px;width: 100px;" src="{{image2}}" alt="">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -81,10 +89,10 @@
                     </div>
                     <div style="background: white;">
                         <div class="" *ngIf="details" style="background: white;">
-<!--                            <ul class="list-group">
-                                <li style="border: none;" class="list-group-item" *ngFor="let desc of pashmina.descriptions">
-                                    {{desc.pashminaDescription}}
-                            </li>-->
+                            <!--                            <ul class="list-group">
+                                                            <li style="border: none;" class="list-group-item" *ngFor="let desc of pashmina.descriptions">
+                                                                {{desc.pashminaDescription}}
+                                                        </li>-->
                             <ul class="">
                                 <li style="font-size: 20px;" *ngFor="let desc of pashmina.descriptions">
                                     <i style="margin-right: 10px;" class="fa fa-check-square"></i>
@@ -92,27 +100,27 @@
                                 </li>
                             </ul>
 
-                    </div>
-
-                    <div class="" *ngIf="reviews">
-                        <div class="col-sm-12 awesome">
-                            <p><b>Write Your Review</b></p>
-                            <form action="#">
-                                <span>
-                                    <input type="text" name="name" placeholder="Your Name" [(ngModel)]="getInTouch.name"/>
-                                    <input type="email" name="email" placeholder="Email Address" [(ngModel)]="getInTouch.email"/>
-                                </span>
-                                <textarea name="body" [(ngModel)]="getInTouch.body"></textarea>
-                                <button type="button" class="btn btn-default pull-right" (click)="sendEmail()">
-                                    Submit
-                                </button>
-                            </form>
                         </div>
-                    </div>
 
-                </div>
-            </div><!--/category-tab-->
+                        <div class="" *ngIf="reviews">
+                            <div class="col-sm-12 awesome">
+                                <p><b>Write Your Review</b></p>
+                                <form action="#">
+                                    <span>
+                                        <input type="text" name="name" placeholder="Your Name" [(ngModel)]="getInTouch.name"/>
+                                        <input type="email" name="email" placeholder="Email Address" [(ngModel)]="getInTouch.email"/>
+                                    </span>
+                                    <textarea name="body" [(ngModel)]="getInTouch.body"></textarea>
+                                    <button type="button" class="btn btn-default pull-right" (click)="sendEmail()">
+                                        Submit
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!--/category-tab-->
+            </div>
         </div>
     </div>
-</div>
 </section>

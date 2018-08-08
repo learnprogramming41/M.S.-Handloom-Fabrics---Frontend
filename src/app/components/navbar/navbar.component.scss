@@ -1,3 +1,6 @@
-.nav > .hov:hover {
-  color: #3a5c83;
+a.hover {
+    background: red;
+}
+ul > li > a:hover {
+    background: red;
 }

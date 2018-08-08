@@ -184,9 +184,9 @@ export class UserPashminaDetailsComponent implements OnInit {
         )
     }
 
-    public zoom() {
+    public zoom(imageUrl: string) {
         swal({
-            imageUrl: this.pashminaName,
+            imageUrl: imageUrl,
             imageWidth: 600,
             imageHeight: 400,
             animation: false,
