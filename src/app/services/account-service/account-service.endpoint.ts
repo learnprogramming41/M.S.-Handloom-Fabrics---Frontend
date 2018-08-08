@@ -38,7 +38,7 @@ export class AccountServiceEndpoint {
             }
         }).catch(
             error => {
-                throw new Observable(error);
+                return this.auth.handleError(error);
             }
         )
     }
@@ -46,7 +46,7 @@ export class AccountServiceEndpoint {
     public getInTouch<T>(getInTouch: GetInTouch) {
         return this.http.post<T>(this.getGetInTouchUrl, getInTouch)
             .catch(error => {
-                throw new Observable(error);
+                return this.auth.handleError(error);
             })
     }
 }

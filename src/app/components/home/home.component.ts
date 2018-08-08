@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.navService.show();
         this.footerService.show();
-        this.girlImage = "../../../assets/images/girl1.jpg";
 
         this.getAllPashmina(12, 0);
 
@@ -43,22 +42,6 @@ export class HomeComponent implements OnInit {
                 this.category.push(i);
             }
         }
-
-        let a: number = 1;
-        setInterval(() => {
-            a++;
-            if (a === 4) {
-                a = 1;
-            }
-            if (a === 1) {
-                this.girlImage = "../../../assets/images/girl1.jpg";
-            } else if (a === 2) {
-                this.girlImage = "../../../assets/images/girl2.jpg";
-            } else if (a === 3) {
-                this.girlImage = "../../../assets/images/girl3.jpg";
-            }
-        }, 7000);
-
     }
 
     private getAllPashmina(pageSize: number, pageNumber: number) {

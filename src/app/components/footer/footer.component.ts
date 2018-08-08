@@ -33,7 +33,12 @@ export class FooterComponent implements OnInit {
                 
                 this.getInTouch = null;
             }, error => {
-                console.log(error);
+                swal({
+                title: error,
+                animation: true,
+                customClass: 'animated tada',
+                type: 'error'
+            })
             }
         )
     }
