@@ -57,17 +57,22 @@ export class NavbarComponent implements OnInit {
                 } else {
                     this.fullName = message;
                     this.isLoggedIn = true;
+
+                    this.homeNav = true;
+                    this.aboutUsNav = false;
+                    this.contactUsNav = false;
+                    this.ourStoryNav = false;
                 }
             }
         )
     }
 
     public logout() {
-        this.homeNav = false;
+        this.homeNav = true;
         this.aboutUsNav = false;
         this.contactUsNav = false;
         this.ourStoryNav = false;
-        
+
         localStorage.removeItem("userToken");
         localStorage.removeItem("userDetails");
         this.router.navigate(['/home']);
@@ -82,11 +87,6 @@ export class NavbarComponent implements OnInit {
     }
 
     public goToCart() {
-        this.homeNav = false;
-        this.aboutUsNav = false;
-        this.contactUsNav = false;
-        this.ourStoryNav = false;
-        
         if (!localStorage.getItem("userDetails")) {
             swal({
                 title: 'Login Needed?',
@@ -98,6 +98,11 @@ export class NavbarComponent implements OnInit {
                 confirmButtonText: 'Yes, Log in!'
             }).then((result) => {
                 if (result.value) {
+                    this.homeNav = false;
+                    this.aboutUsNav = false;
+                    this.contactUsNav = false;
+                    this.ourStoryNav = false;
+
                     this.router.navigate(['account']);
                 }
             })
@@ -113,28 +118,28 @@ export class NavbarComponent implements OnInit {
         this.contactUsNav = false;
         this.ourStoryNav = false;
     }
-    
+
     public aboutUs() {
         this.homeNav = false;
         this.aboutUsNav = true;
         this.contactUsNav = false;
         this.ourStoryNav = false;
     }
-    
+
     public contactUs() {
         this.homeNav = false;
         this.aboutUsNav = false;
         this.contactUsNav = true;
         this.ourStoryNav = false;
     }
-    
+
     public ourStory() {
         this.homeNav = false;
         this.aboutUsNav = false;
         this.contactUsNav = false;
         this.ourStoryNav = true;
     }
-    
+
     public login() {
         this.homeNav = false;
         this.aboutUsNav = false;

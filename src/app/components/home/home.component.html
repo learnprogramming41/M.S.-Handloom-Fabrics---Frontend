@@ -50,8 +50,8 @@
                 </div>
             </div><hr>
             <div class="pagination-container" *ngIf="!loading">
-                <strong class="view-more" (click)="previous()">Previous..</strong>
-                <strong class="view-more" (click)="next()">Next..</strong>
+                <strong *ngIf="showPrevious" class="view-more" (click)="previous()">Previous..</strong>
+                <strong *ngIf="showNext" class="view-more" (click)="next()">Next..</strong>
             </div>
 
         </div>

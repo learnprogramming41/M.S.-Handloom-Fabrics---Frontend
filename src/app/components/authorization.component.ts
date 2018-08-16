@@ -6,7 +6,7 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class AuthorizationComponent {
-  private readonly baseUrl: string = 'http://localhost:8080/M.S.-Handloom-Fabrics';
+  private readonly baseUrl: string = 'http://localhost:8095/mshandloomfabrics';
   private readonly accessTokenUrl = '/oauth/token';
   private errorList: string = '';
 

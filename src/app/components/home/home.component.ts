@@ -4,6 +4,7 @@ import {HomeService} from '../../services/home-service/home-service';
 import {Category} from "../../enum/Enum";
 import {FooterService} from "../../services/footer/footer.service";
 import {NavbarService} from "../../services/navbar/navbar.service";
+import {DataService} from '../../services/data-service/data.service';
 
 @Component({
     selector: 'app-home',
@@ -18,11 +19,14 @@ export class HomeComponent implements OnInit {
     private page: number = 0;
     public girlImage: string;
     public imageUrlArray: Array<string> = new Array();
+    public showPrevious: boolean = true;
+    public showNext: boolean = true;
 
     constructor(
         private homeService: HomeService,
         private navService: NavbarService,
-        private footerService: FooterService
+        private footerService: FooterService,
+        private data: DataService
     ) {
         this.imageUrlArray.push("../../../assets/images/girl1.jpg");
         this.imageUrlArray.push("../../../assets/images/girl2.jpg");
@@ -34,6 +38,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.navService.show();
         this.footerService.show();
+        this.showPrevious = false;
 
         this.getAllPashmina(12, 0);
 
@@ -74,11 +79,22 @@ export class HomeComponent implements OnInit {
     }
 
     public next() {
+        this.showPrevious = true;
         this.page++;
+
+        if(this.pashmina.length <= 12) {
+            this.showNext = false;
+        }
+
         this.getAllPashmina(12, this.page * 12);
     }
 
     public previous() {
+        this.showNext = true;
+        if(this.page == 1) {
+            this.showPrevious = false;
+        }
+        console.log(this.page);
         if (this.page != 0 || this.page > 0) {
             this.page--;
             this.getAllPashmina(12, this.page * 12);
