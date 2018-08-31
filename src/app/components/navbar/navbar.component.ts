@@ -43,7 +43,7 @@ export class NavbarComponent implements OnInit {
                             localStorage.removeItem("userToken");
                             localStorage.setItem("userToken", JSON.stringify(result));
                         }, error => {
-                            console.log(error);
+                            
                         }
                     )
                 }

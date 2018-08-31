@@ -1,8 +1,8 @@
-import {Component, OnInit} from "@angular/core";
-import {NavbarService} from "../../../services/navbar/navbar.service";
-import {FooterService} from "../../../services/footer/footer.service";
-import {Router} from "@angular/router";
-import {AuthorizationComponent} from "../../authorization.component";
+import { Component, OnInit } from "@angular/core";
+import { NavbarService } from "../../../services/navbar/navbar.service";
+import { FooterService } from "../../../services/footer/footer.service";
+import { Router } from "@angular/router";
+import { AuthorizationComponent } from "../../authorization.component";
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,7 +29,7 @@ export class AdminHomeComponent implements OnInit {
         private footer: FooterService,
         private router: Router,
         private auth: AuthorizationComponent
-    ) {}
+    ) { }
 
 
     ngOnInit() {
@@ -40,20 +40,22 @@ export class AdminHomeComponent implements OnInit {
             this.router.navigate(['/admin/login']);
         } else {
             setInterval(() => {
-                let tokenExpirationTime = JSON.parse(localStorage.getItem("token")).expiration;
-                let refreshToken = JSON.parse(localStorage.getItem("token")).refreshToken.value;
+                if (JSON.parse(localStorage.getItem("token")).expiration) {
+                    let tokenExpirationTime = JSON.parse(localStorage.getItem("token")).expiration;
+                    let refreshToken = JSON.parse(localStorage.getItem("token")).refreshToken.value;
 
-                if (new Date(tokenExpirationTime) <= new Date()) {
-                    this.auth.getAccessTokenUsingRefreshToken(refreshToken).subscribe(
-                        result => {
-                            localStorage.removeItem("token");
-                            localStorage.setItem("token", JSON.stringify(result));
-                        }, error => {
-                            console.log(error);
-                        }
-                    )
+                    if (new Date(tokenExpirationTime) <= new Date()) {
+                        this.auth.getAccessTokenUsingRefreshToken(refreshToken).subscribe(
+                            result => {
+                                localStorage.removeItem("token");
+                                localStorage.setItem("token", JSON.stringify(result));
+                            }, error => {
+
+                            }
+                        )
+                    }
                 }
-            }, 3000)
+            }, 3000);
         }
     }
 

@@ -45,3 +45,7 @@ export enum Color {
     purple = 5,
     green = 6
 }
+
+export class MainCategory {
+    
+}

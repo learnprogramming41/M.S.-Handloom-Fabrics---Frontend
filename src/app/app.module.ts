@@ -64,10 +64,13 @@ import { ConfirmedOrderComponent } from './components/admin/confirmed-order/conf
 import { HistoryComponent } from './components/admin/history/history.component';
 import { OutStoryComponent } from './components/out-story/out-story.component';
 
+//jqxWidgets
+import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid';
 
 @NgModule({
     declarations: [
         AppComponent,
+        jqxGridComponent,
         NavbarComponent,
         FooterComponent,
         HomeComponent,

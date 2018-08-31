@@ -1,8 +1,8 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {AuthorizationComponent} from "../../components/authorization.component";
-import {PashminaModel} from "../../model/pashmina.model";
-import {Observable} from "rxjs/Observable";
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { AuthorizationComponent } from "../../components/authorization.component";
+import { PashminaModel } from "../../model/pashmina.model";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 
@@ -19,12 +19,12 @@ export class PashminaServiceEndpoint {
 
     }
 
-    private get getAddPashminaUrl() {return this.auth.getBaseUrl + this.addPashminaUrl}
-    private get getAllPashminaUrl() {return this.auth.getBaseUrl + this.allPashminaUrl}
-    private get getPashminaCountUrl() {return this.auth.getBaseUrl + this.pashminaCountUrl}
-    private get getDeletePashminaUrl() {return this.auth.getBaseUrl + this.deletePashminaUrl}
-    private get getPashminaByIdUrl() {return this.auth.getBaseUrl + this.pashminaByIdUrl}
-    private get getSearchPashminaUrl() {return this.auth.getBaseUrl + this.searchPashminaUrl}
+    private get getAddPashminaUrl() { return this.auth.getBaseUrl + this.addPashminaUrl }
+    private get getAllPashminaUrl() { return this.auth.getBaseUrl + this.allPashminaUrl }
+    private get getPashminaCountUrl() { return this.auth.getBaseUrl + this.pashminaCountUrl }
+    private get getDeletePashminaUrl() { return this.auth.getBaseUrl + this.deletePashminaUrl }
+    private get getPashminaByIdUrl() { return this.auth.getBaseUrl + this.pashminaByIdUrl }
+    private get getSearchPashminaUrl() { return this.auth.getBaseUrl + this.searchPashminaUrl }
 
     public addPashmina<T>(pashmina: PashminaModel) {
         return this.http.post<T>(this.getAddPashminaUrl, pashmina, {
@@ -33,19 +33,22 @@ export class PashminaServiceEndpoint {
             }
         })
             .catch(error => {
-                throw new Observable(error);
+                return this.auth.handleError(error);
             })
     }
 
     public getAllPashmin<T>(pageSize: number, pageNumber: number) {
+
+        let headers = new HttpHeaders();
+        headers = headers.append("Authorization", "Bearer "+JSON.parse(localStorage.getItem("token"))["value"])
+
         return this.http.get<T>(this.getAllPashminaUrl + "/" + pageSize + "/" + pageNumber, {
             params: {
                 access_token: JSON.parse(localStorage.getItem("token"))["value"]
             }
+        }).catch(error => {
+            return this.auth.handleError(error);
         })
-            .catch(error => {
-                throw new Observable(error)
-            })
     }
 
     public getAllPashminaCount<T>() {
@@ -54,7 +57,7 @@ export class PashminaServiceEndpoint {
                 access_token: JSON.parse(localStorage.getItem("token"))["value"]
             }
         }).catch(error => {
-            throw new Observable(error)
+            return this.auth.handleError(error);
         })
     }
 
@@ -65,20 +68,20 @@ export class PashminaServiceEndpoint {
                 pashminaId: pashminaId.toString()
             }
         }).catch(error => {
-            throw new Observable(error);
+            return this.auth.handleError(error);;
         })
     }
-    
+
     public getPashminaById<T>(pashminaId: number) {
-        return this.http.get<T>(this.getPashminaByIdUrl+"/"+pashminaId, {
+        return this.http.get<T>(this.getPashminaByIdUrl + "/" + pashminaId, {
             params: {
                 access_token: JSON.parse(localStorage.getItem("token"))["value"]
             }
         }).catch(error => {
-            throw new Observable(error);
+            return this.auth.handleError(error);;
         })
     }
-    
+
     public searchPashmina<T>(searchText: string) {
         return this.http.get<T>(this.getSearchPashminaUrl, {
             params: {
@@ -86,7 +89,7 @@ export class PashminaServiceEndpoint {
                 access_token: JSON.parse(localStorage.getItem("token"))["value"]
             }
         }).catch(error => {
-            throw new Observable(error);
+            return this.auth.handleError(error);;
         })
     }
 

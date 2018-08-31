@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Nishan",
+        "address": "Hokse"
+    },
+    {
+        "id": 2,
+        "name": "Neil",
+        "address": "USA"
+    },
+    {
+        "id": 3,
+        "name": "Mark",
+        "address": "LA"
+    },
+    {
+        "id": 4,
+        "name": "Elon",
+        "address": "California"
+    }
+]

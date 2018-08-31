@@ -11,6 +11,7 @@ export class UserModel {
         public enabled?: boolean,
         public userType?: string
     ) {
+        
         this.userId = userId,
             this.fullName = fullName,
             this.email = email,

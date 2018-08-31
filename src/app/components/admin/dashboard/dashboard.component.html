@@ -3,7 +3,7 @@
         <div class="breadcrumbs">
             <P>Admin! You have got following orders</P>
         </div>
-        <div class="table-responsive cart_info">
+        <!-- <div class="table-responsive cart_info">
             <table class="table table-condensed">
                 <thead>
                     <tr class="cart_menu">
@@ -26,6 +26,10 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> -->
+        <jqxGrid #myGrid [width]="'100%'" [source]="dataAdapter" [columns]="columns" [pageable]="true" [autoheight]="true" [sortable]="true"
+            [altrows]="true" [showfilterrow]="true" [filterable]="true" [enabletooltips]="true" [showtoolbar]="true" [editable]="true" [rendertoolbar]="rendertoolbar" [selectionmode]="'multiplecellsadvanced'">
+        </jqxGrid>
     </div>
-</section> <!--/#cart_items-->
+</section>
+<!--/#cart_items-->
