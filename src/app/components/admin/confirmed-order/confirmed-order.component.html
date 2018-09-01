@@ -1,18 +1,4 @@
-<table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Order Date</th>
-        <th>Order By</th>
-        <th>Pashmina Name</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orderModel">
-        <td>{{order.orderDate | date}}</td>
-        <td>{{order.userId.fullName}}</td>
-        <td>{{order.pashminaId.pashminaName}}</td>
-        <td><button (click)="markAsShipped(order.orderId)" class="btn btn-success"><i class="fa fa-check"></i>Mark As Shipped</button></td>
-      </tr>
-    </tbody>
-  </table>
+<jqxGrid #myGrid [width]="'100%'" [source]="dataAdapter" [columns]="columns" [pageable]="true" [autoheight]="true" [sortable]="true"
+  [altrows]="true" [showfilterrow]="true" [filterable]="true" [enabletooltips]="true" [showtoolbar]="true" [editable]="true"
+  [rendertoolbar]="rendertoolbar" [selectionmode]="'multiplecellsadvanced'">
+</jqxGrid>

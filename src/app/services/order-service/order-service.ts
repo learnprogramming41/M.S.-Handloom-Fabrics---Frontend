@@ -40,13 +40,13 @@ export class OrderService{
         return this.orderServiceEndpoint.confirmOrder<OrderModel>(orderId);
     }
     
-    public confirmedOrders<T>() {
-        return this.orderServiceEndpoint.confirmedOrders<OrderModel>();
-    }
+    // public confirmedOrders<T>() {
+    //     return this.orderServiceEndpoint.confirmedOrders<OrderModel>();
+    // }
     
-    public history<T>() {
-        return this.orderServiceEndpoint.history<OrderModel>();
-    }
+    // public history<T>() {
+    //     return this.orderServiceEndpoint.history<OrderModel>();
+    // }
     
     public orderShipped<T>(orderId: number) {
         return this.orderServiceEndpoint.orderShipped<OrderModel>(orderId);

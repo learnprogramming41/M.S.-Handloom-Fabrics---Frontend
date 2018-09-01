@@ -19,26 +19,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let order of orderModel">
+                    <tr *ngFor="let order of orderModel" [ngStyle]="{'background-color': order.soldOutStatus == 0 ? none : '#f27575'}">
                         <td class="cart_product">
-                            <a [routerLink]="['/pashmina-details']" [queryParams]="{id: order.pashminaId.pashminaId}"><img src="{{order.pashminaId.images[0].imageName}}" alt=""></a>
+                            <a [ngStyle]="{'color': order.soldOutStatus == 0 ? none: 'white'}" [routerLink]="['/pashmina-details']" [queryParams]="{id: order.pashminaId.pashminaId}">
+                                <img style="width: 150px; height: 150px;" src="{{order.pashminaId.images[0].imageName}}" alt=""></a>
                         </td>
                         <td class="cart_description">
-                            <h4><a [routerLink]="['/pashmina-details']" [queryParams]="{id: order.pashminaId.pashminaId}">{{ order.pashminaId.pashminaName }}</a></h4>
-                            <p>{{order.shippingAddress}}</p>
-                            <p>{{order.contact}}</p>
+                            <h4><a [ngStyle]="{'color': order.soldOutStatus == 0 ? none: 'white'}" [routerLink]="['/pashmina-details']"
+                                    [queryParams]="{id: order.pashminaId.pashminaId}">
+                                    <i class="fa fa-eyedropper" aria-hidden="true"></i>&nbsp; {{ order.pashminaId.pashminaName
+                                    }}</a></h4>
+
+                            <p [ngStyle]="{'color': order.soldOutStatus == 0 ? none: 'white'}">
+                                <i class="fa fa-address-book" aria-hidden="true"></i>&nbsp; {{order.shippingAddress}}</p>
+
+                            <p [ngStyle]="{'color': order.soldOutStatus == 0 ? none: 'white'}">
+                                <i class="fa fa-phone" aria-hidden="true"></i>&nbsp; {{order.contact}}</p>
                         </td>
+
                         <td class="cart_price">
-                            <p><i class="fa fa-inr"></i>{{order.pashminaId.price}}</p>
+                            <p [ngStyle]="{'color': order.soldOutStatus == 0 ? none: 'white'}"><i class="fa fa-inr"></i>{{order.pashminaId.price}}</p>
                         </td>
                         <td class="cart_quantity">
-                            <p class="cart_quantity_input">{{order.quantity}}</p>
+                            <p [ngStyle]="{'color': order.soldOutStatus == 0 ? none: 'white'}" class="cart_quantity_input">{{order.quantity}}</p>
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total_price"><i class="fa fa-inr"></i>{{order.quantity * order.pashminaId.price}}</p>
+                            <p [ngStyle]="{'color': order.soldOutStatus == 0 ? none: 'white'}" class="cart_total_price"><i
+                                    class="fa fa-inr"></i>{{order.quantity * order.pashminaId.price}}</p>
                         </td>
                         <td class="cart_delete">
-                            <a style="cursor: pointer;" class="cart_quantity_delete" (click)="removeCart(order.orderId)">
+                            <a *ngIf="order.soldOutStatus == 0" style="cursor: pointer;" class="cart_quantity_delete" (click)="removeCart(order.orderId)">
                                 <i style="color: red;" class="fa fa-times"></i></a>
                         </td>
                     </tr>
@@ -46,4 +56,5 @@
             </table>
         </div>
     </div>
-</section> <!--/#cart_items-->
+</section>
+<!--/#cart_items-->

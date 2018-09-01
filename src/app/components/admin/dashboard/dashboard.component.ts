@@ -91,14 +91,14 @@ export class DashboardComponent implements OnInit {
     toolbar[0].appendChild(container);
 
     let addButton = jqwidgets.createInstance('#buttonOneContainer', 'jqxButton', { width: 105, value: 'ADD' });
-    let deleteButton = jqwidgets.createInstance('#buttonTwoContainer', 'jqxButton', { width: 105, value: 'REMOVE' })
+    let deleteButton = jqwidgets.createInstance('#buttonTwoContainer', 'jqxButton', { width: 105, value: 'Reload' })
 
     addButton.addEventHandler('click', () => {
       alert("add button clicked");
     })
 
     deleteButton.addEventHandler('click', () => {
-      alert("delete button clicked");
+      this.myGrid.updatebounddata();
     })
 
   }

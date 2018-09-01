@@ -3,33 +3,8 @@
         <div class="breadcrumbs">
             <P>Admin! You have got following orders</P>
         </div>
-        <!-- <div class="table-responsive cart_info">
-            <table class="table table-condensed">
-                <thead>
-                    <tr class="cart_menu">
-                        <td class="description">Order Date</td>
-                        <td class="quantity">Order By</td>
-                        <td class="total">Pashmina name</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="hover-tr" [routerLink]="['/admin/order-details']" [queryParams]="{id: order.orderId}" *ngFor="let order of orderModel">
-                        <td class="cart_price">
-                            <p>{{order.orderDate | date}}</p>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">{{order.userId.fullName}}</p>
-                        </td>
-                        <td class="cart_description">
-                            <h5>{{order.pashminaId.pashminaName}}</h5>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> -->
         <jqxGrid #myGrid [width]="'100%'" [source]="dataAdapter" [columns]="columns" [pageable]="true" [autoheight]="true" [sortable]="true"
             [altrows]="true" [showfilterrow]="true" [filterable]="true" [enabletooltips]="true" [showtoolbar]="true" [editable]="true" [rendertoolbar]="rendertoolbar" [selectionmode]="'multiplecellsadvanced'">
         </jqxGrid>
     </div>
 </section>
-<!--/#cart_items-->
