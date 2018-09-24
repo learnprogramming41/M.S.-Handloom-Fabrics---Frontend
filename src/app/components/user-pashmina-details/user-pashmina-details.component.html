@@ -14,7 +14,7 @@
 
                     <h2>Similar Product</h2>
                     <div *ngFor="let pash of similarPashmina" class="panel-group category-products similar-product" style="text-align: center;">
-                        <img style="width: 100%;" src="{{pash.images[0].imageName}}" alt=""/>
+                        <img style="width: 100%;" src="{{pash.images[0].imageName}}" alt="" />
                         <b (click)="goToSimilarPashmina(pash.pashminaId)">{{pash.pashminaName}}</b>
                     </div>
                 </div>
@@ -22,16 +22,15 @@
 
             </div>
             <div class="col-sm-9 padding-right">
-                <div class="product-details"><!--product-details-->
+                <div class="product-details">
                     <div class="col-sm-7" style="float: right;">
-                        <div class="product-information"><!--/product-information-->
+                        <div class="product-information">
                             <h1 ng-show="permission === true;">{{pashmina.pashminaName}}</h1>
                             <p>{{pashmina.addedAt| date}}</p>
                             <span>
                                 <span><i class="fa fa-inr"></i> {{pashmina.price}}</span>
                                 <label>Quantity:</label>
-                                <input type="text" [(ngModel)]="orderModel.quantity"
-                                       (change)="calculatePrice($event.target.value)"/>
+                                <input type="text" [(ngModel)]="orderModel.quantity" (change)="calculatePrice($event.target.value)" />
                                 <button type="button" class="btn btn-fefault cart" (click)="addToCart()">
                                     <i class="fa fa-shopping-cart"></i>
                                     Add to cart
@@ -48,20 +47,19 @@
                                           border-radius: 50%;
                                           display: inline-block;
                                           margin: 5px 5px;" *ngFor="let color of pashmina.pashminaColor" [style.background-color]="color.color"
-                                          class="color green"></span>
+                                        class="color green"></span>
                                 </b>
                             </p>
-                        </div><!--/product-information-->
+                        </div>
                     </div>
 
                     <div class="col-sm-5" style="float: left;">
                         <div class="view-product">
-                            <img src="{{pashminaName}}" alt=""/>
+                            <img src="{{pashminaName}}" alt="" />
                             <h3 (click)="zoom(pashminaName)" style="cursor: pointer;">ZOOM</h3>
                         </div>
                         <div id="similar-product" class="carousel slide" data-ride="carousel">
 
-                            <!-- Wrapper for slides -->
                             <div class="carousel-inner">
                                 <div class="item active">
                                     <div class="col-md-6 col-lg-6 col-sm-6">
@@ -78,9 +76,9 @@
                             </div>
                         </div>
                     </div>
-                </div><!--/product-details-->
+                </div>
 
-                <div class="shop-details-tab"><!--category-tab-->
+                <div class="shop-details-tab">
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs" style="background: #172431;">
                             <li style="cursor: pointer; color: white;"><a (click)="showDetails()">Details</a></li>
@@ -89,10 +87,7 @@
                     </div>
                     <div style="background: white;">
                         <div class="" *ngIf="details" style="background: white;">
-                            <!--                            <ul class="list-group">
-                                                            <li style="border: none;" class="list-group-item" *ngFor="let desc of pashmina.descriptions">
-                                                                {{desc.pashminaDescription}}
-                                                        </li>-->
+
                             <ul class="">
                                 <li style="font-size: 20px;" *ngFor="let desc of pashmina.descriptions">
                                     <i style="margin-right: 10px;" class="fa fa-check-square"></i>
@@ -107,8 +102,8 @@
                                 <p><b>Write Your Review</b></p>
                                 <form action="#">
                                     <span>
-                                        <input type="text" name="name" placeholder="Your Name" [(ngModel)]="getInTouch.name"/>
-                                        <input type="email" name="email" placeholder="Email Address" [(ngModel)]="getInTouch.email"/>
+                                        <input type="text" name="name" placeholder="Your Name" [(ngModel)]="getInTouch.name" />
+                                        <input type="email" name="email" placeholder="Email Address" [(ngModel)]="getInTouch.email" />
                                     </span>
                                     <textarea name="body" [(ngModel)]="getInTouch.body"></textarea>
                                     <button type="button" class="btn btn-default pull-right" (click)="sendEmail()">
@@ -119,8 +114,105 @@
                         </div>
 
                     </div>
-                </div><!--/category-tab-->
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<kendo-window title="Please provide additional data" *ngIf="windowOne" (close)="close()" [minWidth]="250" [width]="450">
+    <form class="k-form">
+        <fieldset>
+            <legend>User Details</legend>
+            <label class="k-form-field">
+                <span>Phone Number</span>
+                <input class="k-textbox" (change)="phoneChange($event)" [(ngModel)]="phoneNumber" name="phoneNumber" placeholder="Your phone number" />
+            </label>
+            <label class="k-form-field">
+                <span>State</span>
+                <kendo-combobox [data]="states" [(ngModel)]="state" name="state" (valueChange)="stateChange($event)">
+                </kendo-combobox>
+            </label>
+            <label class="k-form-field">
+                <span>City</span>
+                <kendo-combobox [data]="citites" [(ngModel)]="city" name="city" (valueChange)="cityChange($event)">
+                </kendo-combobox>
+            </label>
+            <label class="k-form-field">
+                <span>Add another</span>
+                <input class="k-textbox" (change)="anotherAddress($event)" [(ngModel)]="anotherCity" name="anotherCity" placeholder="Your Name" />
+            </label>
+        </fieldset>
+
+        <div class="text-right">
+            <button type="button" class="k-button" (click)="close()">Cancel</button>
+            <button type="button" class="k-button k-primary" (click)="openWindowTwo()">Next</button>
+        </div>
+    </form>
+</kendo-window>
+
+<kendo-window title="Please provide additional data" *ngIf="windowTwo" (close)="close()" [minWidth]="250" [width]="450">
+    <form class="k-form">
+        <fieldset>
+            <legend>Your order</legend>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{image1}}" style="width: 130px; height: 110px;"/>
+                </div>
+                <div class="col-md-8">
+                    <label style="font-weight: bold" class="k-form-field">Product: {{pashmina.pashminaName}}</label>
+                    <label class="k-form-field">Quantity: <input style="width: 50px;" [(ngModel)]="orderModel.quantity" name="quantity" value="{{orderModel.quantity}}"></label>
+                    <label class="k-form-field">Price: Rs.{{pashmina.price}}</label>
+                </div>
+            </div><br><br>
+
+            <h4>Shipping Details&nbsp;&nbsp;<a style="font-size: 13px;cursor: pointer;" (click)="previous()">edit</a></h4><hr>
+            <div class="row">
+                <label>State: {{state}}</label>
+                <label>City: {{city}}</label>
+                <label>Another: {{anotherCity}}</label>
+            </div>
+        </fieldset>
+
+        <div class="text-right">
+            <button type="button" class="k-button" (click)="previous()">Previous</button>
+            <button type="button" class="k-button k-primary" (click)="openWindowThree()">Processed to bill</button>
+        </div>
+    </form>
+</kendo-window>
+
+<kendo-window title="Please provide additional data" *ngIf="windowThree" (close)="close()" [minWidth]="250" [width]="450">
+    <form class="k-form">
+        <fieldset>
+            <legend>Your order</legend>
+            <div class="row">
+                <table width="100%">
+                    <tr>
+                        <td>Product</td>
+                        <td>Category</td>
+                        <td>Quantity</td>
+                        <td>Price</td>
+                    </tr>
+                    <tr>
+                        <td>{{pashmina.pashminaName}}</td>
+                        <td>{{pashmina.category}}</td>
+                        <td>{{orderModel.quantity}}</td>
+                        <td>{{pashmina.price}}</td>
+                    </tr>
+                </table>
+                <p align="right" style="font-weight: bold;">Total: Rs.{{orderModel.quantity * pashmina.price}}</p><hr>
+            </div>
+            <h4>Shipping Details&nbsp;&nbsp;<a style="font-size: 13px;cursor: pointer;" (click)="previous()">edit</a></h4><hr>
+            <div class="row">
+                <label>State: {{state}}</label>
+                <label>City: {{city}}</label>
+                <label>Another: {{anotherCity}}</label>
+            </div>
+        </fieldset>
+
+        <div class="text-right">
+            <button type="button" class="k-button" (click)="openWindowTwo()">Previous</button>
+            <button type="button" class="k-button k-primary" (click)="orderConfirm()">Confirm Order</button>
+        </div>
+    </form>
+</kendo-window>

@@ -66,11 +66,26 @@ import { OutStoryComponent } from './components/out-story/out-story.component';
 
 //jqxWidgets
 import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid';
+import { jqxWindowComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxwindow';
+
+//kendo ui
+import { WindowModule } from '@progress/kendo-angular-dialog';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { TreeViewModule } from '@progress/kendo-angular-treeview';
+import { MenusModule } from '@progress/kendo-angular-menu';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+//searchable dropdown
+import { SelectDropDownModule } from 'ngx-select-dropdown'
 
 @NgModule({
     declarations: [
         AppComponent,
         jqxGridComponent,
+        jqxWindowComponent,
         NavbarComponent,
         FooterComponent,
         HomeComponent,
@@ -94,6 +109,7 @@ import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid
         OutStoryComponent,
     ],
     imports: [
+        BrowserAnimationsModule,
         NgxGalleryModule,
         SlideshowModule,
         FormsModule,
@@ -103,6 +119,12 @@ import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid
         AppRoutingModule,
         LoadingBarRouterModule,
         AngularFontAwesomeModule,
+        WindowModule,
+        ButtonsModule,
+        DropDownsModule,
+        TreeViewModule,
+        MenusModule,
+        SelectDropDownModule,
     ],
     providers: [
         AuthorizationComponent,

@@ -8,6 +8,7 @@ import { Observable } from "rxjs/Observable";
 export class OrderServiceEndpoint {
 
     private readonly orderPashminaUrl: string = "/api/order-pashmina";
+    private readonly guestOrderUrl: string = "/guest-order";
     private readonly cancelOrderUrl: string = "/api/cancel-order/";
     private readonly updateOrderUrl: string = "/api/update-order";
     private readonly orderByUserIdUrl: string = "/api/get-order-by-user/";
@@ -25,6 +26,7 @@ export class OrderServiceEndpoint {
     }
 
     private get getOrderPashminaUrl() { return this.auth.getBaseUrl + this.orderPashminaUrl }
+    private get getGuestOrderUrl() { return this.auth.getBaseUrl + this.guestOrderUrl }
     private get getCancelOrderUrl() { return this.auth.getBaseUrl + this.cancelOrderUrl }
     private get getUpdateOrderUrl() { return this.auth.getBaseUrl + this.updateOrderUrl }
     private get getOrderByUserUrl() { return this.auth.getBaseUrl + this.orderByUserIdUrl }
@@ -43,6 +45,12 @@ export class OrderServiceEndpoint {
                 access_token: JSON.parse(localStorage.getItem("userToken"))["value"]
             }
         }).catch(error => {
+            throw new Observable(error);
+        })
+    }
+
+    public orderAsGuest(order: OrderModel) {
+        return this.http.post(this.getGuestOrderUrl, order).catch(error => {
             throw new Observable(error);
         })
     }

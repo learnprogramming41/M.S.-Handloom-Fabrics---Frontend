@@ -1,3 +1,4 @@
+
 .shop-menu ul li:hover {
     background: #ae227a !important;
 }
@@ -27,4 +28,33 @@
 
 .only:hover {
     background-color: none!important;
+}
+
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    background-color: red;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.sub-drop :hover .sub-menu {
+    display: block;
+}
+
+.hov:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
 }

@@ -46,6 +46,27 @@ export enum Color {
     green = 6
 }
 
-export class MainCategory {
-    
+export enum MainCategory {
+    "Test1" = 1,
+    "Test2" = 2,
+    "Test3" = 3
+}
+
+
+export enum Test1 {
+    "Nishan" = 1,
+    "Dhungana" = 2,
+    "Hola" = 3
+}
+
+export enum Test2 {
+    "Nishan" = 1,
+    "Dhungana" = 2,
+    "Hola" = 3
+}
+
+export enum Test3 {
+    "Nishan" = 1,
+    "Dhungana" = 2,
+    "Hola" = 3
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PashminaModel } from '../../model/pashmina.model';
 import { HomeService } from '../../services/home-service/home-service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,6 +8,8 @@ import { UserModel } from '../../model/user.model';
 import { OrderService } from '../../services/order-service/order-service';
 import { GetInTouch } from '../../model/get-in-touch';
 import { AccountService } from '../../services/account-service/account-service';
+import { jqxWindowComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxwindow';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-user-pashmina-details',
@@ -15,6 +17,8 @@ import { AccountService } from '../../services/account-service/account-service';
     styleUrls: ['./user-pashmina-details.component.scss']
 })
 export class UserPashminaDetailsComponent implements OnInit {
+
+    @ViewChild("windowReference") window: jqxWindowComponent;
 
     public pashmina: PashminaModel = new PashminaModel();
     public similarPashmina: PashminaModel[] = [];
@@ -33,13 +37,27 @@ export class UserPashminaDetailsComponent implements OnInit {
 
     public reviews: boolean = false;
     public details: boolean = false;
+    public windowOne: boolean = false;
+    public windowTwo: boolean = false;
+    public windowThree: boolean = false;
+
+    public states: string[] = [];
+    public citites: string[] = [];
+
+    public phoneNumber: any;
+    public state: string;
+    public city: string;
+    public anotherCity: string;
+
+    public isLoggedInUser: boolean = false;
 
     constructor(
         private homeService: HomeService,
         private activatedRoute: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private orderService: OrderService
+        private orderService: OrderService,
+        private http: HttpClient,
     ) {
     }
 
@@ -51,6 +69,18 @@ export class UserPashminaDetailsComponent implements OnInit {
 
         this.getPashminaById(this.pashminaId);
         this.details = true;
+
+        this.http.get("http://localhost:4200/assets/cities.json").subscribe((res: any) => {
+            res.forEach((element: any) => {
+                if (!this.states.includes(element.state)) {
+                    this.states.push(element.state);
+                }
+                if (!this.citites.includes(element.name)) {
+                    this.citites.push(element.name);
+                }
+            });
+        })
+
     }
 
     private getPashminaById(id: number) {
@@ -70,8 +100,12 @@ export class UserPashminaDetailsComponent implements OnInit {
     }
 
     public calculatePrice(quantity: number) {
-
         this.pashminaPrice = this.price * quantity;
+    }
+
+
+    public close() {
+        this.windowOne = false;
     }
 
 
@@ -98,11 +132,13 @@ export class UserPashminaDetailsComponent implements OnInit {
                     if (result.value) {
                         this.router.navigate(['account']);
                     } else {
-                        this.orderSwal(false);
+                        this.isLoggedInUser = false;
+                        this.windowOne = true;
                     }
                 })
             } else {
-                this.orderSwal(true);
+                this.isLoggedInUser = true;
+                this.windowOne = true;
             }
         }
     }
@@ -162,63 +198,186 @@ export class UserPashminaDetailsComponent implements OnInit {
     }
 
     private orderSwal(user: boolean) {
-        (swal as any).mixin({
-            input: 'text',
-            confirmButtonText: 'Next &rarr;',
-            showCancelButton: true,
-            progressSteps: ['1', '2']
-        }).queue([
-            {
-                title: 'Confirmation',
-                text: 'Please provide us your full address'
-            },
-            'Please provide us your contact number'
-        ]).then((result) => {
-            if (result.value) {
-                this.orderModel.shippingAddress = result.value[0];
-                this.orderModel.contact = result.value[1];
-                this.orderModel.pashminaId = new PashminaModel(this.pashminaId);
-                if(user) {
-                    this.orderModel.userId = new UserModel(JSON.parse(localStorage.getItem("userDetails"))["userId"]);
-                } else {
-                    this.orderModel.userId = new UserModel(0);
-                }
+        this.windowOne = true;
+        // (swal as any).mixin({
+        //     input: 'text',
+        //     confirmButtonText: 'Next &rarr;',
+        //     showCancelButton: true,
+        //     progressSteps: ['1', '2']
+        // }).queue([
+        //     {
+        //         title: 'Confirmation',
+        //         text: 'Please provide us your full address'
+        //     },
+        //     'Please provide us your contact number'
+        // ]).then((result) => {
+        //     if (result.value) {
+        //         this.orderModel.shippingAddress = result.value[0];
+        //         this.orderModel.contact = result.value[1];
+        //         this.orderModel.pashminaId = new PashminaModel(this.pashminaId);
+        //         if(user) {
+        //             this.orderModel.userId = new UserModel(JSON.parse(localStorage.getItem("userDetails"))["userId"]);
+        //             if (!result.value[0] || !result.value[1]) {
+        //                 swal({
+        //                     title: 'All fields are required',
+        //                     animation: true,
+        //                     customClass: 'animated tada',
+        //                     type: 'error'
+        //                 })
+        //             } else {
+        //                 this.orderService.orderPashmina(this.orderModel).subscribe(
+        //                     result => {
+        //                         swal({
+        //                             title: 'Hurrey!',
+        //                             type: 'success',
+        //                             html: '<p>You have successfully added to a cart.</p><p>We will delivered a items with in 3 business day</p>',
+        //                             width: 600,
+        //                             background: '#fff',
+        //                             backdrop: `
+        //                             rgba(0,0,123,0.4)
+        //                             url("http://www.animatedimages.org/data/media/466/animated-thank-you-image-0023.gif")
+        //                             center left
+        //                             no-repeat
+        //                           `
+        //                         }).then((result) => {
+        //                             if (result.value) {
+        //                                 this.router.navigate(['/home']);
+        //                             }
+        //                         })
+        //                     }, error => {
+        //                         console.log(error);
+        //                     }
+        //                 )
+        //             }
+        //         } else {
+        //             this.orderModel.userId = new UserModel(341);
+        //             if (!result.value[0] || !result.value[1]) {
+        //                 swal({
+        //                     title: 'All fields are required',
+        //                     animation: true,
+        //                     customClass: 'animated tada',
+        //                     type: 'error'
+        //                 })
+        //             } else {
+        //                 this.orderService.orderAsGuest(this.orderModel).subscribe(
+        //                     result => {
+        //                         swal({
+        //                             title: 'Hurrey!',
+        //                             type: 'success',
+        //                             html: '<p>You have successfully added to a cart.</p><p>We will delivered a items with in 3 business day</p>',
+        //                             width: 600,
+        //                             background: '#fff',
+        //                             backdrop: `
+        //                             rgba(0,0,123,0.4)
+        //                             url("http://www.animatedimages.org/data/media/466/animated-thank-you-image-0023.gif")
+        //                             center left
+        //                             no-repeat
+        //                           `
+        //                         }).then((result) => {
+        //                             if (result.value) {
+        //                                 this.router.navigate(['/home']);
+        //                             }
+        //                         })
+        //                     }, error => {
+        //                         console.log(error);
+        //                     }
+        //                 )
+        //             }
+        //         }
+        //     }
+        // })
+    }
 
-                console.log(this.orderModel);
+    public previous() {
+        this.windowTwo = false;
+        this.windowOne = true;
+        this.windowThree = false;
+    }
 
-                if (!result.value[0] || !result.value[1]) {
+    public openWindowTwo() {
+        this.windowOne = false;
+        this.windowThree = false;
+        this.windowTwo = true;
+    }
+
+    public openWindowThree() {
+        this.windowTwo = false;
+        this.windowOne = false;
+        this.windowThree = true;
+    }
+
+    public stateChange(state) {
+        this.state = state;
+    }
+
+    public cityChange(city) {
+        this.city = city;
+    }
+
+    public phoneChange(phone) {
+        this.phoneNumber = phone.target.value;
+    }
+
+    public anotherAddress($event) {
+        this.anotherCity = $event.target.value;
+    }
+
+    public orderConfirm() {
+        this.windowThree = false;
+        this.orderModel.shippingAddress = this.state + "," + this.city + "," + this.anotherCity
+        this.orderModel.contact = this.phoneNumber;
+        this.orderModel.pashminaId = new PashminaModel(this.pashminaId);
+        if (this.isLoggedInUser) {
+            this.orderModel.userId = new UserModel(JSON.parse(localStorage.getItem("userDetails"))["userId"]);
+            this.orderService.orderPashmina(this.orderModel).subscribe(
+                result => {
                     swal({
-                        title: 'All fields are required',
-                        animation: true,
-                        customClass: 'animated tada',
-                        type: 'error'
-                    })
-                } else {
-                    this.orderService.orderPashmina(this.orderModel).subscribe(
-                        result => {
-                            swal({
-                                title: 'Hurrey!',
-                                type: 'success',
-                                html: '<p>You have successfully added to a cart.</p><p>We will delivered a items with in 3 business day</p>',
-                                width: 600,
-                                background: '#fff',
-                                backdrop: `
-                                rgba(0,0,123,0.4)
-                                url("http://www.animatedimages.org/data/media/466/animated-thank-you-image-0023.gif")
-                                center left
-                                no-repeat
-                              `
-                            }).then((result) => {
-                                if (result.value) {
-                                    this.router.navigate(['/home']);
-                                }
-                            })
-                        }, error => {
-                            console.log(error);
+                        title: 'Hurrey!',
+                        type: 'success',
+                        html: '<p>You have successfully added to a cart.</p><p>We will delivered a items with in 3 business day</p>',
+                        width: 600,
+                        background: '#fff',
+                        backdrop: `
+                                    rgba(0,0,123,0.4)
+                                    url("http://www.animatedimages.org/data/media/466/animated-thank-you-image-0023.gif")
+                                    center left
+                                    no-repeat
+                                  `
+                    }).then((result) => {
+                        if (result.value) {
+                            this.router.navigate(['/home']);
                         }
-                    )
+                    })
+                }, error => {
+                    console.log(error);
                 }
-            }
-        })
+            )
+
+        } else {
+            this.orderModel.userId = new UserModel(341);
+            this.orderService.orderAsGuest(this.orderModel).subscribe(
+                result => {
+                    swal({
+                        title: 'Hurrey!',
+                        type: 'success',
+                        html: '<p>You have successfully added to a cart.</p><p>We will delivered a items with in 3 business day</p>',
+                        width: 600,
+                        background: '#fff',
+                        backdrop: `
+                                    rgba(0,0,123,0.4)
+                                    url("http://www.animatedimages.org/data/media/466/animated-thank-you-image-0023.gif")
+                                    center left
+                                    no-repeat
+                                  `
+                    }).then((result) => {
+                        if (result.value) {
+                            this.router.navigate(['/home']);
+                        }
+                    })
+                }, error => {
+                    console.log(error);
+                }
+            )
+        }
     }
 }

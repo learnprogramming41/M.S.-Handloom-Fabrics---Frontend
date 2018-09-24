@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {PashminaModel} from '../../model/pashmina.model';
-import {HomeService} from '../../services/home-service/home-service';
-import {Category} from "../../enum/Enum";
-import {FooterService} from "../../services/footer/footer.service";
-import {NavbarService} from "../../services/navbar/navbar.service";
-import {DataService} from '../../services/data-service/data.service';
+import { Component, OnInit } from '@angular/core';
+import { PashminaModel } from '../../model/pashmina.model';
+import { HomeService } from '../../services/home-service/home-service';
+import { Category } from "../../enum/Enum";
+import { FooterService } from "../../services/footer/footer.service";
+import { NavbarService } from "../../services/navbar/navbar.service";
+import { DataService } from '../../services/data-service/data.service';
 
 @Component({
     selector: 'app-home',
@@ -49,6 +49,79 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    public catdata: any[] = [
+        {
+            text: 'Furniture', items: [
+                { text: 'Tables & Chairs' },
+                { text: 'Sofas' },
+                { text: 'Occasional Furniture' }
+            ]
+        },
+        {
+            text: 'Decor', items: [
+                { text: 'Bed Linen' },
+                { text: 'Curtains & Blinds' },
+                { text: 'Carpets' }
+            ]
+        },
+        {
+            text: 'Decor', items: [
+                { text: 'Bed Linen' },
+                { text: 'Curtains & Blinds' },
+                { text: 'Carpets' }
+            ]
+        },
+        {
+            text: 'Decor', items: [
+                { text: 'Bed Linen' },
+                { text: 'Curtains & Blinds' },
+                { text: 'Carpets' }
+            ]
+        },
+        {
+            text: 'Decor', items: [
+                { text: 'Bed Linen' },
+                { text: 'Curtains & Blinds' },
+                { text: 'Carpets' }
+            ]
+        },
+        {
+            text: 'Decor', items: [
+                { text: 'Bed Linen' },
+                { text: 'Curtains & Blinds' },
+                { text: 'Carpets' }
+            ]
+        },
+        {
+            text: 'Decor', items: [
+                { text: 'Bed Linen' },
+                { text: 'Curtains & Blinds' },
+                { text: 'Carpets' }
+            ]
+        },
+        {
+            text: 'Decor', items: [
+                { text: 'Bed Linen' },
+                { text: 'Curtains & Blinds' },
+                { text: 'Carpets' }
+            ]
+        },
+        {
+            text: 'Decor', items: [
+                { text: 'Bed Linen' },
+                { text: 'Curtains & Blinds' },
+                { text: 'Carpets' }
+            ]
+        },
+        {
+            text: 'Decor', items: [
+                { text: 'Bed Linen' },
+                { text: 'Curtains & Blinds' },
+                { text: 'Carpets' }
+            ]
+        }
+    ];
+
     private getAllPashmina(pageSize: number, pageNumber: number) {
         this.loading = true;
         this.homeService.getPashmina(pageSize, pageNumber).subscribe(
@@ -82,7 +155,7 @@ export class HomeComponent implements OnInit {
         this.showPrevious = true;
         this.page++;
 
-        if(this.pashmina.length <= 12) {
+        if (this.pashmina.length <= 12) {
             this.showNext = false;
         }
 
@@ -91,7 +164,7 @@ export class HomeComponent implements OnInit {
 
     public previous() {
         this.showNext = true;
-        if(this.page == 1) {
+        if (this.page == 1) {
             this.showPrevious = false;
         }
         console.log(this.page);

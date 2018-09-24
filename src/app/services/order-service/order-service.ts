@@ -11,6 +11,10 @@ export class OrderService{
     public orderPashmina<T>(order: OrderModel) {
         return this.orderServiceEndpoint.orderPashmina<OrderModel>(order);
     }
+
+    public orderAsGuest(order: OrderModel) {
+        return this.orderServiceEndpoint.orderAsGuest(order);
+    }
     
     public cancelOrder<T>(orderId: number) {
         return this.orderServiceEndpoint.cancelOrder<OrderModel>(orderId);

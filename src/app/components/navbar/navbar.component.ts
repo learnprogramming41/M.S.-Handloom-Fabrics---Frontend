@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {NavbarService} from './../../services/navbar/navbar.service';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NavbarService } from './../../services/navbar/navbar.service';
+import { Router } from '@angular/router';
 import swal from 'sweetalert2';
-import {AuthorizationComponent} from '../authorization.component';
-import {DataService} from '../../services/data-service/data.service';
+import { AuthorizationComponent } from '../authorization.component';
+import { DataService } from '../../services/data-service/data.service';
+import { Test1, Test2, Test3 } from '../../enum/Enum';
 
 @Component({
     selector: 'app-navbar',
@@ -18,6 +19,66 @@ export class NavbarComponent implements OnInit {
     public aboutUsNav: boolean = false;
     public contactUsNav: boolean = false;
     public ourStoryNav: boolean = false;
+    public mainCategory: any[] = [];
+    public category1: any[] = [];
+    public category2: any[] = [];
+    public category3: any[] = [];
+
+    // public items: any[] = [{
+    //     text: 'Item1',
+    //     items: [
+    //         { text: 'Item1.1' }, { text: 'Item1.2', items: [{ text: 'Item1.2.1' }, { text: 'Item1.2.2' }] }]
+    // }];
+
+    public items: any[] = [
+        {
+            text: 'Our Products',
+            items: [
+                {
+                    text: "Category one",
+                    items: [
+                        {
+                            text: "items 1"
+                        },
+                        {
+                            text: "items 2"
+                        },
+                        {
+                            text: "items 3"
+                        },
+                    ]
+                },
+                {
+                    text: "Category two",
+                    items: [
+                        {
+                            text: "items 1"
+                        },
+                        {
+                            text: "items 2"
+                        },
+                        {
+                            text: "items 3"
+                        },
+                    ]
+                },
+                {
+                    text: "Category three",
+                    items: [
+                        {
+                            text: "items 1"
+                        },
+                        {
+                            text: "items 2"
+                        },
+                        {
+                            text: "items 3"
+                        },
+                    ]
+                }
+            ]
+        }
+    ]
 
     constructor(
         public navService: NavbarService,
@@ -29,6 +90,23 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
+        for (var i in Test1) {
+            if (!parseInt(i, 10)) {
+                this.category1.push(i);
+            }
+        }
+        for (var i in Test2) {
+            if (!parseInt(i, 10)) {
+                this.category2.push(i);
+            }
+        }
+
+        for (var i in Test3) {
+            if (!parseInt(i, 10)) {
+                this.category3.push(i);
+            }
+        }
+
         if (localStorage.getItem("userToken") && localStorage.getItem("userDetails")) {
             this.isLoggedIn = true;
             this.fullName = JSON.parse(localStorage.getItem("userDetails")).fullName;
@@ -43,7 +121,7 @@ export class NavbarComponent implements OnInit {
                             localStorage.removeItem("userToken");
                             localStorage.setItem("userToken", JSON.stringify(result));
                         }, error => {
-                            
+
                         }
                     )
                 }
@@ -108,7 +186,7 @@ export class NavbarComponent implements OnInit {
             })
         } else {
             let userId: number = JSON.parse(localStorage.getItem('userDetails'))['userId'];
-            this.router.navigate(['cart'], {queryParams: {userId: userId}});
+            this.router.navigate(['cart'], { queryParams: { userId: userId } });
         }
     }
 
@@ -145,5 +223,11 @@ export class NavbarComponent implements OnInit {
         this.aboutUsNav = false;
         this.contactUsNav = false;
         this.ourStoryNav = false;
+    }
+
+    public menuClicked($event) {
+        if ($event.item.text) {
+            alert($event.item.text);
+        }
     }
 }
